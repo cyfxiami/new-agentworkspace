@@ -118,424 +118,227 @@
                 </div>
             </section>
 
-            <!-- 业绩与绩效 + 产品销售 左右布局 -->
-            <section class="performance-sales-row" style="display: flex; flex-direction: row; gap: 12px; margin-bottom: 20px; align-items: stretch; flex-wrap: nowrap; width: 100%;">
-                <!-- 业绩概览板块 -->
-                <div class="performance-overview-section compact" style="flex: 0 0 auto; align-self: stretch; width: auto;">
-                    <div class="performance-overview-header compact-header">
-                        <div class="performance-overview-title">
-                            <span class="overview-icon">📊</span>
-                            <span>业绩与绩效</span>
+            <!-- 管理工作台区域 -->
+            <section class="management-dashboard">
+                <!-- 顶部三个统计卡片 -->
+                <div class="stats-cards-row">
+                    <div class="stats-card blue-card">
+                        <div class="stats-card-header">
+                            <span class="stats-card-title">待处理帮扶申请</span>
+                            <span class="stats-card-detail">详情 ⓘ</span>
                         </div>
-                        <div class="date-range-selector compact-selector">
-                            <input type="date" id="overview-start-date" class="overview-date-input compact-input">
-                            <span class="date-range-separator">-</span>
-                            <input type="date" id="overview-end-date" class="overview-date-input compact-input">
-                            <button class="calculate-btn-small compact-btn">计算</button>
+                        <div class="stats-card-content">
+                            <div class="stats-main-row">
+                                <span class="stats-icon">🔥</span>
+                                <span class="stats-number">4</span>
+                                <span class="stats-sub">(高: 2)</span>
+                                <span class="stats-divider">|</span>
+                                <span class="stats-label">处理率: 28/周</span>
+                            </div>
+                            <div class="stats-feedback">Feedback: 4.85/5</div>
                         </div>
                     </div>
-                    <div class="performance-cards-grid compact-grid">
-                        <!-- 第一列：预计绩效奖金 -->
-                        <div class="performance-metric-card compact-card highlight-card">
-                            <div class="metric-label compact-label">预计绩效奖金</div>
-                            <div class="metric-value compact-value">¥60,000</div>
+                    <div class="stats-card yellow-card">
+                        <div class="stats-card-header">
+                            <span class="stats-card-title">重点项目</span>
                         </div>
-                        <!-- 第二列：客户总数 + 总资产 -->
-                        <div class="metric-column">
-                            <div class="performance-metric-card compact-card row-card" onclick="openDashboardDetail('assets')" style="cursor: pointer;">
-                                <div class="metric-label compact-label">客户总数</div>
-                                <div class="metric-value compact-value">3户</div>
+                        <div class="stats-card-content">
+                            <div class="project-info">
+                                <span>开户攻坚 (82%)</span>
+                                <span class="project-divider">|</span>
+                                <span>基金推广 (滞後15%)</span>
+                                <span class="project-divider">|</span>
+                                <span class="project-risk">风险: 3</span>
                             </div>
-                            <div class="performance-metric-card compact-card row-card" onclick="openDashboardDetail('assets')" style="cursor: pointer;">
-                                <div class="metric-label compact-label">总资产</div>
-                                <div class="metric-value compact-value">¥10.62亿</div>
-                            </div>
-                        </div>
-                        <!-- 第三列：客户带来的总收入 + 维护客户的总成本 -->
-                        <div class="metric-column">
-                            <div class="performance-metric-card compact-card row-card" onclick="openDashboardDetail('revenue')" style="cursor: pointer;">
-                                <div class="metric-label compact-label">客户带来的总收入</div>
-                                <div class="metric-value compact-value">¥1,500,000</div>
-                            </div>
-                            <div class="performance-metric-card compact-card row-card" onclick="openDashboardDetail('cost')" style="cursor: pointer;">
-                                <div class="metric-label compact-label">维护客户的总成本</div>
-                                <div class="metric-value compact-value">¥300,000</div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 82%;"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- AI分析按钮 -->
-                    <div class="ai-analysis-section" style="margin-top: 15px; margin-bottom: 0;">
-                        <button class="predict-performance-btn" onclick="predictPerformance()">
-                            预测本月业绩
+                    <div class="stats-card green-card">
+                        <div class="stats-card-header">
+                            <span class="stats-card-title">团队状态</span>
+                            <span class="stats-chart">📊</span>
+                        </div>
+                        <div class="stats-card-content">
+                            <div class="team-status-row">
+                                <span>在线: <strong>12</strong></span>
+                                <span class="status-divider">/</span>
+                                <span>外勤: <strong>2</strong></span>
+                                <span class="status-divider">/</span>
+                                <span class="status-focus">重点关注: <strong>2</strong></span>
+                            </div>
+                            <div class="team-progress-bar">
+                                <div class="team-progress-green" style="width: 70%;"></div>
+                                <div class="team-progress-yellow" style="width: 20%;"></div>
+                                <div class="team-progress-red" style="width: 10%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Operations | 快捷操作入口 -->
+                <div class="quick-operations-section">
+                    <div class="section-title">Quick Operations | 快捷操作入口</div>
+                    <div class="quick-ops-buttons">
+                        <button class="quick-op-btn">
+                            <span class="quick-op-icon">📋</span>
+                            <span>发起帮扶</span>
                         </button>
-                        <button class="ai-analysis-btn" onclick="analyzePerformanceGap()">
-                            AI分析业绩缺口并生成商机列表
+                        <button class="quick-op-btn">
+                            <span class="quick-op-icon">📥</span>
+                            <span>处理申请</span>
+                        </button>
+                        <button class="quick-op-btn">
+                            <span class="quick-op-icon">📊</span>
+                            <span>查看项目进度</span>
+                        </button>
+                        <button class="quick-op-btn">
+                            <span class="quick-op-icon">🌐</span>
+                            <span>协调资源</span>
+                        </button>
+                        <button class="quick-op-btn">
+                            <span class="quick-op-icon">💬</span>
+                            <span>团队沟通</span>
+                        </button>
+                        <button class="quick-op-btn">
+                            <span class="quick-op-icon">👤</span>
+                            <span>人员档案</span>
                         </button>
                     </div>
                 </div>
 
-                <!-- 智能商机匹配模块 -->
-                <div class="intelligent-module opportunity-module compact-sales" style="flex: 1; align-self: stretch; min-width: 300px;">
-                    <div class="module-header compact-module-header">
-                        <h3 class="module-title compact-title">智能商机与推荐</h3>
-                        <div class="module-tabs compact-tabs">
-                            <span class="tab active" onclick="switchOpportunityTab('personal')">个人客户</span>
-                            <span class="tab" onclick="switchOpportunityTab('institution')">机构客户</span>
-                        </div>
-                    </div>
-                    <div class="module-content compact-content" id="opportunity-content-compact">
-                        <!-- 个人客户列表 -->
-                        <div class="opportunity-list" id="personal-opportunities-compact">
-                            <!-- 表头 -->
-                            <div class="opportunity-table-header">
-                                <div class="col-customer-info">客户信息</div>
-                                <div class="col-revenue">预计贡献收入</div>
-                                <div class="col-match">匹配度</div>
+                <!-- 中间主要内容区：待办工作区 + 右侧紧需干预 -->
+                <div class="main-work-area">
+                    <!-- Work Queue | 待办工作区 -->
+                    <div class="work-queue-section">
+                        <div class="section-title">Work Queue | 待办工作区</div>
+                        <div class="work-queue-tabs">
+                            <div class="wq-tab active">
+                                <span class="wq-tab-icon">📁</span>
+                                <span>待办帮扶申请 (4)</span>
                             </div>
-                            <div class="opportunity-row" data-index="0" data-type="personal" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">1</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">张伟</span>
-                                            <span class="customer-tag">高净值</span>
-                                        </div>
-                                        <div class="customer-contact">138****8888</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥500,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">92%</span>
-                                </div>
-                            </div>
-                            <div class="opportunity-row" data-index="1" data-type="personal" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">2</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">李秀英</span>
-                                            <span class="customer-tag">企业主</span>
-                                        </div>
-                                        <div class="customer-contact">139****6666</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥800,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">88%</span>
-                                </div>
-                            </div>
-                            <div class="opportunity-row" data-index="2" data-type="personal" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">3</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">王建国</span>
-                                            <span class="customer-tag">专业投资者</span>
-                                        </div>
-                                        <div class="customer-contact">137****9999</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥300,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">85%</span>
-                                </div>
-                            </div>
-                            <div class="opportunity-row" data-index="3" data-type="personal" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">4</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">陈美玲</span>
-                                            <span class="customer-tag">新富人群</span>
-                                        </div>
-                                        <div class="customer-contact">136****5555</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥200,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">82%</span>
-                                </div>
+                            <div class="wq-tab">
+                                <span class="wq-tab-icon">📋</span>
+                                <span>重点项目管控 (3)</span>
                             </div>
                         </div>
-                        <!-- 机构客户列表（默认隐藏） -->
-                        <div class="opportunity-list" id="institution-opportunities-compact" style="display: none;">
-                            <!-- 表头 -->
-                            <div class="opportunity-table-header">
-                                <div class="col-customer-info">客户信息</div>
-                                <div class="col-revenue">预计贡献收入</div>
-                                <div class="col-match">匹配度</div>
+                        <div class="pending-requests-title">Pending Requests</div>
+                        <div class="work-queue-table">
+                            <div class="wq-table-header">
+                                <span class="wq-col-priority">优先级</span>
+                                <span class="wq-col-applicant">申请人</span>
+                                <span class="wq-col-type">需求类型</span>
+                                <span class="wq-col-time">提交时间</span>
+                                <span class="wq-col-detail">详情</span>
+                                <span class="wq-col-action">操作</span>
                             </div>
-                            <div class="opportunity-row" data-index="0" data-type="institution" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">1</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">海通证券</span>
-                                            <span class="customer-tag">上市公司</span>
-                                        </div>
-                                        <div class="customer-contact">021****8888</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥5,000,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">95%</span>
+                            <div class="wq-table-row">
+                                <span class="wq-priority-dot priority-high"></span>
+                                <span class="wq-applicant">Zhang San</span>
+                                <span class="wq-type">Customer Complaint</span>
+                                <span class="wq-time">2026-05-20 16:39:01</span>
+                                <span class="wq-detail">Pending Requests</span>
+                                <div class="wq-actions">
+                                    <button class="wq-btn-process">处理</button>
+                                    <button class="wq-btn-resource">资源</button>
                                 </div>
                             </div>
-                            <div class="opportunity-row" data-index="1" data-type="institution" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">2</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">万科集团</span>
-                                            <span class="customer-tag">房地产</span>
-                                        </div>
-                                        <div class="customer-contact">0755****6666</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥8,000,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">90%</span>
+                            <div class="wq-table-row">
+                                <span class="wq-priority-dot priority-medium"></span>
+                                <span class="wq-applicant">Li Si</span>
+                                <span class="wq-type">Material Type</span>
+                                <span class="wq-time">2026-05-20 12:12:25</span>
+                                <span class="wq-detail">Pending Requests</span>
+                                <div class="wq-actions">
+                                    <button class="wq-btn-process">处理</button>
+                                    <button class="wq-btn-resource">资源</button>
                                 </div>
                             </div>
-                            <div class="opportunity-row" data-index="2" data-type="institution" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">3</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">招商银行</span>
-                                            <span class="customer-tag">银行理财</span>
-                                        </div>
-                                        <div class="customer-contact">0755****9999</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥10,000,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">87%</span>
-                                </div>
-                            </div>
-                            <div class="opportunity-row" data-index="3" data-type="institution" onclick="selectCustomer(this)">
-                                <div class="col-customer-info">
-                                    <span class="customer-rank">4</span>
-                                    <div class="customer-info-detail">
-                                        <div class="customer-name-tag">
-                                            <span class="customer-name">腾讯科技</span>
-                                            <span class="customer-tag">互联网科技</span>
-                                        </div>
-                                        <div class="customer-contact">0755****8888</div>
-                                    </div>
-                                </div>
-                                <div class="col-revenue">¥12,000,000</div>
-                                <div class="col-match">
-                                    <span class="match-percentage">94%</span>
+                            <div class="wq-table-row">
+                                <span class="wq-priority-dot priority-medium"></span>
+                                <span class="wq-applicant">Zhao Liu</span>
+                                <span class="wq-type">Project Delay</span>
+                                <span class="wq-time">2026-05-20 17:33:00</span>
+                                <span class="wq-detail">Pending Requests</span>
+                                <div class="wq-actions">
+                                    <button class="wq-btn-process">处理</button>
+                                    <button class="wq-btn-resource">资源</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </section>
 
-            <!-- 智能工作台其他模块 -->
-            <section class="intelligent-workbench-section">
-                <!-- 营销方案与工具箱 -->
-                <div class="intelligent-module marketing-toolbox-module">
-                    <div class="module-header">
-                        <h3 class="module-title">营销方案与工具箱</h3>
-                    </div>
-                    <div class="module-content">
-                        <div class="marketing-toolbox-grid">
-                            <!-- 营销方案卡片1 -->
-                            <div class="toolbox-card">
-                                <div class="toolbox-card-header">
-                                    <span class="toolbox-title">活动名称：高净值客户资产配置</span>
-                                </div>
-                                <div class="toolbox-card-content">
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">目标人群：</span>
-                                        <span class="toolbox-value">资产≥500万，中等风险偏好</span>
-                                    </div>
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">核心产品：</span>
-                                        <span class="toolbox-value">A股价量基金A + 固收型B</span>
-                                    </div>
-                                </div>
-                                <div class="toolbox-card-footer">
-                                    <span class="toolbox-section-label">营销工具：</span>
-                                    <div class="toolbox-tags">
-                                        <span class="toolbox-tag">AI话术生成</span>
-                                        <span class="toolbox-tag">一键海报设计</span>
-                                        <span class="toolbox-tag">PPT定制模板</span>
-                                        <span class="toolbox-tag">一键CRM跟进</span>
-                                    </div>
-                                </div>
+                    <!-- High Priority Panel | 右侧紧需干预 -->
+                    <div class="high-priority-panel">
+                        <div class="section-title">High Priority Panel | 右侧紧需干预</div>
+                        
+                        <!-- 紧急帮扶 -->
+                        <div class="hp-section">
+                            <div class="hp-section-title">紧急帮扶</div>
+                            <div class="hp-item">
+                                <span class="hp-icon compliance">🚨</span>
+                                <span class="hp-text"><strong>【合规】</strong>客户投诉（张三）- 10分钟前</span>
                             </div>
-                            <!-- 营销方案卡片2 -->
-                            <div class="toolbox-card">
-                                <div class="toolbox-card-header">
-                                    <span class="toolbox-title">活动名称：高净值客户资产配置</span>
-                                </div>
-                                <div class="toolbox-card-content">
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">目标人群：</span>
-                                        <span class="toolbox-value">资产≥500万，中等风险偏好</span>
-                                    </div>
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">核心产品：</span>
-                                        <span class="toolbox-value">A股价量基金A + 固收型B</span>
-                                    </div>
-                                </div>
-                                <div class="toolbox-card-footer">
-                                    <span class="toolbox-section-label">营销工具：</span>
-                                    <div class="toolbox-tags">
-                                        <span class="toolbox-tag">AI话术生成</span>
-                                        <span class="toolbox-tag">一键海报设计</span>
-                                        <span class="toolbox-tag">PPT定制模板</span>
-                                        <span class="toolbox-tag">一键CRM跟进</span>
-                                    </div>
-                                </div>
+                            <div class="hp-item">
+                                <span class="hp-icon material">📦</span>
+                                <span class="hp-text"><strong>【物料】</strong>宣传物料短缺（李四）- 30分钟前</span>
                             </div>
-                            <!-- 营销方案卡片3 -->
-                            <div class="toolbox-card">
-                                <div class="toolbox-card-header">
-                                    <span class="toolbox-title">活动名称：高净值客户资产配置</span>
-                                </div>
-                                <div class="toolbox-card-content">
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">目标人群：</span>
-                                        <span class="toolbox-value">资产≥500万，中等风险偏好</span>
-                                    </div>
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">核心产品：</span>
-                                        <span class="toolbox-value">A股价量基金A + 固收型B</span>
-                                    </div>
-                                </div>
-                                <div class="toolbox-card-footer">
-                                    <span class="toolbox-section-label">营销工具：</span>
-                                    <div class="toolbox-tags">
-                                        <span class="toolbox-tag">AI话术生成</span>
-                                        <span class="toolbox-tag">一键海报设计</span>
-                                        <span class="toolbox-tag">PPT定制模板</span>
-                                        <span class="toolbox-tag">一键CRM跟进</span>
-                                    </div>
-                                </div>
+                        </div>
+
+                        <!-- 项目滞后提醒 -->
+                        <div class="hp-section">
+                            <div class="hp-section-title">项目滞后提醒</div>
+                            <div class="hp-project-item">
+                                <span class="hp-project-icon">📈</span>
+                                <span class="hp-project-name">开户拓展攻坚二期</span>
+                                <span class="hp-project-delay">(赵六, -15%)</span>
                             </div>
-                            <!-- 营销方案卡片4 -->
-                            <div class="toolbox-card">
-                                <div class="toolbox-card-header">
-                                    <span class="toolbox-title">活动名称：高净值客户资产配置</span>
-                                </div>
-                                <div class="toolbox-card-content">
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">目标人群：</span>
-                                        <span class="toolbox-value">资产≥500万，中等风险偏好</span>
-                                    </div>
-                                    <div class="toolbox-row">
-                                        <span class="toolbox-label">核心产品：</span>
-                                        <span class="toolbox-value">A股价量基金A + 固收型B</span>
-                                    </div>
-                                </div>
-                                <div class="toolbox-card-footer">
-                                    <span class="toolbox-section-label">营销工具：</span>
-                                    <div class="toolbox-tags">
-                                        <span class="toolbox-tag">AI话术生成</span>
-                                        <span class="toolbox-tag">一键海报设计</span>
-                                        <span class="toolbox-tag">PPT定制模板</span>
-                                        <span class="toolbox-tag">一键CRM跟进</span>
-                                    </div>
-                                </div>
+                            <div class="hp-project-item">
+                                <span class="hp-project-icon">📉</span>
+                                <span class="hp-project-name">基金季末冲刺项目</span>
+                                <span class="hp-project-delay">(钱七, -12%)</span>
+                            </div>
+                        </div>
+
+                        <!-- 未反馈/待分配 -->
+                        <div class="hp-section">
+                            <div class="hp-section-title">未反馈/待分配</div>
+                            <div class="hp-pending-item">
+                                <span class="hp-pending-label">待一线确认:</span>
+                                <span class="hp-pending-text">关于周八客户对接帮扶</span>
+                            </div>
+                            <div class="hp-pending-item">
+                                <span class="hp-pending-label">待分配资源:</span>
+                                <span class="hp-pending-text">A类优质客户名单×50</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- 目标客户深度洞察 -->
-                <div class="intelligent-module customer-insight-module">
-                    <div class="module-header">
-                        <h3 class="module-title">目标客户深度洞察</h3>
-                        <div class="insight-search">
-                            <input type="text" class="insight-search-input" placeholder="搜索客户姓名或ID">
+                <!-- Staff Focus | 团队状态与前置帮扶 -->
+                <div class="staff-focus-section">
+                    <div class="section-title">Staff Focus | 团队状态与前置帮扶</div>
+                    <div class="staff-cards">
+                        <div class="staff-card">
+                            <img src="images/Avatar1.png" alt="王五" class="staff-avatar">
+                            <div class="staff-info">
+                                <div class="staff-name-en">Wang Wu</div>
+                                <div class="staff-name-cn">王五 - 新人，高频出错</div>
+                                <div class="staff-actions">
+                                    <button class="staff-btn-help">发起帮扶</button>
+                                    <button class="staff-btn-talk">一键约谈</button>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="module-content">
-                        <div class="insight-profile">
-                            <div class="insight-profile-header">
-                                <img src="images/Avatar3.png" alt="客户头像" class="insight-avatar" id="insight-avatar">
-                                <div class="insight-profile-info">
-                                    <div class="insight-profile-name-tag">
-                                        <span class="insight-profile-name">李华</span>
-                                        <span class="insight-profile-tag" id="insight-tag">高净值</span>
-                                    </div>
-                                    <div class="insight-profile-detail-row">
-                                        <span class="insight-profile-detail">129****666</span>
-                                        <button class="marketing-script-btn" onclick="generateMarketingScript()">营销话术生成</button>
-                                    </div>
-                                </div>
-                                <!-- 商机数据展示 -->
-                                <div class="insight-stats-section">
-                                    <div class="insight-stat-item">
-                                        <div class="insight-stat-label">预计贡献收入</div>
-                                        <div class="insight-stat-value" id="insight-revenue">¥500,000</div>
-                                    </div>
-                                    <div class="insight-stat-item">
-                                        <div class="insight-stat-label">匹配度</div>
-                                        <div class="insight-stat-value" id="insight-match">95%</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- 持仓分析 -->
-                            <div class="insight-section">
-                                <div class="insight-dual-progress">
-                                    <!-- 持仓分析 -->
-                                    <div class="insight-progress-item">
-                                        <div class="insight-progress-item-header">
-                                            <span class="insight-progress-title">持仓分析</span>
-                                        </div>
-                                        <div class="insight-progress-bar-container">
-                                            <div class="insight-progress-bar-dual">
-                                                <div class="insight-progress-fill insight-progress-fill-green" id="insight-progress-fill" style="width: 60%;"></div>
-                                            </div>
-                                            <span class="insight-progress-label-left" id="insight-position-comment">资产配置失衡</span>
-                                        </div>
-                                    </div>
-                                    <!-- 风险偏好 -->
-                                    <div class="insight-progress-item">
-                                        <div class="insight-progress-item-header">
-                                            <span class="insight-progress-title">风险偏好</span>
-                                        </div>
-                                        <div class="insight-progress-bar-container">
-                                            <div class="insight-progress-bar-dual">
-                                                <div class="insight-progress-fill insight-progress-fill-orange" id="insight-risk-fill" style="width: 60%;"></div>
-                                            </div>
-                                            <div class="insight-progress-labels">
-                                                <span>保守</span>
-                                                <span>激进</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- AI最佳匹配路径 -->
-                            <div class="insight-section">
-                                <div class="insight-section-header">
-                                    <span class="insight-section-title">AI最佳匹配路径</span>
-                                </div>
-                                <div class="insight-path-list">
-                                    <div class="insight-path-item">
-                                        <span class="insight-path-icon">📈</span>
-                                        <span class="insight-path-text">A股价量基金产品：直接债券产品线保险</span>
-                                    </div>
-                                    <div class="insight-path-item">
-                                        <span class="insight-path-icon">👥</span>
-                                        <span class="insight-path-text">到客户资产配置：稳健性配套内容</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- AI匹配理由 -->
-                            <div class="insight-section">
-                                <div class="insight-section-header">
-                                    <span class="insight-section-title">AI匹配理由</span>
-                                </div>
-                                <div class="insight-reason-content" id="insight-reason">
-                                    该客户近期有大额资金到期，资产配置以存款为主，收益偏低。建议推荐稳健型理财产品，预计匹配度92%。
+                        <div class="staff-card">
+                            <img src="images/Avatar2.png" alt="赵六" class="staff-avatar">
+                            <div class="staff-info">
+                                <div class="staff-name-en">Zhao Liu</div>
+                                <div class="staff-name-cn">赵六 - 项目滞后</div>
+                                <div class="staff-actions">
+                                    <button class="staff-btn-help">发起帮扶</button>
+                                    <button class="staff-btn-talk">一键约谈</button>
                                 </div>
                             </div>
                         </div>
