@@ -11,11 +11,28 @@
     <div class="app-layout">
         <!-- 左侧边栏 -->
         <aside class="sidebar" id="sidebar">
-            <!-- 侧边栏顶部：标题和收起按钮 -->
+            <!-- 侧边栏顶部：工作台切换和收起按钮 -->
             <div class="sidebar-header">
-                <div class="sidebar-title-group">
-                    <span class="sidebar-logo">📊</span>
-                    <span class="sidebar-title">员工工作台</span>
+                <div class="workspace-switcher-sidebar">
+                    <button class="workspace-switcher-btn" onclick="toggleWorkspaceDropdown()">
+                        <span class="workspace-icon">📊</span>
+                        <span class="workspace-name" id="current-workspace-name">业务支持工作台</span>
+                        <span class="workspace-arrow">▼</span>
+                    </button>
+                    <div class="workspace-dropdown" id="workspace-dropdown" style="display: none;">
+                        <div class="workspace-option" onclick="switchWorkspace('employee')">
+                            <span class="workspace-option-icon">👤</span>
+                            <span class="workspace-option-name">员工工作台</span>
+                        </div>
+                        <div class="workspace-option active" onclick="switchWorkspace('business')">
+                            <span class="workspace-option-icon">📊</span>
+                            <span class="workspace-option-name">业务支持工作台</span>
+                        </div>
+                        <div class="workspace-option" onclick="switchWorkspace('collaboration')">
+                            <span class="workspace-option-icon">🤝</span>
+                            <span class="workspace-option-name">协同工作台</span>
+                        </div>
+                    </div>
                 </div>
                 <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="收起侧边栏">
                     <span class="toggle-icon">‹‹</span>
@@ -96,252 +113,577 @@
                 </div>
             </section>
 
-            <!-- 工作提示区域 -->
-            <section class="work-tips-section main-work-tips">
-                <div class="work-tips-marquee-container">
-                    <div class="marquee-left">
-                        <span class="tips-icon">📋</span>
-                        <span class="tips-title">工作提示：</span>
-                    </div>
-                    <div class="tips-scroll-wrapper">
-                        <div class="tips-scroll-content" id="tips-scroll">
-                            <div class="tips-scroll-item">协和医院赵宇主任已提交开户资料，赵主任提出调降两融费率的申请，今日需与赵主任联系确定；</div>
-                            <div class="tips-scroll-item">海南农商行机构准入事项已与黄亮副行长沟通，黄亮副行长建议本周安排与金融市场部赵翔鹏总经理面谈，需准备路演材料；</div>
-                            <div class="tips-scroll-item">ST沐邦共益债方案中出资金额需在本周内确定；</div>
-                            <div class="tips-scroll-item">中银金租有新能源方面的研究服务需求，本周需协调研究所新能源领域研究员进行路演。</div>
-                        </div>
-                    </div>
-                    <button class="work-log-btn" onclick="openWorkLog()">
-                        <span class="log-icon">📝</span>
-                        <span>工作日志</span>
-                    </button>
-                </div>
-            </section>
-
-            <!-- 管理工作台区域 -->
-            <section class="management-dashboard">
-                <!-- 顶部三个统计卡片 -->
-                <div class="stats-cards-row">
-                    <div class="stats-card blue-card">
-                        <div class="stats-card-header">
-                            <span class="stats-card-title">待处理帮扶申请</span>
-                            <span class="stats-card-detail">详情 ⓘ</span>
-                        </div>
-                        <div class="stats-card-content">
-                            <div class="stats-main-row">
-                                <span class="stats-icon">🔥</span>
-                                <span class="stats-number">4</span>
-                                <span class="stats-sub">(高: 2)</span>
-                                <span class="stats-divider">|</span>
-                                <span class="stats-label">处理率: 28/周</span>
-                            </div>
-                            <div class="stats-feedback">Feedback: 4.85/5</div>
-                        </div>
-                    </div>
-                    <div class="stats-card yellow-card">
-                        <div class="stats-card-header">
-                            <span class="stats-card-title">重点项目</span>
-                        </div>
-                        <div class="stats-card-content">
-                            <div class="project-info">
-                                <span>开户攻坚 (82%)</span>
-                                <span class="project-divider">|</span>
-                                <span>基金推广 (滞後15%)</span>
-                                <span class="project-divider">|</span>
-                                <span class="project-risk">风险: 3</span>
-                            </div>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 82%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="stats-card green-card">
-                        <div class="stats-card-header">
-                            <span class="stats-card-title">团队状态</span>
-                            <span class="stats-chart">📊</span>
-                        </div>
-                        <div class="stats-card-content">
-                            <div class="team-status-row">
-                                <span>在线: <strong>12</strong></span>
-                                <span class="status-divider">/</span>
-                                <span>外勤: <strong>2</strong></span>
-                                <span class="status-divider">/</span>
-                                <span class="status-focus">重点关注: <strong>2</strong></span>
-                            </div>
-                            <div class="team-progress-bar">
-                                <div class="team-progress-green" style="width: 70%;"></div>
-                                <div class="team-progress-yellow" style="width: 20%;"></div>
-                                <div class="team-progress-red" style="width: 10%;"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Quick Operations | 快捷操作入口 -->
-                <div class="quick-operations-section">
-                    <div class="section-title">Quick Operations | 快捷操作入口</div>
-                    <div class="quick-ops-buttons">
-                        <button class="quick-op-btn">
-                            <span class="quick-op-icon">📋</span>
-                            <span>发起帮扶</span>
-                        </button>
-                        <button class="quick-op-btn">
-                            <span class="quick-op-icon">📥</span>
-                            <span>处理申请</span>
-                        </button>
-                        <button class="quick-op-btn">
-                            <span class="quick-op-icon">📊</span>
-                            <span>查看项目进度</span>
-                        </button>
-                        <button class="quick-op-btn">
-                            <span class="quick-op-icon">🌐</span>
-                            <span>协调资源</span>
-                        </button>
-                        <button class="quick-op-btn">
-                            <span class="quick-op-icon">💬</span>
-                            <span>团队沟通</span>
-                        </button>
-                        <button class="quick-op-btn">
-                            <span class="quick-op-icon">👤</span>
-                            <span>人员档案</span>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- 中间主要内容区：待办工作区 + 右侧紧需干预 -->
+            <!-- 中间主要内容区：待办工作区 + 右侧紧需干预 -->
                 <div class="main-work-area">
-                    <!-- Work Queue | 待办工作区 -->
+                    <!-- 待办工作区 -->
                     <div class="work-queue-section">
-                        <div class="section-title">Work Queue | 待办工作区</div>
-                        <div class="work-queue-tabs">
-                            <div class="wq-tab active">
-                                <span class="wq-tab-icon">📁</span>
-                                <span>待办帮扶申请 (4)</span>
-                            </div>
-                            <div class="wq-tab">
-                                <span class="wq-tab-icon">📋</span>
-                                <span>重点项目管控 (3)</span>
-                            </div>
-                        </div>
-                        <div class="pending-requests-title">Pending Requests</div>
-                        <div class="work-queue-table">
-                            <div class="wq-table-header">
-                                <span class="wq-col-priority">优先级</span>
-                                <span class="wq-col-applicant">申请人</span>
-                                <span class="wq-col-type">需求类型</span>
-                                <span class="wq-col-time">提交时间</span>
-                                <span class="wq-col-detail">详情</span>
-                                <span class="wq-col-action">操作</span>
-                            </div>
-                            <div class="wq-table-row">
-                                <span class="wq-priority-dot priority-high"></span>
-                                <span class="wq-applicant">Zhang San</span>
-                                <span class="wq-type">Customer Complaint</span>
-                                <span class="wq-time">2026-05-20 16:39:01</span>
-                                <span class="wq-detail">Pending Requests</span>
-                                <div class="wq-actions">
-                                    <button class="wq-btn-process">处理</button>
-                                    <button class="wq-btn-resource">资源</button>
+                        <!-- 卡片式Tab切换 -->
+                        <div class="work-queue-card-tabs">
+                            <div class="wq-card-tab active" onclick="switchWorkQueueTab(this, 'help')">
+                                <div class="wq-card-header">
+                                    <span class="wq-card-icon">📁</span>
+                                    <span class="wq-card-title">协同响应处理</span>
+                                </div>
+                                <div class="wq-card-content">
+                                    <span class="wq-card-number" id="pending-count">9</span>
+                                    <span class="wq-card-unit">个待处理</span>
+                                    <span class="wq-card-status urgent" id="urgent-count">2个紧急</span>
                                 </div>
                             </div>
-                            <div class="wq-table-row">
-                                <span class="wq-priority-dot priority-medium"></span>
-                                <span class="wq-applicant">Li Si</span>
-                                <span class="wq-type">Material Type</span>
-                                <span class="wq-time">2026-05-20 12:12:25</span>
-                                <span class="wq-detail">Pending Requests</span>
-                                <div class="wq-actions">
-                                    <button class="wq-btn-process">处理</button>
-                                    <button class="wq-btn-resource">资源</button>
+                            <div class="wq-card-tab" onclick="switchWorkQueueTab(this, 'project')">
+                                <div class="wq-card-header">
+                                    <span class="wq-card-icon">📋</span>
+                                    <span class="wq-card-title">重点项目管控</span>
+                                </div>
+                                <div class="wq-card-content">
+                                    <span class="wq-card-number" id="project-count">9</span>
+                                    <span class="wq-card-unit">个项目</span>
+                                    <span class="wq-card-status warning" id="abnormal-count">2个异常</span>
                                 </div>
                             </div>
-                            <div class="wq-table-row">
-                                <span class="wq-priority-dot priority-medium"></span>
-                                <span class="wq-applicant">Zhao Liu</span>
-                                <span class="wq-type">Project Delay</span>
-                                <span class="wq-time">2026-05-20 17:33:00</span>
-                                <span class="wq-detail">Pending Requests</span>
-                                <div class="wq-actions">
-                                    <button class="wq-btn-process">处理</button>
-                                    <button class="wq-btn-resource">资源</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- High Priority Panel | 右侧紧需干预 -->
-                    <div class="high-priority-panel">
-                        <div class="section-title">High Priority Panel | 右侧紧需干预</div>
+                        </div>
                         
-                        <!-- 紧急帮扶 -->
-                        <div class="hp-section">
-                            <div class="hp-section-title">紧急帮扶</div>
-                            <div class="hp-item">
-                                <span class="hp-icon compliance">🚨</span>
-                                <span class="hp-text"><strong>【合规】</strong>客户投诉（张三）- 10分钟前</span>
+                        <!-- 协同响应处理内容区 -->
+                        <div id="help-content" class="content-area">
+                            <!-- 待处理/已处理/圆桌协同申请Tab切换 -->
+                            <div class="request-tabs">
+                                <div class="request-tab active" onclick="switchRequestTab(this, 'pending')">待处理申请</div>
+                                <div class="request-tab" onclick="switchRequestTab(this, 'processed')">已处理申请</div>
+                                <div class="request-tab" onclick="switchRequestTab(this, 'roundtable')">圆桌协同</div>
                             </div>
-                            <div class="hp-item">
-                                <span class="hp-icon material">📦</span>
-                                <span class="hp-text"><strong>【物料】</strong>宣传物料短缺（李四）- 30分钟前</span>
+                            <!-- 待处理申请列表 -->
+                            <div id="pending-requests" class="work-queue-table">
+                                <div class="wq-table-header">
+                                    <span class="wq-col-priority">优先级</span>
+                                    <span class="wq-col-applicant">申请人</span>
+                                    <span class="wq-col-type">业务类型</span>
+                                    <span class="wq-col-deadline">截止时间</span>
+                                    <span class="wq-col-detail">申请说明</span>
+                                    <span class="wq-col-action">操作</span>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">张三（零售业务部）</span>
+                                    <span class="wq-type">客户投诉</span>
+                                    <span class="wq-deadline">2026-05-21 18:00:00</span>
+                                    <span class="wq-detail">客户对服务态度不满，需尽快处理</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">李四（机构业务部）</span>
+                                    <span class="wq-type">物料申请</span>
+                                    <span class="wq-deadline">2026-05-22 18:00:00</span>
+                                    <span class="wq-detail">宣传物料库存不足，需补充</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">赵六（投行业务部）</span>
+                                    <span class="wq-type">项目延期</span>
+                                    <span class="wq-deadline">2026-05-23 18:00:00</span>
+                                    <span class="wq-detail">项目进度滞后，需协调资源</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-low">低</span>
+                                    <span class="wq-applicant">周八（投资业务部）</span>
+                                    <span class="wq-type">费用报销</span>
+                                    <span class="wq-deadline">2026-05-25 18:00:00</span>
+                                    <span class="wq-detail">客户招待费用报销，发票已齐全</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">吴九（销交业务部）</span>
+                                    <span class="wq-type">合同审批</span>
+                                    <span class="wq-deadline">2026-05-21 20:00:00</span>
+                                    <span class="wq-detail">大客户合同条款变更，需法务审核</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">郑十（零售业务部）</span>
+                                    <span class="wq-type">客户回访</span>
+                                    <span class="wq-deadline">2026-05-24 18:00:00</span>
+                                    <span class="wq-detail">VIP客户满意度回访，需安排专人对接</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-low">低</span>
+                                    <span class="wq-applicant">钱十一（机构业务部）</span>
+                                    <span class="wq-type">培训申请</span>
+                                    <span class="wq-deadline">2026-05-26 18:00:00</span>
+                                    <span class="wq-detail">新员工入职培训，需协调培训资源</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">孙十二（资管业务部）</span>
+                                    <span class="wq-type">风险预警</span>
+                                    <span class="wq-deadline">2026-05-21 22:00:00</span>
+                                    <span class="wq-detail">客户账户异常交易，需风控部门核查</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">李十三（投行业务部）</span>
+                                    <span class="wq-type">尽调申请</span>
+                                    <span class="wq-deadline">2026-05-25 18:00:00</span>
+                                    <span class="wq-detail">拟上市公司尽职调查，需安排团队</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 已处理申请列表 -->
+                            <div id="processed-requests" class="work-queue-table" style="display: none;">
+                                <div class="wq-table-header">
+                                    <span class="wq-col-priority">优先级</span>
+                                    <span class="wq-col-applicant">申请人</span>
+                                    <span class="wq-col-type">业务类型</span>
+                                    <span class="wq-col-deadline">截止时间</span>
+                                    <span class="wq-col-detail">申请说明</span>
+                                    <span class="wq-col-action">操作</span>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">王五（资管业务部）</span>
+                                    <span class="wq-type">账户开户</span>
+                                    <span class="wq-deadline">2026-05-21 18:00:00</span>
+                                    <span class="wq-detail">客户需要开通VIP账户权限，请尽快处理</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">陈六（投资业务部）</span>
+                                    <span class="wq-type">资金划转</span>
+                                    <span class="wq-deadline">2026-05-22 18:00:00</span>
+                                    <span class="wq-detail">客户要求将资金从活期账户划转至理财账户</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-low">低</span>
+                                    <span class="wq-applicant">林美（销交业务部）</span>
+                                    <span class="wq-type">业务咨询</span>
+                                    <span class="wq-deadline">2026-05-24 18:00:00</span>
+                                    <span class="wq-detail">客户咨询理财产品收益率及风险评估相关问题</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">周明（零售业务部）</span>
+                                    <span class="wq-type">投诉处理</span>
+                                    <span class="wq-deadline">2026-05-20 18:00:00</span>
+                                    <span class="wq-detail">客户对理财产品收益不满，已安抚并解释</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">吴强（机构业务部）</span>
+                                    <span class="wq-type">额度申请</span>
+                                    <span class="wq-deadline">2026-05-21 18:00:00</span>
+                                    <span class="wq-detail">大客户申请提高交易额度，已审批通过</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-low">低</span>
+                                    <span class="wq-applicant">郑华（投资业务部）</span>
+                                    <span class="wq-type">报表导出</span>
+                                    <span class="wq-deadline">2026-05-22 18:00:00</span>
+                                    <span class="wq-detail">月度业绩报表导出，已发送至邮箱</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">钱伟（资管业务部）</span>
+                                    <span class="wq-type">产品赎回</span>
+                                    <span class="wq-deadline">2026-05-21 18:00:00</span>
+                                    <span class="wq-detail">客户申请提前赎回理财产品，已处理完成</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">孙丽（投行业务部）</span>
+                                    <span class="wq-type">合规审查</span>
+                                    <span class="wq-deadline">2026-05-20 20:00:00</span>
+                                    <span class="wq-detail">新客户合规资料审核，已通过审查</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">李军（销交业务部）</span>
+                                    <span class="wq-type">系统权限</span>
+                                    <span class="wq-deadline">2026-05-23 18:00:00</span>
+                                    <span class="wq-detail">新员工系统权限开通申请，已配置完成</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-low">低</span>
+                                    <span class="wq-applicant">王芳（零售业务部）</span>
+                                    <span class="wq-type">名片印制</span>
+                                    <span class="wq-deadline">2026-05-25 18:00:00</span>
+                                    <span class="wq-detail">新员工名片印制申请，已提交印刷厂</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 圆桌协同申请列表 -->
+                            <div id="roundtable-requests" class="work-queue-table" style="display: none;">
+                                <div class="wq-table-header">
+                                    <span class="wq-col-priority">优先级</span>
+                                    <span class="wq-col-applicant">申请人</span>
+                                    <span class="wq-col-type">业务类型</span>
+                                    <span class="wq-col-detail">处理详情</span>
+                                    <span class="wq-col-status">圆桌状态</span>
+                                    <span class="wq-col-action">操作</span>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">陈明（机构业务部）</span>
+                                    <span class="wq-type">大额转账</span>
+                                    <span class="wq-detail">已提交风控部门及分管领导审批，等待联合审议结果</span>
+                                    <span class="wq-status processing">处理中</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">刘芳（投行业务部）</span>
+                                    <span class="wq-type">并购审批</span>
+                                    <span class="wq-detail">投行、法务、合规多部门已完成初步审议，待最终决策</span>
+                                    <span class="wq-status pending">待处理</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">赵强（资管业务部）</span>
+                                    <span class="wq-type">产品发行</span>
+                                    <span class="wq-detail">产品、销售、合规部门已完成风险评估，方案已获批</span>
+                                    <span class="wq-status completed">处理完成</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">孙丽（零售业务部）</span>
+                                    <span class="wq-type">客户争议</span>
+                                    <span class="wq-detail">财务、客服、业务部门协同处理方案被驳回，需补充材料</span>
+                                    <span class="wq-status rejected">已驳回</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">周杰（投资业务部）</span>
+                                    <span class="wq-type">紧急调仓</span>
+                                    <span class="wq-detail">投资、风控、合规部门已快速决策并执行调仓操作</span>
+                                    <span class="wq-status completed">处理完成</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-low">低</span>
+                                    <span class="wq-applicant">吴敏（销交业务部）</span>
+                                    <span class="wq-type">渠道合作</span>
+                                    <span class="wq-detail">销售、法务、财务部门正在协商条款细节</span>
+                                    <span class="wq-status processing">处理中</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-medium">中</span>
+                                    <span class="wq-applicant">郑华（机构业务部）</span>
+                                    <span class="wq-type">授信审批</span>
+                                    <span class="wq-detail">信用、风控、业务部门联合评估已完成，授信额度已调整</span>
+                                    <span class="wq-status completed">处理完成</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="wq-table-row">
+                                    <span class="wq-priority-text priority-high">高</span>
+                                    <span class="wq-applicant">王磊（投行业务部）</span>
+                                    <span class="wq-type">IPO承销</span>
+                                    <span class="wq-detail">投行、研究、销售团队协同定价方案已提交，等待审批</span>
+                                    <span class="wq-status pending">待处理</span>
+                                    <div class="wq-actions">
+                                        <button class="wq-btn-view">查看</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <!-- 项目滞后提醒 -->
-                        <div class="hp-section">
-                            <div class="hp-section-title">项目滞后提醒</div>
-                            <div class="hp-project-item">
-                                <span class="hp-project-icon">📈</span>
-                                <span class="hp-project-name">开户拓展攻坚二期</span>
-                                <span class="hp-project-delay">(赵六, -15%)</span>
-                            </div>
-                            <div class="hp-project-item">
-                                <span class="hp-project-icon">📉</span>
-                                <span class="hp-project-name">基金季末冲刺项目</span>
-                                <span class="hp-project-delay">(钱七, -12%)</span>
-                            </div>
-                        </div>
-
-                        <!-- 未反馈/待分配 -->
-                        <div class="hp-section">
-                            <div class="hp-section-title">未反馈/待分配</div>
-                            <div class="hp-pending-item">
-                                <span class="hp-pending-label">待一线确认:</span>
-                                <span class="hp-pending-text">关于周八客户对接帮扶</span>
-                            </div>
-                            <div class="hp-pending-item">
-                                <span class="hp-pending-label">待分配资源:</span>
-                                <span class="hp-pending-text">A类优质客户名单×50</span>
+                        <!-- 重点项目管控内容区 -->
+                        <div id="project-content" class="content-area" style="display: none;">
+                            <div class="project-table">
+                                <div class="project-table-header">
+                                    <span class="proj-col-name">项目名称</span>
+                                    <span class="proj-col-manager">负责人</span>
+                                    <span class="proj-col-progress">进度</span>
+                                    <span class="proj-col-deadline">截止日期</span>
+                                    <span class="proj-col-status">状态</span>
+                                    <span class="proj-col-action">操作</span>
+                                </div>
+                                <div class="project-table-row abnormal-project" data-project-name="开户拓展攻坚二期">
+                                    <span class="proj-name">开户拓展攻坚二期</span>
+                                    <span class="proj-manager">赵六</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 82%"></div>
+                                        </div>
+                                        <span class="progress-text">82%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-06-15</span>
+                                    <span class="proj-status behavior-abnormal">行为异常</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-process" onclick="openProjectProcessModal(this, '开户拓展攻坚二期')">处理</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row abnormal-project" data-project-name="基金季末冲刺项目">
+                                    <span class="proj-name">基金季末冲刺项目</span>
+                                    <span class="proj-manager">钱七</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill delayed" style="width: 68%"></div>
+                                        </div>
+                                        <span class="progress-text">68%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-05-30</span>
+                                    <span class="proj-status progress-abnormal">进度异常</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-process" onclick="openProjectProcessModal(this, '基金季末冲刺项目')">处理</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">客户满意度提升计划</span>
+                                    <span class="proj-manager">孙八</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill completed" style="width: 100%"></div>
+                                        </div>
+                                        <span class="progress-text">100%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-05-18</span>
+                                    <span class="proj-status completed">已完成</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">数字化转型项目</span>
+                                    <span class="proj-manager">周九</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 45%"></div>
+                                        </div>
+                                        <span class="progress-text">45%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-08-30</span>
+                                    <span class="proj-status in-progress">进行中</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">合规风控系统升级</span>
+                                    <span class="proj-manager">吴十</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 73%"></div>
+                                        </div>
+                                        <span class="progress-text">73%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-06-30</span>
+                                    <span class="proj-status in-progress">进行中</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">财富管理平台建设</span>
+                                    <span class="proj-manager">郑十一</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 55%"></div>
+                                        </div>
+                                        <span class="progress-text">55%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-06-20</span>
+                                    <span class="proj-status in-progress">进行中</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">移动端APP优化</span>
+                                    <span class="proj-manager">王十二</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 90%"></div>
+                                        </div>
+                                        <span class="progress-text">90%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-05-25</span>
+                                    <span class="proj-status in-progress">进行中</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">数据安全加固项目</span>
+                                    <span class="proj-manager">李十三</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill completed" style="width: 100%"></div>
+                                        </div>
+                                        <span class="progress-text">100%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-05-15</span>
+                                    <span class="proj-status completed">已完成</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
+                                <div class="project-table-row">
+                                    <span class="proj-name">智能客服系统部署</span>
+                                    <span class="proj-manager">张十四</span>
+                                    <span class="proj-progress">
+                                        <div class="progress-bar">
+                                            <div class="progress-fill" style="width: 35%"></div>
+                                        </div>
+                                        <span class="progress-text">35%</span>
+                                    </span>
+                                    <span class="proj-deadline">2026-09-15</span>
+                                    <span class="proj-status in-progress">进行中</span>
+                                    <div class="proj-actions">
+                                        <button class="proj-btn-view">查看</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Staff Focus | 团队状态与前置帮扶 -->
-                <div class="staff-focus-section">
-                    <div class="section-title">Staff Focus | 团队状态与前置帮扶</div>
-                    <div class="staff-cards">
-                        <div class="staff-card">
-                            <img src="images/Avatar1.png" alt="王五" class="staff-avatar">
-                            <div class="staff-info">
-                                <div class="staff-name-en">Wang Wu</div>
-                                <div class="staff-name-cn">王五 - 新人，高频出错</div>
-                                <div class="staff-actions">
-                                    <button class="staff-btn-help">发起帮扶</button>
-                                    <button class="staff-btn-talk">一键约谈</button>
+                    <!-- 右侧紧需干预 -->
+                    <div class="high-priority-panel">
+                        <!-- 紧急响应卡片 -->
+                        <div class="hp-card">
+                            <div class="hp-card-header">
+                                <span class="hp-card-icon urgent">🚨</span>
+                                <span class="hp-card-title">紧急响应</span>
+                            </div>
+                            <div class="hp-card-content">
+                                <div class="urgent-request-item" data-applicant="张三" data-type="客户投诉" data-priority="高">
+                                    <div class="urgent-request-header">
+                                        <span class="urgent-tag high">高优先级</span>
+                                        <span class="urgent-deadline">截止：2026-05-21 18:00</span>
+                                    </div>
+                                    <div class="urgent-request-content">
+                                        <div class="urgent-applicant">申请人：张三（零售业务部）</div>
+                                        <div class="urgent-desc">客户对服务态度不满，需尽快处理，客户情绪激动要求立即解决</div>
+                                    </div>
+                                    <div class="urgent-request-actions">
+                                        <button class="urgent-btn-process" onclick="openUrgentProcessModal(this, 'direct')">直接处理</button>
+                                        <button class="urgent-btn-escalate" onclick="openUrgentProcessModal(this, 'roundtable')">圆桌协同</button>
+                                    </div>
+                                </div>
+                                <div class="urgent-request-item near-deadline" data-applicant="赵六" data-type="项目延期" data-priority="中">
+                                    <div class="urgent-request-header">
+                                        <span class="urgent-tag deadline">即将逾期</span>
+                                        <span class="urgent-deadline deadline-text">截止：2026-05-20 23:59</span>
+                                    </div>
+                                    <div class="urgent-request-content">
+                                        <div class="urgent-applicant">申请人：赵六（投行业务部）</div>
+                                        <div class="urgent-desc">项目延期申请审批，客户要求今晚前必须给出明确答复</div>
+                                    </div>
+                                    <div class="urgent-request-actions">
+                                        <button class="urgent-btn-process" onclick="openUrgentProcessModal(this, 'direct')">直接处理</button>
+                                        <button class="urgent-btn-escalate" onclick="openUrgentProcessModal(this, 'roundtable')">圆桌协同</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="staff-card">
-                            <img src="images/Avatar2.png" alt="赵六" class="staff-avatar">
-                            <div class="staff-info">
-                                <div class="staff-name-en">Zhao Liu</div>
-                                <div class="staff-name-cn">赵六 - 项目滞后</div>
-                                <div class="staff-actions">
-                                    <button class="staff-btn-help">发起帮扶</button>
-                                    <button class="staff-btn-talk">一键约谈</button>
+
+                        <!-- 项目异常提醒卡片 -->
+                        <div class="hp-card">
+                            <div class="hp-card-header">
+                                <span class="hp-card-icon warning">⚠️</span>
+                                <span class="hp-card-title">项目异常提醒</span>
+                            </div>
+                            <div class="hp-card-content">
+                                <div class="abnormal-project-item" data-project-name="基金季末冲刺项目">
+                                    <div class="abnormal-project-header">
+                                        <span class="abnormal-tag">进度异常</span>
+                                        <span class="abnormal-progress">68%</span>
+                                    </div>
+                                    <div class="abnormal-project-name">基金季末冲刺项目</div>
+                                    <div class="abnormal-project-manager">负责人：钱七</div>
+                                    <div class="abnormal-desc">项目进度滞后12%，关键节点未能按时完成，需协调资源加速推进</div>
+                                    <div class="abnormal-project-actions">
+                                        <button class="abnormal-btn-process" onclick="openAbnormalProjectModal(this, 'direct', '基金季末冲刺项目')">直接处理</button>
+                                        <button class="abnormal-btn-escalate" onclick="openAbnormalProjectModal(this, 'roundtable', '基金季末冲刺项目')">圆桌协同</button>
+                                    </div>
+                                </div>
+                                <div class="abnormal-project-item" data-project-name="开户拓展攻坚二期">
+                                    <div class="abnormal-project-header">
+                                        <span class="abnormal-tag behavior">行为异常</span>
+                                        <span class="abnormal-progress">82%</span>
+                                    </div>
+                                    <div class="abnormal-project-name">开户拓展攻坚二期</div>
+                                    <div class="abnormal-project-manager">负责人：赵六</div>
+                                    <div class="abnormal-desc">负责人连续3天未更新项目进度，沟通响应延迟超过24小时</div>
+                                    <div class="abnormal-project-actions">
+                                        <button class="abnormal-btn-process" onclick="openAbnormalProjectModal(this, 'direct', '开户拓展攻坚二期')">直接处理</button>
+                                        <button class="abnormal-btn-escalate" onclick="openAbnormalProjectModal(this, 'roundtable', '开户拓展攻坚二期')">圆桌协同</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </section>
@@ -1422,9 +1764,1167 @@
         function handleLogin() {
             alert('登录功能即将上线，敬请期待！');
         }
-        
+
+        // 工作区卡片Tab切换
+        function switchWorkQueueTab(cardElement, tabType) {
+            // 移除所有卡片的active状态
+            const allCards = document.querySelectorAll('.wq-card-tab');
+            allCards.forEach(card => card.classList.remove('active'));
+
+            // 给当前点击的卡片添加active状态
+            cardElement.classList.add('active');
+
+            // 根据tabType切换显示内容
+            const helpContent = document.getElementById('help-content');
+            const projectContent = document.getElementById('project-content');
+
+            if (tabType === 'help') {
+                helpContent.style.display = 'block';
+                projectContent.style.display = 'none';
+            } else if (tabType === 'project') {
+                helpContent.style.display = 'none';
+                projectContent.style.display = 'block';
+            }
+        }
+
+        // 待处理/已处理/圆桌协同申请Tab切换
+        function switchRequestTab(tabElement, tabType) {
+            // 移除所有Tab的active状态
+            const allTabs = document.querySelectorAll('.request-tab');
+            allTabs.forEach(tab => tab.classList.remove('active'));
+
+            // 给当前点击的Tab添加active状态
+            tabElement.classList.add('active');
+
+            // 切换显示内容
+            const pendingTable = document.getElementById('pending-requests');
+            const processedTable = document.getElementById('processed-requests');
+            const roundtableTable = document.getElementById('roundtable-requests');
+
+            if (tabType === 'pending') {
+                pendingTable.style.display = 'flex';
+                processedTable.style.display = 'none';
+                roundtableTable.style.display = 'none';
+            } else if (tabType === 'processed') {
+                pendingTable.style.display = 'none';
+                processedTable.style.display = 'flex';
+                roundtableTable.style.display = 'none';
+            } else if (tabType === 'roundtable') {
+                pendingTable.style.display = 'none';
+                processedTable.style.display = 'none';
+                roundtableTable.style.display = 'flex';
+            }
+        }
+
+        // 当前选中的待处理申请行
+        let currentProcessRow = null;
+        // 当前选中的紧急响应项
+        let currentUrgentItem = null;
+        // 紧急响应处理类型
+        let urgentProcessType = null;
+
+        // 打开处理弹窗（待处理列表）
+        function openProcessModal(rowElement) {
+            currentProcessRow = rowElement;
+            currentUrgentItem = null;
+            const modal = document.getElementById('process-modal');
+            modal.style.display = 'flex';
+            
+            // 设置弹窗标题为"处理"
+            document.querySelector('.process-modal-header h3').textContent = '处理';
+            
+            // 重置表单
+            document.querySelector('input[name="process-type"][value="direct"]').checked = true;
+            document.getElementById('process-comment').value = '';
+            document.getElementById('process-comment').placeholder = '请输入处理意见...';
+            // 显示处理类型选择器
+            document.querySelector('.process-type-selector').style.display = 'flex';
+        }
+
+        // 打开紧急响应处理弹窗
+        function openUrgentProcessModal(buttonElement, type) {
+            currentUrgentItem = buttonElement.closest('.urgent-request-item');
+            currentProcessRow = null;
+            urgentProcessType = type;
+            const modal = document.getElementById('process-modal');
+            modal.style.display = 'flex';
+            
+            // 设置弹窗标题
+            const title = type === 'direct' ? '直接处理' : '圆桌协同';
+            document.querySelector('.process-modal-header h3').textContent = title;
+            
+            // 重置表单
+            document.getElementById('process-comment').value = '';
+            // 隐藏处理类型选择器，因为已经通过按钮确定了类型
+            document.querySelector('.process-type-selector').style.display = 'none';
+            
+            if (type === 'direct') {
+                document.getElementById('process-comment').placeholder = '请输入处理意见...';
+            } else {
+                document.getElementById('process-comment').placeholder = '请输入圆桌协同申请意见...';
+            }
+        }
+
+        // 关闭处理弹窗
+        function closeProcessModal() {
+            const modal = document.getElementById('process-modal');
+            modal.style.display = 'none';
+            currentProcessRow = null;
+            currentUrgentItem = null;
+            urgentProcessType = null;
+            currentProjectButton = null;
+            currentProjectName = null;
+            currentAbnormalProjectItem = null;
+            abnormalProjectProcessType = null;
+        }
+
+        // 切换处理类型
+        function switchProcessType(type) {
+            const commentTextarea = document.getElementById('process-comment');
+            if (type === 'direct') {
+                commentTextarea.placeholder = '请输入处理意见...';
+            } else {
+                commentTextarea.placeholder = '请输入圆桌协同申请意见...';
+            }
+        }
+
+        // 提交处理
+        function submitProcess() {
+            const comment = document.getElementById('process-comment').value.trim();
+
+            if (!comment) {
+                alert('请输入处理意见');
+                return;
+            }
+
+            // 判断是紧急响应处理、待处理列表处理、项目处理还是项目异常提醒处理
+            if (currentUrgentItem) {
+                // 紧急响应处理
+                handleUrgentProcess(comment);
+            } else if (currentProcessRow) {
+                // 待处理列表处理
+                handlePendingProcess(comment);
+            } else if (currentProjectButton) {
+                // 项目处理
+                handleProjectProcess(comment);
+            } else if (currentAbnormalProjectItem) {
+                // 项目异常提醒处理
+                handleAbnormalProjectProcess(comment);
+            }
+        }
+
+        // 处理项目
+        function handleProjectProcess(comment) {
+            const processType = document.querySelector('input[name="process-type"]:checked').value;
+            
+            // 获取项目行
+            const projectRow = currentProjectButton.closest('.project-table-row');
+
+            // 更新状态为"进行中"
+            const statusElement = projectRow.querySelector('.proj-status');
+            if (statusElement) {
+                statusElement.className = 'proj-status in-progress';
+                statusElement.textContent = '进行中';
+            }
+
+            // 更新进度条颜色为正常蓝色
+            const progressFill = projectRow.querySelector('.progress-fill');
+            if (progressFill) {
+                progressFill.classList.remove('delayed');
+            }
+
+            // 将按钮改为已处理按钮
+            const actionDiv = currentProjectButton.parentElement;
+            actionDiv.innerHTML = '<button class="proj-btn-processed" disabled>已处理</button>';
+
+            // 从项目异常提醒模块中移除对应项目
+            removeFromAbnormalReminder(currentProjectName);
+
+            // 更新异常数量
+            updateAbnormalCount();
+
+            // 关闭弹窗
+            closeProcessModal();
+
+            // 显示成功提示
+            alert(processType === 'direct' ? '项目处理成功！' : '圆桌协同申请已提交！');
+            
+            // 清空当前项目
+            currentProjectButton = null;
+            currentProjectName = null;
+        }
+
+        // 处理项目异常提醒
+        function handleAbnormalProjectProcess(comment) {
+            const processType = abnormalProjectProcessType;
+            
+            // 在项目列表中查找对应项目
+            const projectRows = document.querySelectorAll('.project-table-row');
+            let targetProjectRow = null;
+            
+            projectRows.forEach(row => {
+                const nameElement = row.querySelector('.proj-name');
+                if (nameElement && nameElement.textContent.trim() === currentProjectName) {
+                    targetProjectRow = row;
+                }
+            });
+            
+            if (targetProjectRow) {
+                // 更新状态为"进行中"
+                const statusElement = targetProjectRow.querySelector('.proj-status');
+                if (statusElement) {
+                    statusElement.className = 'proj-status in-progress';
+                    statusElement.textContent = '进行中';
+                }
+
+                // 更新进度条颜色为正常蓝色
+                const progressFill = targetProjectRow.querySelector('.progress-fill');
+                if (progressFill) {
+                    progressFill.classList.remove('delayed');
+                }
+
+                // 将处理按钮改为查看按钮
+                const actionDiv = targetProjectRow.querySelector('.proj-actions');
+                if (actionDiv) {
+                    actionDiv.innerHTML = '<button class="proj-btn-view">查看</button>';
+                }
+            }
+
+            // 从项目异常提醒模块中移除
+            currentAbnormalProjectItem.remove();
+
+            // 更新异常数量
+            updateAbnormalCount();
+
+            // 关闭弹窗
+            closeProcessModal();
+
+            // 显示成功提示
+            alert(processType === 'direct' ? '项目处理成功！' : '圆桌协同申请已提交！');
+        }
+
+        // 处理紧急响应申请
+        function handleUrgentProcess(comment) {
+            const processType = urgentProcessType;
+            
+            // 从紧急响应项获取信息
+            const applicantName = currentUrgentItem.dataset.applicant;
+            const type = currentUrgentItem.dataset.type;
+            const priority = currentUrgentItem.dataset.priority;
+            const deadline = currentUrgentItem.querySelector('.urgent-deadline').textContent.replace('截止：', '');
+            const detail = currentUrgentItem.querySelector('.urgent-desc').textContent;
+
+            if (processType === 'direct') {
+                // 直接处理：移动到已处理列表
+                const processedTable = document.getElementById('processed-requests');
+                const newRow = document.createElement('div');
+                newRow.className = 'wq-table-row';
+                newRow.innerHTML = `
+                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
+                    <span class="wq-applicant">${applicantName}（${getDepartmentByApplicant(applicantName)}）</span>
+                    <span class="wq-type">${type}</span>
+                    <span class="wq-deadline">${deadline}</span>
+                    <span class="wq-detail">${detail}</span>
+                    <div class="wq-actions">
+                        <button class="wq-btn-view">查看</button>
+                    </div>
+                `;
+                
+                const headerRow = processedTable.querySelector('.wq-table-header');
+                if (headerRow && headerRow.nextSibling) {
+                    processedTable.insertBefore(newRow, headerRow.nextSibling);
+                } else {
+                    processedTable.appendChild(newRow);
+                }
+            } else {
+                // 圆桌协同：移动到圆桌协同列表
+                const roundtableTable = document.getElementById('roundtable-requests');
+                const newRow = document.createElement('div');
+                newRow.className = 'wq-table-row';
+                newRow.innerHTML = `
+                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
+                    <span class="wq-applicant">${applicantName}（${getDepartmentByApplicant(applicantName)}）</span>
+                    <span class="wq-type">${type}</span>
+                    <span class="wq-detail">${comment}</span>
+                    <span class="wq-status pending">待处理</span>
+                    <div class="wq-actions">
+                        <button class="wq-btn-view">查看</button>
+                    </div>
+                `;
+                
+                const headerRow = roundtableTable.querySelector('.wq-table-header');
+                if (headerRow && headerRow.nextSibling) {
+                    roundtableTable.insertBefore(newRow, headerRow.nextSibling);
+                } else {
+                    roundtableTable.appendChild(newRow);
+                }
+            }
+
+            // 从待处理列表中查找并移除对应的申请
+            removeFromPendingList(applicantName, type);
+
+            // 从紧急响应模块中移除
+            currentUrgentItem.remove();
+
+            // 更新紧急响应数量
+            updateUrgentCount();
+
+            // 更新待处理数量
+            updatePendingCount();
+
+            // 关闭弹窗
+            closeProcessModal();
+
+            // 显示成功提示
+            alert(processType === 'direct' ? '处理成功！' : '圆桌协同申请已提交！');
+        }
+
+        // 处理待处理列表申请
+        function handlePendingProcess(comment) {
+            const processType = document.querySelector('input[name="process-type"]:checked').value;
+
+            // 获取申请信息
+            const priority = currentProcessRow.querySelector('.wq-priority-text').textContent;
+            const applicant = currentProcessRow.querySelector('.wq-applicant').textContent;
+            const type = currentProcessRow.querySelector('.wq-type').textContent;
+            const deadline = currentProcessRow.querySelector('.wq-deadline').textContent;
+            const detail = currentProcessRow.querySelector('.wq-detail').textContent;
+
+            if (processType === 'direct') {
+                // 直接处理：移动到已处理列表
+                const processedTable = document.getElementById('processed-requests');
+                const newRow = document.createElement('div');
+                newRow.className = 'wq-table-row';
+                newRow.innerHTML = `
+                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
+                    <span class="wq-applicant">${applicant}</span>
+                    <span class="wq-type">${type}</span>
+                    <span class="wq-deadline">${deadline}</span>
+                    <span class="wq-detail">${detail}</span>
+                    <div class="wq-actions">
+                        <button class="wq-btn-view">查看</button>
+                    </div>
+                `;
+                
+                const headerRow = processedTable.querySelector('.wq-table-header');
+                if (headerRow && headerRow.nextSibling) {
+                    processedTable.insertBefore(newRow, headerRow.nextSibling);
+                } else {
+                    processedTable.appendChild(newRow);
+                }
+            } else {
+                // 圆桌协同：移动到圆桌协同列表
+                const roundtableTable = document.getElementById('roundtable-requests');
+                const newRow = document.createElement('div');
+                newRow.className = 'wq-table-row';
+                newRow.innerHTML = `
+                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
+                    <span class="wq-applicant">${applicant}</span>
+                    <span class="wq-type">${type}</span>
+                    <span class="wq-detail">${comment}</span>
+                    <span class="wq-status pending">待处理</span>
+                    <div class="wq-actions">
+                        <button class="wq-btn-view">查看</button>
+                    </div>
+                `;
+                
+                const headerRow = roundtableTable.querySelector('.wq-table-header');
+                if (headerRow && headerRow.nextSibling) {
+                    roundtableTable.insertBefore(newRow, headerRow.nextSibling);
+                } else {
+                    roundtableTable.appendChild(newRow);
+                }
+            }
+
+            // 从待处理列表中移除
+            currentProcessRow.remove();
+
+            // 更新待处理数量
+            updatePendingCount();
+
+            // 关闭弹窗
+            closeProcessModal();
+
+            // 显示成功提示
+            alert(processType === 'direct' ? '处理成功！' : '圆桌协同申请已提交！');
+        }
+
+        // 根据申请人获取部门
+        function getDepartmentByApplicant(name) {
+            const deptMap = {
+                '张三': '零售业务部',
+                '李四': '机构业务部',
+                '赵六': '投行业务部',
+                '周八': '投资业务部',
+                '吴九': '销交业务部',
+                '郑十': '零售业务部',
+                '钱十一': '机构业务部',
+                '孙十二': '资管业务部',
+                '李十三': '投行业务部'
+            };
+            return deptMap[name] || '未知部门';
+        }
+
+        // 从待处理列表中移除对应申请
+        function removeFromPendingList(applicantName, type) {
+            const pendingTable = document.getElementById('pending-requests');
+            const rows = pendingTable.querySelectorAll('.wq-table-row');
+            
+            rows.forEach(row => {
+                const applicantCell = row.querySelector('.wq-applicant');
+                const typeCell = row.querySelector('.wq-type');
+                
+                if (applicantCell && typeCell) {
+                    const rowApplicant = applicantCell.textContent.trim();
+                    const rowType = typeCell.textContent.trim();
+                    
+                    // 匹配申请人姓名和业务类型
+                    if (rowApplicant.includes(applicantName) && rowType === type) {
+                        row.remove();
+                    }
+                }
+            });
+        }
+
+        // 更新紧急响应数量
+        function updateUrgentCount() {
+            const urgentItems = document.querySelectorAll('.urgent-request-item');
+            const countElement = document.getElementById('urgent-count');
+            if (countElement) {
+                countElement.textContent = urgentItems.length + '个紧急';
+            }
+        }
+
+        // 更新待处理数量
+        function updatePendingCount() {
+            const pendingTable = document.getElementById('pending-requests');
+            const rows = pendingTable.querySelectorAll('.wq-table-row');
+            const countElement = document.getElementById('pending-count');
+            if (countElement) {
+                countElement.textContent = rows.length;
+            }
+        }
+
+        // 更新已处理数量（可选）
+        function updateProcessedCount() {
+            // 可以在这里添加已处理数量的更新逻辑
+        }
+
+        // 更新圆桌协同数量（可选）
+        function updateRoundtableCount() {
+            // 可以在这里添加圆桌协同数量的更新逻辑
+        }
+
+        // 当前处理的项目按钮
+        let currentProjectButton = null;
+        let currentProjectName = null;
+        // 当前处理的项目异常项
+        let currentAbnormalProjectItem = null;
+        // 项目异常处理类型
+        let abnormalProjectProcessType = null;
+
+        // 打开项目处理弹窗
+        function openProjectProcessModal(buttonElement, projectName) {
+            currentProjectButton = buttonElement;
+            currentProjectName = projectName;
+            currentAbnormalProjectItem = null;
+            abnormalProjectProcessType = null;
+            
+            const modal = document.getElementById('process-modal');
+            modal.style.display = 'flex';
+            
+            // 设置弹窗标题
+            document.querySelector('.process-modal-header h3').textContent = '处理项目';
+            
+            // 重置表单，默认选择直接处理
+            document.querySelector('input[name="process-type"][value="direct"]').checked = true;
+            document.getElementById('process-comment').value = '';
+            document.getElementById('process-comment').placeholder = '请输入处理意见...';
+            
+            // 显示处理类型选择器
+            document.querySelector('.process-type-selector').style.display = 'flex';
+        }
+
+        // 打开项目异常提醒处理弹窗
+        function openAbnormalProjectModal(buttonElement, type, projectName) {
+            currentAbnormalProjectItem = buttonElement.closest('.abnormal-project-item');
+            currentProjectName = projectName;
+            abnormalProjectProcessType = type;
+            currentProjectButton = null;
+            
+            const modal = document.getElementById('process-modal');
+            modal.style.display = 'flex';
+            
+            // 设置弹窗标题
+            const title = type === 'direct' ? '直接处理' : '圆桌协同';
+            document.querySelector('.process-modal-header h3').textContent = title;
+            
+            // 重置表单
+            document.getElementById('process-comment').value = '';
+            // 隐藏处理类型选择器
+            document.querySelector('.process-type-selector').style.display = 'none';
+            
+            if (type === 'direct') {
+                document.getElementById('process-comment').placeholder = '请输入处理意见...';
+            } else {
+                document.getElementById('process-comment').placeholder = '请输入圆桌协同申请意见...';
+            }
+        }
+
+        // 处理异常项目
+        function processAbnormalProject(buttonElement, projectName) {
+            // 确认处理
+            if (!confirm('确认处理项目：' + projectName + '？')) {
+                return;
+            }
+
+            // 获取项目行
+            const projectRow = buttonElement.closest('.project-table-row');
+
+            // 更新状态为"进行中"
+            const statusElement = projectRow.querySelector('.proj-status');
+            if (statusElement) {
+                statusElement.className = 'proj-status in-progress';
+                statusElement.textContent = '进行中';
+            }
+
+            // 更新进度条颜色为正常蓝色
+            const progressFill = projectRow.querySelector('.progress-fill');
+            if (progressFill) {
+                progressFill.classList.remove('delayed');
+            }
+
+            // 将按钮改为已处理按钮
+            const actionDiv = buttonElement.parentElement;
+            actionDiv.innerHTML = '<button class="proj-btn-processed" disabled>已处理</button>';
+
+            // 从项目异常提醒模块中移除对应项目
+            removeFromAbnormalReminder(projectName);
+
+            // 更新异常数量
+            updateAbnormalCount();
+
+            // 显示成功提示
+            alert('项目处理成功！');
+        }
+
+        // 从项目异常提醒模块中移除对应项目
+        function removeFromAbnormalReminder(projectName) {
+            const abnormalItems = document.querySelectorAll('.abnormal-project-item');
+            abnormalItems.forEach(item => {
+                const nameElement = item.querySelector('.abnormal-project-name');
+                if (nameElement && nameElement.textContent.trim() === projectName) {
+                    item.remove();
+                }
+            });
+        }
+
+        // 更新异常项目数量
+        function updateAbnormalCount() {
+            const abnormalItems = document.querySelectorAll('.abnormal-project-item');
+            const countElement = document.getElementById('abnormal-count');
+            if (countElement) {
+                countElement.textContent = abnormalItems.length + '个异常';
+            }
+        }
+
         // 侧边栏展开/收起状态
         let sidebarExpanded = true;
+        // 当前工作台类型
+        let currentWorkspace = 'business';
+        
+        // 切换工作台下拉菜单
+        function toggleWorkspaceDropdown() {
+            const dropdown = document.getElementById('workspace-dropdown');
+            const btn = document.querySelector('.workspace-switcher-btn');
+            const isVisible = dropdown.style.display === 'block';
+            
+            dropdown.style.display = isVisible ? 'none' : 'block';
+            btn.classList.toggle('active', !isVisible);
+        }
+        
+        // 切换工作台
+        function switchWorkspace(workspaceType) {
+            currentWorkspace = workspaceType;
+            
+            // 更新按钮文字
+            const workspaceNames = {
+                'employee': '员工工作台',
+                'business': '业务支持工作台',
+                'collaboration': '协同工作台'
+            };
+            document.getElementById('current-workspace-name').textContent = workspaceNames[workspaceType];
+            
+            // 更新下拉菜单选中状态
+            document.querySelectorAll('.workspace-option').forEach(option => {
+                option.classList.remove('active');
+            });
+            event.target.closest('.workspace-option').classList.add('active');
+            
+            // 关闭下拉菜单
+            toggleWorkspaceDropdown();
+            
+            // 根据工作台类型更新右侧内容
+            updateRightPanelByWorkspace(workspaceType);
+            
+            // 根据工作台类型更新中间内容
+            updateMainContentByWorkspace(workspaceType);
+            
+            // 控制输入框上方4个小图标的显示/隐藏
+            const aiTeamAvatars = document.querySelectorAll('.ai-team-avatars-section');
+            aiTeamAvatars.forEach(section => {
+                if (workspaceType === 'employee') {
+                    section.style.display = 'none';
+                } else {
+                    section.style.display = 'flex';
+                }
+            });
+        }
+        
+        // 根据工作台类型更新中间内容
+        function updateMainContentByWorkspace(workspaceType) {
+            const mainWorkArea = document.querySelector('.main-work-area');
+            
+            if (workspaceType === 'employee') {
+                // 员工工作台：显示工作提示、业绩与绩效、AI团队
+                mainWorkArea.innerHTML = `
+                    <!-- 工作提示区域 -->
+                    <div class="employee-work-tips">
+                        <div class="work-tips-header">
+                            <div class="left">
+                                <span class="tips-icon">📋</span>
+                                <span class="tips-title">工作提示</span>
+                                <span class="tips-badge">4</span>
+                            </div>
+                            <button class="work-log-btn" onclick="openWorkLog()">
+                                <span class="log-icon">📝</span>
+                                <span>工作日志</span>
+                            </button>
+                        </div>
+                        <div class="work-tips-list">
+                            <div class="work-tip-item">
+                                <span class="tip-number">1</span>
+                                <span class="tip-text">协和医院赵宇主任已提交开户资料，赵主任提出调降两融费率的申请，今日需与赵主任联系确定；</span>
+                            </div>
+                            <div class="work-tip-item">
+                                <span class="tip-number">2</span>
+                                <span class="tip-text">海南农商行机构准入事项已与黄亮副行长沟通，黄亮副行长建议本周安排与金融市场部赵翔鹏总经理面谈，需准备路演材料；</span>
+                            </div>
+                            <div class="work-tip-item">
+                                <span class="tip-number">3</span>
+                                <span class="tip-text">ST沐邦共益债方案中出资金额需在本周内确定；</span>
+                            </div>
+                            <div class="work-tip-item">
+                                <span class="tip-number">4</span>
+                                <span class="tip-text">中银金租有新能源方面的研究服务需求，本周需协调研究所新能源领域研究员进行路演。</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 业绩与绩效 -->
+                    <div class="performance-section">
+                        <div class="section-header">
+                            <span class="section-icon">📊</span>
+                            <span class="section-title">业绩与绩效</span>
+                        </div>
+                        
+                        <!-- 业绩看板 -->
+                        <div class="performance-board">
+                            <div class="board-title">业绩看板</div>
+                            <div class="board-cards">
+                                <div class="board-card">
+                                    <div class="card-icon">💰</div>
+                                    <div class="card-info">
+                                        <div class="card-title">客户总资产</div>
+                                        <div class="card-desc">点击选择时间点查看明细</div>
+                                    </div>
+                                    <span class="card-arrow">›</span>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-icon">📈</div>
+                                    <div class="card-info">
+                                        <div class="card-title">客户带来的总收入</div>
+                                        <div class="card-desc">点击选择时间段查看明细</div>
+                                    </div>
+                                    <span class="card-arrow">›</span>
+                                </div>
+                                <div class="board-card">
+                                    <div class="card-icon green-icon">📦</div>
+                                    <div class="card-info">
+                                        <div class="card-title">维护客户的总成本</div>
+                                        <div class="card-desc">点击选择时间段查看明细</div>
+                                    </div>
+                                    <span class="card-arrow">›</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 预计绩效收入 -->
+                        <div class="performance-income">
+                            <div class="income-title">预计绩效收入</div>
+                            <div class="income-content">
+                                <div class="income-left">
+                                    <div class="income-label">选择时间段：</div>
+                                    <div class="date-range">
+                                        <input type="date" value="2026-01-01" class="date-input"> 至 
+                                        <input type="date" value="2026-01-31" class="date-input">
+                                        <button class="calculate-btn">计算</button>
+                                    </div>
+                                </div>
+                                <div class="income-right">
+                                    <div class="income-item">
+                                        <span class="income-item-label">客户带来的收入</span>
+                                        <span class="income-item-value">30万元</span>
+                                    </div>
+                                    <div class="income-item">
+                                        <span class="income-item-label">预计可获得绩效奖金</span>
+                                        <span class="income-item-value highlight">6万元</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI团队 -->
+                    <div class="ai-team-section">
+                        <div class="ai-team-header">
+                            <span class="ai-icon">🤖</span>
+                            <span class="ai-title">AI 团队</span>
+                            <span class="ai-subtitle">点击卡片切换</span>
+                        </div>
+                        <div class="ai-cards-fan">
+                            <div class="ai-card-fan" data-index="0">
+                                <div class="ai-card-fan-inner">
+                                    <div class="ai-card-fan-avatar tanma">🐎</div>
+                                    <div class="ai-card-fan-name">业务挖掘助手</div>
+                                    <div class="ai-card-fan-desc">业务挖掘找客户</div>
+                                </div>
+                            </div>
+                            <div class="ai-card-fan" data-index="1">
+                                <div class="ai-card-fan-inner">
+                                    <div class="ai-card-fan-avatar canmou">🧠</div>
+                                    <div class="ai-card-fan-name">客户分析助手</div>
+                                    <div class="ai-card-fan-desc">全面分析看本质</div>
+                                </div>
+                            </div>
+                            <div class="ai-card-fan" data-index="2">
+                                <div class="ai-card-fan-inner">
+                                    <div class="ai-card-fan-avatar junshi">📋</div>
+                                    <div class="ai-card-fan-name">方案制定助手</div>
+                                    <div class="ai-card-fan-desc">助力制定策略</div>
+                                </div>
+                            </div>
+                            <div class="ai-card-fan" data-index="3">
+                                <div class="ai-card-fan-inner">
+                                    <div class="ai-card-fan-avatar tianyan">👁️</div>
+                                    <div class="ai-card-fan-name">客户服务助手</div>
+                                    <div class="ai-card-fan-desc">高效服务</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-indicators">
+                            <div class="indicator active" data-index="0"></div>
+                            <div class="indicator" data-index="1"></div>
+                            <div class="indicator" data-index="2"></div>
+                            <div class="indicator" data-index="3"></div>
+                        </div>
+                    </div>
+                `;
+                
+                // 初始化AI卡片堆叠功能
+                setTimeout(initAICardFan, 100);
+            } else if (workspaceType === 'business') {
+                // 业务支持工作台：恢复原始内容
+                location.reload();
+            } else if (workspaceType === 'collaboration') {
+                // 协同工作台：显示工作提示和AI团队
+                mainWorkArea.innerHTML = `
+                    <!-- 工作提示区域 -->
+                    <div class="employee-work-tips">
+                        <div class="work-tips-header">
+                            <div class="left">
+                                <span class="tips-icon">📋</span>
+                                <span class="tips-title">工作提示</span>
+                            </div>
+                            <a href="#" class="view-all-link">查看全部 ></a>
+                        </div>
+                        <div class="work-tips-list">
+                            <div class="work-tip-item">
+                                <div class="tip-icon warning">⚠️</div>
+                                <div class="tip-content">
+                                    <div class="tip-title">
+                                        <span class="tip-title-text">3笔大额资金审批待处理</span>
+                                        <span class="tip-tag urgent">紧急</span>
+                                    </div>
+                                    <div class="tip-desc">涉及金额共计¥2,850,000.00，其中1笔超过审批时限，请尽快处理。</div>
+                                </div>
+                                <div class="tip-time">10分钟前</div>
+                            </div>
+                            <div class="work-tip-item">
+                                <div class="tip-icon warning">⚠️</div>
+                                <div class="tip-content">
+                                    <div class="tip-title">
+                                        <span class="tip-title-text">合规风险预警：某分支机构客户投诉率上升12%</span>
+                                        <span class="tip-tag risk">风险</span>
+                                    </div>
+                                    <div class="tip-desc">近30日该机构投诉量较上月同期增长明显，建议关注并安排核查。</div>
+                                </div>
+                                <div class="tip-time">30分钟前</div>
+                            </div>
+                            <div class="work-tip-item">
+                                <div class="tip-icon progress">📈</div>
+                                <div class="tip-content">
+                                    <div class="tip-title">
+                                        <span class="tip-title-text">Q2重点项目「数字化转型」进度更新至68%</span>
+                                        <span class="tip-tag progress">进展</span>
+                                    </div>
+                                    <div class="tip-desc">已完成基础架构搭建和数据迁移，下阶段将启动业务模块开发。</div>
+                                </div>
+                                <div class="tip-time">1小时前</div>
+                            </div>
+                            <div class="work-tip-item">
+                                <div class="tip-icon todo">📝</div>
+                                <div class="tip-content">
+                                    <div class="tip-title">
+                                        <span class="tip-title-text">5项人事审批待签署</span>
+                                        <span class="tip-tag todo">待办</span>
+                                    </div>
+                                    <div class="tip-desc">包含2项晋升审批、1项调岗申请、2项离职交接确认。</div>
+                                </div>
+                                <div class="tip-time">2小时前</div>
+                            </div>
+                            <div class="work-tip-item">
+                                <div class="tip-icon schedule">📅</div>
+                                <div class="tip-content">
+                                    <div class="tip-title">
+                                        <span class="tip-title-text">今日14:00 季度经营分析会</span>
+                                        <span class="tip-tag schedule">日程</span>
+                                    </div>
+                                    <div class="tip-desc">参会人员已确认8人，会议材料已上传，请提前审阅财务报告。</div>
+                                </div>
+                                <div class="tip-time">今日</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- AI团队 -->
+                    <div class="ai-team-section collaboration-ai-team">
+                        <div class="ai-team-header">
+                            <span class="ai-icon">🤖</span>
+                            <span class="ai-title">AI 团队</span>
+                        </div>
+                        <div class="ai-team-cards collaboration-cards">
+                            <div class="ai-team-card collaboration-card">
+                                <div class="card-left">
+                                    <div class="card-avatar qingshi">📋</div>
+                                    <div class="card-info">
+                                        <div class="card-name">请示事项 <span class="card-badge">8项待处理</span></div>
+                                        <div class="card-desc">审批待办、请示流转、签署确认</div>
+                                    </div>
+                                </div>
+                                <div class="card-arrow">></div>
+                            </div>
+                            <div class="ai-team-card collaboration-card">
+                                <div class="card-left">
+                                    <div class="card-avatar jingying">📊</div>
+                                    <div class="card-info">
+                                        <div class="card-name">经营看板 <span class="card-badge green">营收+12.3%</span></div>
+                                        <div class="card-desc">经营指标、业绩趋势、目标达成</div>
+                                    </div>
+                                </div>
+                                <div class="card-arrow">></div>
+                            </div>
+                            <div class="ai-team-card collaboration-card">
+                                <div class="card-left">
+                                    <div class="card-avatar fengxian">⚠️</div>
+                                    <div class="card-info">
+                                        <div class="card-name">风险提示 <span class="card-badge red">3项高风险</span></div>
+                                        <div class="card-desc">合规风险、操作风险、市场风险预警</div>
+                                    </div>
+                                </div>
+                                <div class="card-arrow">></div>
+                            </div>
+                            <div class="ai-team-card collaboration-card">
+                                <div class="card-left">
+                                    <div class="card-avatar duiwu">👥</div>
+                                    <div class="card-info">
+                                        <div class="card-name">队伍状况 <span class="card-badge orange">5人变动</span></div>
+                                        <div class="card-desc">人员变动、绩效分布、核心骨干</div>
+                                    </div>
+                                </div>
+                                <div class="card-arrow">></div>
+                            </div>
+                            <div class="ai-team-card collaboration-card">
+                                <div class="card-left">
+                                    <div class="card-avatar yingji">🚨</div>
+                                    <div class="card-info">
+                                        <div class="card-name">应急组织 <span class="card-badge blue">运行正常</span></div>
+                                        <div class="card-desc">应急预案、突发事件、演练状态</div>
+                                    </div>
+                                </div>
+                                <div class="card-arrow">></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // AI团队卡片切换功能
+        let currentActiveIndex = 0;
+        
+        function initAICardFan() {
+            const cards = document.querySelectorAll('.ai-card-fan');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            if (cards.length === 0) return;
+            
+            // 点击卡片切换
+            cards.forEach((card, index) => {
+                card.addEventListener('click', () => {
+                    setActiveCard(index);
+                });
+            });
+            
+            // 点击指示器切换
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    setActiveCard(index);
+                });
+            });
+            
+            // 初始激活第一个卡片 - 必须在事件监听之后
+            setActiveCard(0);
+        }
+        
+        function setActiveCard(activeIndex) {
+            currentActiveIndex = activeIndex;
+            const cards = document.querySelectorAll('.ai-card-fan');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            // 移除所有卡片的激活状态
+            cards.forEach((card, index) => {
+                card.classList.remove('active');
+                
+                // 计算相对位置
+                const diff = index - activeIndex;
+                
+                if (diff < 0) {
+                    // 左边的卡片
+                    const distance = Math.abs(diff);
+                    card.style.zIndex = 4 - distance;
+                    card.style.left = `calc(50% - ${distance * 65}px)`;
+                    card.style.transform = 'translateX(-50%)';
+                    card.style.scale = (1 - distance * 0.05).toString();
+                    card.style.opacity = (1 - distance * 0.1).toString();
+                } else if (diff > 0) {
+                    // 右边的卡片
+                    card.style.zIndex = 4 - diff;
+                    card.style.left = `calc(50% + ${diff * 65}px)`;
+                    card.style.transform = 'translateX(-50%)';
+                    card.style.scale = (1 - diff * 0.05).toString();
+                    card.style.opacity = (1 - diff * 0.1).toString();
+                }
+            });
+            
+            // 设置激活卡片
+            if (cards[activeIndex]) {
+                cards[activeIndex].classList.add('active');
+                cards[activeIndex].style.zIndex = '10';
+                cards[activeIndex].style.left = '50%';
+                cards[activeIndex].style.transform = 'translateX(-50%)';
+                cards[activeIndex].style.scale = '1';
+                cards[activeIndex].style.opacity = '1';
+            }
+            
+            // 更新指示器
+            indicators.forEach((indicator, index) => {
+                if (index === activeIndex) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+        
+        // 根据工作台类型更新右侧面板
+        function updateRightPanelByWorkspace(workspaceType) {
+            const rightPanel = document.querySelector('.right-panel');
+            if (!rightPanel) return; // 如果不存在右侧面板，直接返回
+            
+            if (workspaceType === 'employee') {
+                // 员工工作台：显示个人待办和日程
+                rightPanel.innerHTML = `
+                    <div class="hp-card">
+                        <div class="hp-card-header">
+                            <span class="hp-card-title">我的待办</span>
+                        </div>
+                        <div class="hp-card-content">
+                            <div class="todo-list">
+                                <div class="todo-item">
+                                    <span class="todo-checkbox">☐</span>
+                                    <span class="todo-text">完成季度报告</span>
+                                </div>
+                                <div class="todo-item">
+                                    <span class="todo-checkbox">☐</span>
+                                    <span class="todo-text">参加部门会议</span>
+                                </div>
+                                <div class="todo-item completed">
+                                    <span class="todo-checkbox">☑</span>
+                                    <span class="todo-text">提交周报</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hp-card">
+                        <div class="hp-card-header">
+                            <span class="hp-card-title">今日日程</span>
+                        </div>
+                        <div class="hp-card-content">
+                            <div class="schedule-list">
+                                <div class="schedule-item">
+                                    <span class="schedule-time">09:00</span>
+                                    <span class="schedule-text">晨会</span>
+                                </div>
+                                <div class="schedule-item">
+                                    <span class="schedule-time">14:00</span>
+                                    <span class="schedule-text">客户拜访</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (workspaceType === 'business') {
+                // 业务支持工作台：显示紧急响应和项目异常提醒（当前版本）
+                rightPanel.innerHTML = `
+                    <div class="hp-card urgent-response-card">
+                        <div class="hp-card-header">
+                            <span class="hp-card-icon">🚨</span>
+                            <span class="hp-card-title">紧急响应</span>
+                        </div>
+                        <div class="hp-card-content">
+                            <div class="urgent-request-item" data-applicant="张三" data-type="客户投诉" data-priority="高">
+                                <div class="urgent-request-header">
+                                    <span class="urgent-tag high">高优先级</span>
+                                    <span class="urgent-deadline">截止：2026-05-21 18:00</span>
+                                </div>
+                                <div class="urgent-request-info">
+                                    <div class="urgent-applicant">申请人：张三（零售业务部）</div>
+                                    <div class="urgent-desc">客户对服务态度不满，需尽快处理，客户情绪激动要求立即解决</div>
+                                </div>
+                                <div class="urgent-request-actions">
+                                    <button class="urgent-btn-process" onclick="openUrgentProcessModal(this, 'direct')">直接处理</button>
+                                    <button class="urgent-btn-escalate" onclick="openUrgentProcessModal(this, 'roundtable')">圆桌协同</button>
+                                </div>
+                            </div>
+                            <div class="urgent-request-item near-deadline" data-applicant="赵六" data-type="项目延期" data-priority="中">
+                                <div class="urgent-request-header">
+                                    <span class="urgent-tag medium">即将逾期</span>
+                                    <span class="urgent-deadline">截止：2026-05-20 23:59</span>
+                                </div>
+                                <div class="urgent-request-info">
+                                    <div class="urgent-applicant">申请人：赵六（投行业务部）</div>
+                                    <div class="urgent-desc">项目延期申请审批，客户要求今晚前必须给出明确答复</div>
+                                </div>
+                                <div class="urgent-request-actions">
+                                    <button class="urgent-btn-process" onclick="openUrgentProcessModal(this, 'direct')">直接处理</button>
+                                    <button class="urgent-btn-escalate" onclick="openUrgentProcessModal(this, 'roundtable')">圆桌协同</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hp-card abnormal-projects-card">
+                        <div class="hp-card-header">
+                            <span class="hp-card-icon">⚠️</span>
+                            <span class="hp-card-title">项目异常提醒</span>
+                        </div>
+                        <div class="hp-card-content">
+                            <div class="abnormal-project-item" data-project-name="基金季末冲刺项目">
+                                <div class="abnormal-project-header">
+                                    <span class="abnormal-tag">进度异常</span>
+                                    <span class="abnormal-progress">68%</span>
+                                </div>
+                                <div class="abnormal-project-name">基金季末冲刺项目</div>
+                                <div class="abnormal-project-manager">负责人：钱七</div>
+                                <div class="abnormal-desc">项目进度滞后12%，关键节点未能按时完成，需协调资源加速推进</div>
+                                <div class="abnormal-project-actions">
+                                    <button class="abnormal-btn-process" onclick="openAbnormalProjectModal(this, 'direct', '基金季末冲刺项目')">直接处理</button>
+                                    <button class="abnormal-btn-escalate" onclick="openAbnormalProjectModal(this, 'roundtable', '基金季末冲刺项目')">圆桌协同</button>
+                                </div>
+                            </div>
+                            <div class="abnormal-project-item" data-project-name="开户拓展攻坚二期">
+                                <div class="abnormal-project-header">
+                                    <span class="abnormal-tag behavior">行为异常</span>
+                                    <span class="abnormal-progress">82%</span>
+                                </div>
+                                <div class="abnormal-project-name">开户拓展攻坚二期</div>
+                                <div class="abnormal-project-manager">负责人：赵六</div>
+                                <div class="abnormal-desc">负责人连续3天未更新项目进度，沟通响应延迟超过24小时</div>
+                                <div class="abnormal-project-actions">
+                                    <button class="abnormal-btn-process" onclick="openAbnormalProjectModal(this, 'direct', '开户拓展攻坚二期')">直接处理</button>
+                                    <button class="abnormal-btn-escalate" onclick="openAbnormalProjectModal(this, 'roundtable', '开户拓展攻坚二期')">圆桌协同</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else if (workspaceType === 'collaboration') {
+                // 协同工作台：显示团队协作和消息通知
+                rightPanel.innerHTML = `
+                    <div class="hp-card">
+                        <div class="hp-card-header">
+                            <span class="hp-card-title">团队动态</span>
+                        </div>
+                        <div class="hp-card-content">
+                            <div class="team-activity-list">
+                                <div class="activity-item">
+                                    <span class="activity-user">张三</span>
+                                    <span class="activity-action">完成了</span>
+                                    <span class="activity-target">客户拜访报告</span>
+                                </div>
+                                <div class="activity-item">
+                                    <span class="activity-user">李四</span>
+                                    <span class="activity-action">提交了</span>
+                                    <span class="activity-target">项目方案</span>
+                                </div>
+                                <div class="activity-item">
+                                    <span class="activity-user">王五</span>
+                                    <span class="activity-action">评论了</span>
+                                    <span class="activity-target">季度计划</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hp-card">
+                        <div class="hp-card-header">
+                            <span class="hp-card-title">消息通知</span>
+                        </div>
+                        <div class="hp-card-content">
+                            <div class="notification-list">
+                                <div class="notification-item unread">
+                                    <span class="notification-dot"></span>
+                                    <span class="notification-text">您有一条新的协同申请待处理</span>
+                                </div>
+                                <div class="notification-item">
+                                    <span class="notification-text">项目进度更新提醒</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+        
+        // 点击页面其他地方关闭下拉菜单
+        document.addEventListener('click', function(e) {
+            const switcher = document.querySelector('.workspace-switcher-sidebar');
+            if (switcher && !switcher.contains(e.target)) {
+                const dropdown = document.getElementById('workspace-dropdown');
+                const btn = document.querySelector('.workspace-switcher-btn');
+                if (dropdown) dropdown.style.display = 'none';
+                if (btn) btn.classList.remove('active');
+            }
+        });
         
         // 切换侧边栏展开/收起
         function toggleSidebar() {
@@ -5350,6 +6850,12 @@
                 selectedAssistantIndex = 0;
             }
 
+            // 初始控制输入框上方4个小图标的显示/隐藏（默认是业务支持工作台，显示图标）
+            const aiTeamAvatars = document.querySelectorAll('.ai-team-avatars-section');
+            aiTeamAvatars.forEach(section => {
+                section.style.display = 'flex';
+            });
+
             // 设置业绩概览日期选择器默认值为当前月月初到今天
             const today = new Date();
             const year = today.getFullYear();
@@ -5367,9 +6873,12 @@
             startTipsScroll();
 
             // 初始化智能商机列表，默认选中第一条
-            const firstOpportunityRow = document.getElementById('personal-opportunities-compact').querySelector('.opportunity-row');
-            if (firstOpportunityRow) {
-                selectCustomer(firstOpportunityRow);
+            const personalOpportunitiesCompact = document.getElementById('personal-opportunities-compact');
+            if (personalOpportunitiesCompact) {
+                const firstOpportunityRow = personalOpportunitiesCompact.querySelector('.opportunity-row');
+                if (firstOpportunityRow) {
+                    selectCustomer(firstOpportunityRow);
+                }
             }
         });
 
@@ -5763,6 +7272,38 @@
             <div class="script-modal-footer">
                 <button class="script-btn-secondary" onclick="closeScriptModal()">关闭</button>
                 <button class="script-btn-primary" id="script-btn-regenerate" onclick="regenerateScript()" style="display: none;">重新生成</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 处理申请弹窗 -->
+    <div id="process-modal" class="process-modal" style="display: none;">
+        <div class="process-modal-content">
+            <div class="process-modal-header">
+                <h3>处理</h3>
+                <button class="process-modal-close" onclick="closeProcessModal()">&times;</button>
+            </div>
+            <div class="process-modal-body">
+                <div class="process-type-selector">
+                    <label class="process-type-option">
+                        <input type="radio" name="process-type" value="direct" checked onchange="switchProcessType('direct')">
+                        <span class="process-type-label">直接处理</span>
+                    </label>
+                    <label class="process-type-option">
+                        <input type="radio" name="process-type" value="roundtable" onchange="switchProcessType('roundtable')">
+                        <span class="process-type-label">圆桌协同</span>
+                    </label>
+                </div>
+                <div class="process-form">
+                    <div class="process-form-group">
+                        <label>处理意见</label>
+                        <textarea id="process-comment" placeholder="请输入处理意见..."></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="process-modal-footer">
+                <button class="process-btn-secondary" onclick="closeProcessModal()">取消</button>
+                <button class="process-btn-primary" onclick="submitProcess()">提交</button>
             </div>
         </div>
     </div>
