@@ -141,16 +141,26 @@
                                     <span class="wq-card-status warning" id="abnormal-count">2个异常</span>
                                 </div>
                             </div>
+                            <div class="wq-card-tab" onclick="switchWorkQueueTab(this, 'roundtable')">
+                                <div class="wq-card-header">
+                                    <span class="wq-card-icon">🤝</span>
+                                    <span class="wq-card-title">圆桌协同</span>
+                                </div>
+                                <div class="wq-card-content">
+                                    <span class="wq-card-number" id="roundtable-count">8</span>
+                                    <span class="wq-card-unit">个协同</span>
+                                    <span class="wq-card-status urgent" id="roundtable-pending-count">3个待处理</span>
+                                </div>
+                            </div>
 
                         </div>
                         
                         <!-- 协同响应处理内容区 -->
                         <div id="help-content" class="content-area">
-                            <!-- 待处理/已处理/圆桌协同申请Tab切换 -->
+                            <!-- 待处理/已处理申请Tab切换 -->
                             <div class="request-tabs">
                                 <div class="request-tab active" onclick="switchRequestTab(this, 'pending')">待处理申请</div>
                                 <div class="request-tab" onclick="switchRequestTab(this, 'processed')">已处理申请</div>
-                                <div class="request-tab" onclick="switchRequestTab(this, 'roundtable')">圆桌协同</div>
                             </div>
                             <!-- 待处理申请列表 -->
                             <div id="pending-requests" class="work-queue-table">
@@ -162,7 +172,7 @@
                                     <span class="wq-col-detail">申请说明</span>
                                     <span class="wq-col-action">操作</span>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-21 09:30:00" data-agent="客户服务助手">
                                     <span class="wq-priority-text priority-high">高</span>
                                     <span class="wq-applicant">张三（零售业务部）</span>
                                     <span class="wq-type">客户投诉</span>
@@ -172,7 +182,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-21 10:15:00" data-agent="投行业务助理">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">李四（机构业务部）</span>
                                     <span class="wq-type">物料申请</span>
@@ -182,7 +192,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-20 16:45:00" data-agent="投行业务助理">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">赵六（投行业务部）</span>
                                     <span class="wq-type">项目延期</span>
@@ -192,7 +202,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-19 14:20:00" data-agent="零售业务助理">
                                     <span class="wq-priority-text priority-low">低</span>
                                     <span class="wq-applicant">周八（投资业务部）</span>
                                     <span class="wq-type">费用报销</span>
@@ -202,7 +212,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-21 08:00:00" data-agent="法务合规助手">
                                     <span class="wq-priority-text priority-high">高</span>
                                     <span class="wq-applicant">吴九（销交业务部）</span>
                                     <span class="wq-type">合同审批</span>
@@ -212,7 +222,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-20 11:30:00" data-agent="客户分析助手">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">郑十（零售业务部）</span>
                                     <span class="wq-type">客户回访</span>
@@ -222,7 +232,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-18 09:00:00" data-agent="人力资源助手">
                                     <span class="wq-priority-text priority-low">低</span>
                                     <span class="wq-applicant">钱十一（机构业务部）</span>
                                     <span class="wq-type">培训申请</span>
@@ -232,7 +242,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-21 07:50:00" data-agent="风控合规助手">
                                     <span class="wq-priority-text priority-high">高</span>
                                     <span class="wq-applicant">孙十二（资管业务部）</span>
                                     <span class="wq-type">风险预警</span>
@@ -242,7 +252,7 @@
                                         <button class="wq-btn-process" onclick="openProcessModal(this.closest('.wq-table-row'))">处理</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-19 13:10:00" data-agent="投行业务助理">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">李十三（投行业务部）</span>
                                     <span class="wq-type">尽调申请</span>
@@ -263,7 +273,7 @@
                                     <span class="wq-col-detail">申请说明</span>
                                     <span class="wq-col-action">操作</span>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-20 09:30:00" data-agent="客户服务助手">
                                     <span class="wq-priority-text priority-high">高</span>
                                     <span class="wq-applicant">王五（资管业务部）</span>
                                     <span class="wq-type">账户开户</span>
@@ -273,7 +283,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-19 14:15:00" data-agent="投资业务助理">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">陈六（投资业务部）</span>
                                     <span class="wq-type">资金划转</span>
@@ -283,7 +293,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-18 10:20:00" data-agent="零售业务助理">
                                     <span class="wq-priority-text priority-low">低</span>
                                     <span class="wq-applicant">林美（销交业务部）</span>
                                     <span class="wq-type">业务咨询</span>
@@ -293,7 +303,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-17 16:00:00" data-agent="客户服务助手">
                                     <span class="wq-priority-text priority-high">高</span>
                                     <span class="wq-applicant">周明（零售业务部）</span>
                                     <span class="wq-type">投诉处理</span>
@@ -303,7 +313,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-19 11:30:00" data-agent="机构业务助理">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">吴强（机构业务部）</span>
                                     <span class="wq-type">额度申请</span>
@@ -313,7 +323,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-18 09:45:00" data-agent="投资业务助理">
                                     <span class="wq-priority-text priority-low">低</span>
                                     <span class="wq-applicant">郑华（投资业务部）</span>
                                     <span class="wq-type">报表导出</span>
@@ -323,7 +333,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-19 08:20:00" data-agent="资管业务助理">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">钱伟（资管业务部）</span>
                                     <span class="wq-type">产品赎回</span>
@@ -333,7 +343,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-17 13:10:00" data-agent="合规审查助手">
                                     <span class="wq-priority-text priority-high">高</span>
                                     <span class="wq-applicant">孙丽（投行业务部）</span>
                                     <span class="wq-type">合规审查</span>
@@ -343,7 +353,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-18 15:30:00" data-agent="人力资源助手">
                                     <span class="wq-priority-text priority-medium">中</span>
                                     <span class="wq-applicant">李军（销交业务部）</span>
                                     <span class="wq-type">系统权限</span>
@@ -353,7 +363,7 @@
                                         <button class="wq-btn-view">查看</button>
                                     </div>
                                 </div>
-                                <div class="wq-table-row">
+                                <div class="wq-table-row" data-submit-time="2026-05-16 10:00:00" data-agent="行政后勤助手">
                                     <span class="wq-priority-text priority-low">低</span>
                                     <span class="wq-applicant">王芳（零售业务部）</span>
                                     <span class="wq-type">名片印制</span>
@@ -364,97 +374,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <!-- 圆桌协同申请列表 -->
-                            <div id="roundtable-requests" class="work-queue-table" style="display: none;">
-                                <div class="wq-table-header">
-                                    <span class="wq-col-priority">优先级</span>
-                                    <span class="wq-col-applicant">申请人</span>
-                                    <span class="wq-col-type">业务类型</span>
-                                    <span class="wq-col-detail">处理详情</span>
-                                    <span class="wq-col-status">圆桌状态</span>
-                                    <span class="wq-col-action">操作</span>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-high">高</span>
-                                    <span class="wq-applicant">陈明（机构业务部）</span>
-                                    <span class="wq-type">大额转账</span>
-                                    <span class="wq-detail">已提交风控部门及分管领导审批，等待联合审议结果</span>
-                                    <span class="wq-status processing">处理中</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-high">高</span>
-                                    <span class="wq-applicant">刘芳（投行业务部）</span>
-                                    <span class="wq-type">并购审批</span>
-                                    <span class="wq-detail">投行、法务、合规多部门已完成初步审议，待最终决策</span>
-                                    <span class="wq-status pending">待处理</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-medium">中</span>
-                                    <span class="wq-applicant">赵强（资管业务部）</span>
-                                    <span class="wq-type">产品发行</span>
-                                    <span class="wq-detail">产品、销售、合规部门已完成风险评估，方案已获批</span>
-                                    <span class="wq-status completed">处理完成</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-medium">中</span>
-                                    <span class="wq-applicant">孙丽（零售业务部）</span>
-                                    <span class="wq-type">客户争议</span>
-                                    <span class="wq-detail">财务、客服、业务部门协同处理方案被驳回，需补充材料</span>
-                                    <span class="wq-status rejected">已驳回</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-high">高</span>
-                                    <span class="wq-applicant">周杰（投资业务部）</span>
-                                    <span class="wq-type">紧急调仓</span>
-                                    <span class="wq-detail">投资、风控、合规部门已快速决策并执行调仓操作</span>
-                                    <span class="wq-status completed">处理完成</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-low">低</span>
-                                    <span class="wq-applicant">吴敏（销交业务部）</span>
-                                    <span class="wq-type">渠道合作</span>
-                                    <span class="wq-detail">销售、法务、财务部门正在协商条款细节</span>
-                                    <span class="wq-status processing">处理中</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-medium">中</span>
-                                    <span class="wq-applicant">郑华（机构业务部）</span>
-                                    <span class="wq-type">授信审批</span>
-                                    <span class="wq-detail">信用、风控、业务部门联合评估已完成，授信额度已调整</span>
-                                    <span class="wq-status completed">处理完成</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                                <div class="wq-table-row">
-                                    <span class="wq-priority-text priority-high">高</span>
-                                    <span class="wq-applicant">王磊（投行业务部）</span>
-                                    <span class="wq-type">IPO承销</span>
-                                    <span class="wq-detail">投行、研究、销售团队协同定价方案已提交，等待审批</span>
-                                    <span class="wq-status pending">待处理</span>
-                                    <div class="wq-actions">
-                                        <button class="wq-btn-view">查看</button>
-                                    </div>
-                                </div>
-                            </div>
+                        </div>
+
+                        <!-- 圆桌协同 / 议案追踪内容区 -->
+                        <div id="roundtable-content" class="content-area" style="display: none;">
+                            <div id="roundtable-requests" class="proposal-list"></div>
                         </div>
 
                         <!-- 重点项目管控内容区 -->
@@ -1777,43 +1701,1401 @@
             // 根据tabType切换显示内容
             const helpContent = document.getElementById('help-content');
             const projectContent = document.getElementById('project-content');
+            const teamContent = document.getElementById('team-content');
+            const roundtableContent = document.getElementById('roundtable-content');
 
             if (tabType === 'help') {
                 helpContent.style.display = 'block';
                 projectContent.style.display = 'none';
+                if (teamContent) teamContent.style.display = 'none';
+                if (roundtableContent) roundtableContent.style.display = 'none';
             } else if (tabType === 'project') {
                 helpContent.style.display = 'none';
                 projectContent.style.display = 'block';
+                if (teamContent) teamContent.style.display = 'none';
+                if (roundtableContent) roundtableContent.style.display = 'none';
+            } else if (tabType === 'team') {
+                helpContent.style.display = 'none';
+                projectContent.style.display = 'none';
+                if (teamContent) teamContent.style.display = 'block';
+                if (roundtableContent) roundtableContent.style.display = 'none';
+            } else if (tabType === 'roundtable') {
+                helpContent.style.display = 'none';
+                projectContent.style.display = 'none';
+                if (teamContent) teamContent.style.display = 'none';
+                if (roundtableContent) {
+                    roundtableContent.style.display = 'block';
+                    const roundtableRequests = roundtableContent.querySelector('#roundtable-requests');
+                    if (roundtableRequests) roundtableRequests.style.display = '';
+                }
+                initRoundtableProposalLayout();
             }
         }
 
-        // 待处理/已处理/圆桌协同申请Tab切换
+        // 待处理/已处理申请Tab切换
         function switchRequestTab(tabElement, tabType) {
-            // 移除所有Tab的active状态
             const allTabs = document.querySelectorAll('.request-tab');
             allTabs.forEach(tab => tab.classList.remove('active'));
 
-            // 给当前点击的Tab添加active状态
             tabElement.classList.add('active');
 
-            // 切换显示内容
             const pendingTable = document.getElementById('pending-requests');
             const processedTable = document.getElementById('processed-requests');
-            const roundtableTable = document.getElementById('roundtable-requests');
+
+            if (!pendingTable || !processedTable) return;
 
             if (tabType === 'pending') {
                 pendingTable.style.display = 'flex';
                 processedTable.style.display = 'none';
-                roundtableTable.style.display = 'none';
             } else if (tabType === 'processed') {
                 pendingTable.style.display = 'none';
                 processedTable.style.display = 'flex';
-                roundtableTable.style.display = 'none';
-            } else if (tabType === 'roundtable') {
-                pendingTable.style.display = 'none';
-                processedTable.style.display = 'none';
-                roundtableTable.style.display = 'flex';
             }
+        }
+
+        // 将表格行转换为卡片布局
+        function transformRequestRowToCard(row) {
+            if (!row || row.dataset.cardified === '1') return;
+
+            const priority = row.querySelector('.wq-priority-text');
+            const applicant = row.querySelector('.wq-applicant');
+            const type = row.querySelector('.wq-type');
+            const deadline = row.querySelector('.wq-deadline');
+            const detail = row.querySelector('.wq-detail');
+            const status = row.querySelector('.wq-status');
+            const actions = row.querySelector('.wq-actions');
+
+            // 读取data属性
+            const submitTime = row.dataset.submitTime || '';
+            const agent = row.dataset.agent || '';
+
+            row.classList.remove('wq-table-row');
+            row.classList.add('wq-request-card');
+            row.innerHTML = '';
+
+            const meta = document.createElement('div');
+            meta.className = 'wq-card-meta';
+            const tags = document.createElement('div');
+            tags.className = 'wq-card-tags';
+            if (priority) tags.appendChild(priority);
+            if (type) {
+                type.classList.add('wq-type-tag');
+                tags.appendChild(type);
+            }
+            if (status) tags.appendChild(status);
+            meta.appendChild(tags);
+            // 右上角：截止时间 + 智能体来源（同一行，截止时间在左）
+            if (deadline || agent) {
+                const rightMeta = document.createElement('div');
+                rightMeta.className = 'wq-card-right-meta';
+                if (deadline) {
+                    const deadlineSpan = document.createElement('span');
+                    deadlineSpan.className = 'wq-deadline-time';
+                    deadlineSpan.textContent = '截止时间：' + deadline.textContent;
+                    rightMeta.appendChild(deadlineSpan);
+                }
+                if (agent) {
+                    const agentTag = document.createElement('span');
+                    agentTag.className = 'wq-agent-tag';
+                    agentTag.textContent = '来自：' + agent;
+                    rightMeta.appendChild(agentTag);
+                }
+                meta.appendChild(rightMeta);
+            }
+            row.appendChild(meta);
+
+            // 申请内容（字体加大）
+            if (detail) {
+                detail.classList.add('wq-card-desc');
+                detail.classList.add('wq-card-desc-large');
+                row.appendChild(detail);
+            }
+
+            // 底部信息区：左下角放客户名称/部门 + 提交时间（同一行）
+            const bottomRow = document.createElement('div');
+            bottomRow.className = 'wq-card-bottom-row';
+
+            const leftInfo = document.createElement('div');
+            leftInfo.className = 'wq-card-left-info';
+            if (applicant) {
+                applicant.classList.add('wq-card-applicant-small');
+                leftInfo.appendChild(applicant);
+            }
+            if (submitTime) {
+                const submitSpan = document.createElement('span');
+                submitSpan.className = 'wq-submit-time-small';
+                submitSpan.textContent = '提交时间：' + submitTime;
+                leftInfo.appendChild(submitSpan);
+            }
+            bottomRow.appendChild(leftInfo);
+
+            if (actions) {
+                const processBtn = actions.querySelector('.wq-btn-process');
+                const viewBtn = actions.querySelector('.wq-btn-view');
+                if (processBtn) {
+                    processBtn.setAttribute('onclick', "openProcessModal(this.closest('.wq-request-card'))");
+                }
+                if (viewBtn) {
+                    viewBtn.setAttribute('onclick', "alert('查看详情功能即将上线')");
+                }
+                const actionWrap = document.createElement('div');
+                actionWrap.className = 'wq-card-actions-wrap';
+                actionWrap.appendChild(actions);
+                bottomRow.appendChild(actionWrap);
+            }
+
+            row.appendChild(bottomRow);
+
+            const typeText = type ? type.textContent.trim() : '';
+            const applicantText = applicant ? applicant.textContent.trim() : '';
+            if (applicantText && typeText) {
+                row.dataset.requestKey = applicantText + '|' + typeText;
+            }
+            if (submitTime) row.dataset.submitTime = submitTime;
+            if (agent) row.dataset.agent = agent;
+
+            row.dataset.cardified = '1';
+        }
+
+        const REQUEST_DETAIL_META = {
+            '张三（零售业务部）|客户投诉': {
+                ticketNo: 'SR-20260521-001',
+                background: '客户于 5 月 20 日致电客服热线，反映理财经理服务态度生硬、未耐心解答产品疑问，并在沟通中表现出明显不满情绪。',
+                impact: '涉及 VIP 客户（资产 800 万+），存在流失及向监管部门投诉风险，需在 24 小时内给出正式回应。',
+                customer: '王女士 · 零售高净值客户 · 开户 8 年',
+                history: '2026-05-20 首次投诉登记；同日已安排客户经理回访未果；5-21 升级至业务支持工作台。',
+                aiAdvice: '建议先由直属客户经理电话致歉并说明处理时限，同步准备书面说明函；如涉及产品误导需联动合规复核话术。',
+                attachments: '客户来电录音摘要.pdf、历史服务记录.xlsx',
+                compliance: '需按客户投诉管理办法在 2 个工作日内完成首次响应并留痕。'
+            },
+            '李四（机构业务部）|物料申请': {
+                ticketNo: 'SR-20260521-002',
+                background: '机构条线季度营销活动即将启动，线下网点及路演活动需一批品牌宣传物料，当前库存无法满足投放计划。',
+                impact: '影响 6 月前 12 场机构路演排期，可能导致活动延期及客户触达率下降。',
+                customer: '机构营销部 · 二季度路演专项',
+                history: '5-18 提交物料清单；5-20 采购部反馈部分品类缺货；5-21 申请加急协调。',
+                aiAdvice: '建议优先协调现有库存调拨，缺口部分走加急印刷通道；可评估电子物料替代方案。',
+                attachments: '物料需求清单.xlsx、活动排期表.pdf',
+                compliance: '大额采购需按行政采购流程比价备案。'
+            },
+            '赵六（投行业务部）|项目延期': {
+                ticketNo: 'SR-20260520-003',
+                background: '投行项目组因尽调现场行程冲突及中介机构反馈延迟，无法在原定节点完成材料报送。',
+                impact: '影响客户发行窗口，若延期超过 5 个工作日需重新协调交易所披露节奏。',
+                customer: '某科技股份有限公司 · IPO 辅导项目',
+                history: '5-15 首次预警进度滞后；5-18 项目组提交延期说明；5-20 客户函询处理进展。',
+                aiAdvice: '建议召开跨部门协调会明确新里程碑，同步客户书面说明；评估是否需增派尽调人手。',
+                attachments: '项目进度周报.pdf、延期说明草稿.docx',
+                compliance: '项目重大节点变更需投行内核及合规备案。'
+            },
+            '周八（投资业务部）|费用报销': {
+                ticketNo: 'SR-20260519-004',
+                background: '客户经理完成客户招待及商务接待，已收集发票及审批单，申请费用报销入账。',
+                impact: '金额 12,800 元，属常规报销，无重大合规风险。',
+                customer: '内部费用报销 · 投资业务部',
+                history: '5-19 提交报销单；财务初审通过；待业务支持确认业务真实性。',
+                aiAdvice: '核对招待对象是否属受限名单客户，确认发票合规后可快速放行。',
+                attachments: '发票扫描件.pdf、招待审批单.pdf',
+                compliance: '单笔超 1 万元需二级负责人审批（已附）。'
+            },
+            '吴九（销交业务部）|合同审批': {
+                ticketNo: 'SR-20260521-005',
+                background: '大客户拟调整年度服务协议中的费率条款及专属服务包内容，需法务、合规、财务联合审核后出具意见。',
+                impact: '合同金额预估年创收 500 万+，条款变更涉及费率下限及免责条款调整。',
+                customer: '某集团有限公司 · 战略客户',
+                history: '5-17 客户提交修订稿；5-19 法务初评完成；5-21 待业务条线出具风险意见。',
+                aiAdvice: '重点关注费率折扣是否突破授权区间；建议合规同步审查适当性匹配说明。',
+                attachments: '合同修订对比版.pdf、法务初审意见.docx',
+                compliance: '非标合同须走法合规联合审批流程。'
+            },
+            '郑十（零售业务部）|客户回访': {
+                ticketNo: 'SR-20260520-006',
+                background: '季度 VIP 客户满意度回访名单已下发，需安排专人对接完成电话/面访并录入 CRM。',
+                impact: '名单内客户 28 户，需在 5 月底前完成率不低于 90%。',
+                customer: 'VIP 客户回访专项 · 零售业务部',
+                history: '5-16 任务下发；5-18 完成 12 户；5-20 申请协调人手支援。',
+                aiAdvice: '可按资产规模分批回访，优先处理近 30 日有交易或投诉记录客户。',
+                attachments: '回访名单.xlsx、话术指引.pdf',
+                compliance: '回访过程需遵守外呼合规话术及录音留痕要求。'
+            },
+            '钱十一（机构业务部）|培训申请': {
+                ticketNo: 'SR-20260518-007',
+                background: '春季新入职员工 15 人需完成业务、合规、系统操作三轮培训，申请协调讲师及场地资源。',
+                impact: '需在 6 月 10 日前完成培训并通过合规考试，否则影响转正考核。',
+                customer: '人力资源部 · 新员工培训批次',
+                history: '5-10 提交培训计划；5-15 讲师资源部分冲突；5-18 申请延期协调。',
+                aiAdvice: '建议采用线上+线下混合，合规模块优先排期；可复用上期培训录像。',
+                attachments: '培训计划表.xlsx、学员名单.pdf',
+                compliance: '新员工须完成必修合规模块并考试达标。'
+            },
+            '孙十二（资管业务部）|风险预警': {
+                ticketNo: 'SR-20260521-008',
+                background: '监测系统触发客户账户异常交易：单日多笔快进快出，金额合计超 500 万，与历史交易模式显著偏离。',
+                impact: '存在洗钱及异常交易合规风险，需风控、合规、客户经理联合核查。',
+                customer: '李某 · 机构产品专户',
+                history: '5-21 07:50 系统预警；8:30 风控初步研判；9:00 升级业务支持处理。',
+                aiAdvice: '建议立即临时限制部分交易权限，联系客户经理了解资金来源与用途，按反洗钱规程上报可疑情形。',
+                attachments: '异常交易明细.csv、客户KYC档案.pdf',
+                compliance: '异常交易须在 4 小时内完成初查并记录，疑似情形需上报。'
+            },
+            '李十三（投行业务部）|尽调申请': {
+                ticketNo: 'SR-20260519-009',
+                background: '拟申报 IPO 企业需开展全面尽职调查，申请调配行业组、财务、法律尽调力量并明确进场时间。',
+                impact: '尽调周期预计 3 周，影响申报材料准备及辅导进度安排。',
+                customer: '某新能源股份有限公司 · 辅导项目',
+                history: '5-12 内核会通过立项；5-15 尽调方案初稿；5-19 申请资源协调。',
+                aiAdvice: '建议按模块并行推进现场尽调，重点关注收入确认与关联交易；提前锁定中介机构档期。',
+                attachments: '尽调方案.pdf、项目时间表.xlsx',
+                compliance: '尽调底稿须符合投行执业标准及归档要求。'
+            }
+        };
+
+        function getRequestDetailMeta(requestKey) {
+            if (REQUEST_DETAIL_META[requestKey]) return REQUEST_DETAIL_META[requestKey];
+            return {
+                ticketNo: 'SR-' + Date.now(),
+                background: '暂无补充背景说明，请结合申请摘要及与客户沟通情况综合研判。',
+                impact: '请评估事项紧急程度及对业务、合规、客户关系的影响范围。',
+                customer: '—',
+                history: '暂无历史处理记录。',
+                aiAdvice: '建议先核实事实要素，再选择直接处理或升级圆桌协同。',
+                attachments: '暂无附件',
+                compliance: '请遵循条线管理办法及合规留痕要求。'
+            };
+        }
+
+        function extendProjectMeta(projectName, isAbnormal, manager, deadline, progress, statusText) {
+            const base = getProjectMeta(projectName, isAbnormal);
+            const extras = PROJECT_DETAIL_EXTRAS[projectName] || {};
+            return Object.assign({
+                manager,
+                deadline,
+                progress,
+                statusText,
+                isAbnormal
+            }, base, extras);
+        }
+
+        const PROJECT_DETAIL_EXTRAS = {
+            '开户拓展攻坚二期': {
+                milestones: '3/15 项目启动 → 4/30 流程再造完成 → 5/31 系统联调 → 6/15 考核验收',
+                stakeholders: '零售条线、机构条线、IT 开发、运营管理',
+                budget: '已批复预算 120 万，已使用 78%',
+                risks: '渠道物料供应延迟；部分营业部执行力度不足',
+                recentUpdates: '5-18 周例会：转化率环比 +3%；5-20 系统联调第二轮缺陷 12 项',
+                aiSuggestion: '建议约谈负责人明确日报机制，协调 IT 优先修复联调阻塞项。',
+                attachments: '项目章程.pdf、周报2025-W20.docx'
+            },
+            '基金季末冲刺项目': {
+                milestones: '4/01 动员部署 → 5/15 中场复盘 → 5/30 冲刺收官 → 6/05 总结表彰',
+                stakeholders: '资管产品、渠道销售、市场营销、合规风控',
+                budget: '营销费用池 200 万，已动用 165 万',
+                risks: '募集进度落后目标 12%；部分渠道反馈产品供给不足',
+                recentUpdates: '5-19 日募集 8.2 亿/目标 10 亿；5-20 两场路演因物料延迟改期',
+                aiSuggestion: '建议启用备用渠道激励方案，产品端评估临时额度释放。',
+                attachments: '募集日报.xlsx、渠道反馈汇总.pdf'
+            },
+            '客户满意度提升计划': {
+                milestones: '已全部完成并结项',
+                stakeholders: '客服中心、零售管理部、质量管理',
+                budget: '预算 35 万，结余 4 万',
+                risks: '无重大风险',
+                recentUpdates: '5-18 结项评审通过，NPS 提升 6 个百分点',
+                aiSuggestion: '—',
+                attachments: '结项报告.pdf'
+            },
+            '数字化转型项目': {
+                milestones: '11/01 立项 → 3/30 一期上线 → 8/30 全面推广',
+                stakeholders: '信息技术部、各业务条线代表、外部实施商',
+                budget: '总投资 800 万，本期支出 360 万',
+                risks: '数据迁移窗口期风险；部分老系统接口不稳定',
+                recentUpdates: '5-17 二期 UAT 通过率 92%；5-19 数据治理规则评审',
+                aiSuggestion: '关注灰度发布回滚预案，建议增加业务验收签字节点。',
+                attachments: '实施计划.mpp、UAT缺陷清单.xlsx'
+            },
+            '合规风控系统升级': {
+                milestones: '1/05 启动 → 4/30 规则迁移 → 6/30 并行验证 → 9/30 全量切换',
+                stakeholders: '合规部、风控部、信息技术部',
+                budget: '批复 450 万',
+                risks: '规则迁移复杂度高，可能影响日常监测时效',
+                recentUpdates: '5-16 完成 80% 规则迁移；5-20 并行验证首轮通过',
+                aiSuggestion: '建议保留旧系统双跑一周，确保监测零中断。',
+                attachments: '迁移方案.docx、测试报告.pdf'
+            },
+            '财富管理平台建设': {
+                milestones: '2/01 需求冻结 → 5/30 UAT → 7/01 试点上线',
+                stakeholders: '财富管理、零售、IT、用户体验',
+                budget: '预算 320 万',
+                risks: '需求变更 3 次，影响排期',
+                recentUpdates: '5-18 UAT 缺陷 8 项待修复；5-19 试点营业部已确定 5 家',
+                aiSuggestion: '冻结需求变更，优先修复阻塞级缺陷。',
+                attachments: '需求规格说明书.pdf'
+            },
+            '移动端APP优化': {
+                milestones: '3/15 启动 → 5/25 版本提审 → 6/10 全量发布',
+                stakeholders: '互联网开发、产品、运营、客服',
+                budget: '120 万',
+                risks: '应用商店审核周期不确定',
+                recentUpdates: '5-17 性能优化完成；5-20 灰度用户反馈良好',
+                aiSuggestion: '提前 5 天提交应用商店审核。',
+                attachments: '版本说明.md'
+            },
+            '数据安全加固项目': {
+                milestones: '已结项，2025-05-15 验收通过',
+                stakeholders: '信息安全、合规、运维',
+                budget: '180 万（已结算）',
+                risks: '无',
+                recentUpdates: '验收报告已归档',
+                aiSuggestion: '—',
+                attachments: '等保测评报告.pdf'
+            },
+            '智能客服系统部署': {
+                milestones: '4/01 启动 → 6/30 知识库完成 → 9/15 上线',
+                stakeholders: '客服中心、AI 实验室、产品',
+                budget: '260 万',
+                risks: '意图识别准确率待提升',
+                recentUpdates: '5-18 知识库灌库 65%；5-20 完成首轮意图训练',
+                aiSuggestion: '增加金融场景专属语料，安排业务专家抽检。',
+                attachments: '知识库目录.xlsx'
+            }
+        };
+
+        function renderProcessContextPanel(html) {
+            const panel = document.getElementById('process-modal-context');
+            if (!panel) return;
+            panel.innerHTML = html;
+            panel.style.display = html ? 'block' : 'none';
+        }
+
+        function buildInfoGrid(items) {
+            return '<div class="process-info-grid">' + items.map(function(item) {
+                const valClass = item.highlight ? ' process-info-value-highlight' : '';
+                const tag = item.tag ? '<span class="process-info-tag">' + item.tag + '</span>' : '';
+                return '<div class="process-info-item"><span class="process-info-label">' + item.label + '</span><span class="process-info-value' + valClass + '">' + item.value + tag + '</span></div>';
+            }).join('') + '</div>';
+        }
+
+        function buildContextBlock(title, innerHtml) {
+            return '<section class="process-context-block"><h4 class="process-context-block-title">' + title + '</h4>' + innerHtml + '</section>';
+        }
+
+        function fillProcessModalForRequest(card) {
+            if (!card) {
+                renderProcessContextPanel('');
+                return;
+            }
+            const priorityEl = card.querySelector('.wq-priority-text');
+            const typeEl = card.querySelector('.wq-type-tag, .wq-type');
+            const applicantEl = card.querySelector('.wq-applicant');
+            const deadlineEl = card.querySelector('.wq-deadline-time');
+            const agentEl = card.querySelector('.wq-agent-tag');
+            const descEl = card.querySelector('.wq-card-desc');
+            const submitEl = card.querySelector('.wq-submit-time-small');
+
+            const priority = priorityEl ? priorityEl.textContent.trim() : '—';
+            const type = typeEl ? typeEl.textContent.trim() : '—';
+            const applicant = applicantEl ? applicantEl.textContent.trim() : '—';
+            const deadline = deadlineEl ? deadlineEl.textContent.replace('截止时间：', '').trim() : '—';
+            const agent = agentEl ? agentEl.textContent.replace('来自：', '').trim() : (card.dataset.agent || '—');
+            const summary = descEl ? descEl.textContent.trim() : '—';
+            const submitTime = submitEl ? submitEl.textContent.replace('提交时间：', '').trim() : (card.dataset.submitTime || '—');
+            const requestKey = card.dataset.requestKey || (applicant + '|' + type);
+            const detail = getRequestDetailMeta(requestKey);
+
+            const html =
+                buildContextBlock('卡片摘要', '<p class="process-summary-text">' + summary + '</p>') +
+                buildContextBlock('基本信息', buildInfoGrid([
+                    { label: '工单编号', value: detail.ticketNo },
+                    { label: '优先级', value: priority, highlight: priority === '高' },
+                    { label: '业务类型', value: type },
+                    { label: '申请人', value: applicant },
+                    { label: '截止时间', value: deadline, highlight: true },
+                    { label: '提交时间', value: submitTime },
+                    { label: '智能体来源', value: agent, tag: 'AI' }
+                ])) +
+                buildContextBlock('事项说明', '<p class="process-detail-text">' + summary + '</p><p class="process-detail-text">' + detail.background + '</p>') +
+                buildContextBlock('背景与影响', buildInfoGrid([
+                    { label: '业务背景', value: detail.background },
+                    { label: '影响评估', value: detail.impact, highlight: true },
+                    { label: '关联对象', value: detail.customer }
+                ])) +
+                buildContextBlock('处理记录', '<p class="process-detail-text">' + detail.history + '</p>') +
+                buildContextBlock('AI 分析与建议', '<div class="process-ai-box">' + detail.aiAdvice + '</div>') +
+                buildContextBlock('附件与合规', buildInfoGrid([
+                    { label: '相关材料', value: detail.attachments },
+                    { label: '合规提示', value: detail.compliance, highlight: true }
+                ]));
+
+            renderProcessContextPanel(html);
+        }
+
+        function fillProcessModalForProject(card, projectName) {
+            const name = projectName || (card && card.querySelector('.proj-name') ? card.querySelector('.proj-name').textContent.trim() : '');
+            if (!card || !name) {
+                renderProcessContextPanel('');
+                return;
+            }
+            const manager = card.querySelector('.proj-manager') ? card.querySelector('.proj-manager').textContent.trim() : '—';
+            const datesEl = card.querySelector('.proj-card-dates');
+            const dates = datesEl ? datesEl.textContent.trim() : '—';
+            const progressEl = card.querySelector('.proj-card-pct');
+            const progress = progressEl ? progressEl.textContent.trim() : '—';
+            const statusEl = card.querySelector('.proj-status');
+            const statusText = statusEl ? statusEl.textContent.trim() : '—';
+            const descEl = card.querySelector('.proj-desc');
+            const description = descEl ? descEl.textContent.trim() : '—';
+            const anomalyEl = card.querySelector('.proj-anomaly-desc');
+            const isAbnormal = card.classList.contains('abnormal-project');
+            const meta = extendProjectMeta(name, isAbnormal, manager, dates, progress, statusText);
+
+            let html =
+                buildContextBlock('卡片摘要', '<p class="process-summary-text">' + name + ' · ' + statusText + ' · 进度 ' + progress + '</p><p class="process-detail-text">' + description + '</p>');
+
+            if (isAbnormal && meta.anomalyDesc) {
+                html += buildContextBlock('AI 异常监测', '<div class="process-anomaly-box"><span class="proj-anomaly-label">AI异常监测</span>' + meta.anomalyDesc + '</div>');
+            }
+
+            html +=
+                buildContextBlock('基本信息', buildInfoGrid([
+                    { label: '项目名称', value: name, highlight: true },
+                    { label: '负责人', value: manager },
+                    { label: '项目周期', value: dates },
+                    { label: '当前进度', value: progress },
+                    { label: '项目状态', value: statusText, highlight: isAbnormal },
+                    { label: '项目预算', value: meta.budget || '—' }
+                ])) +
+                buildContextBlock('项目说明', '<p class="process-detail-text">' + description + '</p>') +
+                buildContextBlock('里程碑节点', '<p class="process-detail-text">' + (meta.milestones || '—') + '</p>') +
+                buildContextBlock('协同与资源', buildInfoGrid([
+                    { label: '协同部门', value: meta.stakeholders || '—' },
+                    { label: '风险事项', value: meta.risks || '—', highlight: isAbnormal }
+                ])) +
+                buildContextBlock('近期动态', '<p class="process-detail-text">' + (meta.recentUpdates || '—') + '</p>');
+
+            if (meta.aiSuggestion && meta.aiSuggestion !== '—') {
+                html += buildContextBlock('AI 处理建议', '<div class="process-ai-box">' + meta.aiSuggestion + '</div>');
+            }
+
+            html += buildContextBlock('相关材料', '<p class="process-detail-text">' + (meta.attachments || '—') + '</p>');
+
+            renderProcessContextPanel(html);
+        }
+
+        function resetProcessModalForm(mode) {
+            const selector = document.querySelector('.process-type-selector');
+            const comment = document.getElementById('process-comment');
+            if (mode === 'full') {
+                if (selector) selector.style.display = 'flex';
+                document.querySelector('input[name="process-type"][value="direct"]').checked = true;
+                if (comment) {
+                    comment.value = '';
+                    comment.placeholder = '请输入处理意见...';
+                }
+            } else if (mode === 'hidden') {
+                if (selector) selector.style.display = 'none';
+            }
+        }
+
+        function initRequestCardLayout(root) {
+            const scope = root || document;
+            scope.querySelectorAll('#pending-requests .wq-table-row, #processed-requests .wq-table-row').forEach(transformRequestRowToCard);
+            initRoundtableProposalLayout(scope);
+        }
+
+        const ROUNDTABLE_STAGE_LABELS = ['已提报', '部门初审', '圆桌预沟通', '正式会议排期', '董事长批示', '结论下达'];
+
+        const ROUNDTABLE_PROPOSALS = [
+            {
+                id: 'rt-1',
+                priority: 'high',
+                priorityLabel: '高优',
+                category: '大额转账',
+                title: '机构客户大额转账协同议案',
+                applicant: '陈明',
+                department: '机构业务部',
+                dwellDays: 5,
+                dwellWarn: true,
+                decisionDate: '2026-06-15',
+                stageIndex: 2,
+                stageName: '圆桌预沟通',
+                reporterStatus: '正在征求相关部门意见',
+                progress: 60,
+                leaderStats: '3 位领导已表态 · 2 份补充材料待收齐',
+                submitterStats: '预计在 6 月 15 日前反馈审议结论，请留意补充材料通知',
+                needsMaterials: true,
+                isHost: false
+            },
+            {
+                id: 'rt-2',
+                priority: 'high',
+                priorityLabel: '高优',
+                category: '并购审批',
+                title: '跨境并购项目审批议案',
+                applicant: '刘芳',
+                department: '投行业务部',
+                dwellDays: 3,
+                dwellWarn: false,
+                decisionDate: '2026-06-20',
+                stageIndex: 1,
+                stageName: '部门初审',
+                reporterStatus: '已送达，正在了解背景',
+                progress: 40,
+                leaderStats: '1 位领导已收悉 · 法务材料审核中',
+                submitterStats: '议案已送达决策链路，请耐心等待初审结果',
+                isHost: false
+            },
+            {
+                id: 'rt-3',
+                priority: 'medium',
+                priorityLabel: '中优',
+                category: '产品发行',
+                title: '季末理财产品发行议案',
+                applicant: '赵强',
+                department: '资管业务部',
+                dwellDays: 12,
+                dwellWarn: false,
+                decisionDate: '2026-05-28',
+                stageIndex: 5,
+                stageName: '结论下达',
+                reporterStatus: '决策已定，正在分解任务',
+                progress: 100,
+                leaderStats: '圆桌结论已下达 · 执行分工已同步',
+                submitterStats: '审议结论已下达，执行分工将同步至您的工作台',
+                isHost: false,
+                concluded: true
+            },
+            {
+                id: 'rt-4',
+                priority: 'medium',
+                priorityLabel: '中优',
+                category: '客户争议',
+                title: 'VIP客户争议处置议案',
+                applicant: '孙丽',
+                department: '零售业务部',
+                dwellDays: 4,
+                dwellWarn: true,
+                decisionDate: '2026-06-10',
+                stageIndex: 2,
+                stageName: '圆桌预沟通',
+                reporterStatus: '正在征求相关部门意见',
+                progress: 55,
+                leaderStats: '方案被驳回 · 需补充 2 项材料后重议',
+                submitterStats: '需补充 2 项材料后方可继续审议，请尽快上传',
+                needsMaterials: true,
+                rejected: true,
+                isHost: true
+            },
+            {
+                id: 'rt-5',
+                priority: 'high',
+                priorityLabel: '高优',
+                category: '紧急调仓',
+                title: '投资组合紧急调仓议案',
+                applicant: '周杰',
+                department: '投资业务部',
+                dwellDays: 2,
+                dwellWarn: false,
+                decisionDate: '2026-06-08',
+                stageIndex: 4,
+                stageName: '董事长批示',
+                reporterStatus: '已整理方案，呈报决策层',
+                progress: 90,
+                leaderStats: '预报告已生成 · 待董事长批示',
+                submitterStats: '方案已呈报决策层，预计 6 月 8 日前有批复',
+                isHost: false
+            },
+            {
+                id: 'rt-6',
+                priority: 'low',
+                priorityLabel: '常规',
+                category: '渠道合作',
+                title: '第三方渠道合作协议议案',
+                applicant: '吴敏',
+                department: '销交业务部',
+                dwellDays: 7,
+                dwellWarn: false,
+                decisionDate: '2026-06-18',
+                stageIndex: 3,
+                stageName: '正式会议排期',
+                reporterStatus: '已纳入 6 月 18 日专项讨论',
+                progress: 80,
+                leaderStats: '会议议程已定 · 3 部门列席确认中',
+                submitterStats: '已纳入 6 月 18 日圆桌专项讨论，届时反馈审议安排',
+                isHost: true
+            },
+            {
+                id: 'rt-7',
+                priority: 'medium',
+                priorityLabel: '中优',
+                category: '授信审批',
+                title: '机构客户授信额度调整议案',
+                applicant: '郑华',
+                department: '机构业务部',
+                dwellDays: 10,
+                dwellWarn: false,
+                decisionDate: '2026-05-25',
+                stageIndex: 5,
+                stageName: '结论下达',
+                reporterStatus: '决策已定，正在分解任务',
+                progress: 100,
+                leaderStats: '授信额度已调整 · 通知已下发业务部门',
+                submitterStats: '审议已通过，授信调整结果将发送至您的邮箱',
+                isHost: false,
+                concluded: true
+            },
+            {
+                id: 'rt-8',
+                priority: 'high',
+                priorityLabel: '高优',
+                category: 'IPO承销',
+                title: '科创板 IPO 承销定价议案',
+                applicant: '王磊',
+                department: '投行业务部',
+                dwellDays: 1,
+                dwellWarn: false,
+                decisionDate: '2026-06-25',
+                stageIndex: 0,
+                stageName: '已提报',
+                reporterStatus: '已送达，正在了解背景',
+                progress: 20,
+                leaderStats: '议题卡片已分发 · 待领导收悉',
+                submitterStats: '您的议案已提交成功，系统正在分发给相关领导',
+                isHost: false
+            }
+        ];
+
+        function getRoundtableViewerRole() {
+            return currentWorkspace === 'collaboration' ? 'leader' : 'submitter';
+        }
+
+        function getProposalById(id) {
+            return ROUNDTABLE_PROPOSALS.find(p => p.id === id);
+        }
+
+        function getStageProgress(stageIndex) {
+            const total = ROUNDTABLE_STAGE_LABELS.length;
+            return Math.min(100, Math.round(((stageIndex + 1) / total) * 100));
+        }
+
+        function buildLeaderStageActionButtons(p) {
+            const id = p.id;
+            switch (p.stageIndex) {
+                case 1:
+                    return `<button type="button" class="proposal-btn-stage" onclick="openProposalLeaderAction('${id}', 'opinion')">领导表态</button>`;
+                case 2:
+                    return `<button type="button" class="proposal-btn-stage proposal-btn-stage-primary" onclick="openProposalLeaderAction('${id}', 'meeting')">发起会议</button>`;
+                case 3:
+                    return `<button type="button" class="proposal-btn-stage proposal-btn-stage-primary" onclick="openProposalLeaderAction('${id}', 'formalMeeting')">发起正式会议</button>`;
+                case 4:
+                    return `<button type="button" class="proposal-btn-stage" onclick="openProposalLeaderAction('${id}', 'chairman')">录入董事长批示</button>`;
+                case 5:
+                    return `<button type="button" class="proposal-btn-stage" onclick="openProposalLeaderAction('${id}', 'conclusion')">录入审议结论</button>`;
+                default:
+                    return '';
+            }
+        }
+
+        function buildLeaderStepsHTML(p) {
+            return ROUNDTABLE_STAGE_LABELS.map((label, i) => {
+                let cls = 'proposal-step proposal-step-clickable';
+                if (i < p.stageIndex) cls += ' done';
+                else if (i === p.stageIndex) cls += ' current';
+                return `<span class="${cls}" role="button" tabindex="0" title="点击变更流程状态" onclick="confirmChangeProposalStage('${p.id}', ${i})" onkeydown="if(event.key==='Enter')confirmChangeProposalStage('${p.id}', ${i})">${label}</span>`;
+            }).join('');
+        }
+
+        function refreshProposalCard(proposalId) {
+            const card = document.querySelector(`.proposal-card[data-proposal-id="${proposalId}"]`);
+            if (!card) return;
+            const p = getProposalById(proposalId);
+            if (!p) return;
+            const wrap = document.createElement('div');
+            wrap.innerHTML = buildRoundtableProposalCardHTML(p, card.dataset.viewerRole || 'leader');
+            card.replaceWith(wrap.firstElementChild);
+        }
+
+        function updateProposalStage(proposalId, stageIndex) {
+            const p = getProposalById(proposalId);
+            if (!p || stageIndex < 0 || stageIndex >= ROUNDTABLE_STAGE_LABELS.length) return;
+            p.stageIndex = stageIndex;
+            p.stageName = ROUNDTABLE_STAGE_LABELS[stageIndex];
+            p.progress = getStageProgress(stageIndex);
+            p.concluded = stageIndex === 5;
+            refreshProposalCard(proposalId);
+        }
+
+        function confirmChangeProposalStage(proposalId, stageIndex) {
+            if (getRoundtableViewerRole() !== 'leader') return;
+            const p = getProposalById(proposalId);
+            if (!p) return;
+            if (p.stageIndex === stageIndex) return;
+            const targetStage = ROUNDTABLE_STAGE_LABELS[stageIndex];
+            const ok = confirm(
+                '确认变更流程状态？\n\n' +
+                '议案：' + p.title + '\n' +
+                '由「' + p.stageName + '」变更为「' + targetStage + '」\n\n' +
+                '变更后进度与操作按钮将同步更新。'
+            );
+            if (!ok) return;
+            updateProposalStage(proposalId, stageIndex);
+        }
+
+        let proposalLeaderModalContext = null;
+
+        function openProposalLeaderAction(proposalId, actionType) {
+            if (getRoundtableViewerRole() !== 'leader') return;
+            const p = getProposalById(proposalId);
+            if (!p) return;
+
+            const config = {
+                opinion: {
+                    title: '领导表态',
+                    label: '表态意见',
+                    placeholder: '请输入初步倾向或审议意见（仅圆桌成员可见）...',
+                    hint: '表态内容将汇总至圆桌预报告，不对外展示。'
+                },
+                meeting: {
+                    title: '发起圆桌会议',
+                    label: '会议安排',
+                    placeholder: '请输入会议时间、地点、列席人员及议程要点...',
+                    hint: '提交后将推进至「正式会议排期」阶段（如尚未到达）。'
+                },
+                formalMeeting: {
+                    title: '发起正式会议',
+                    label: '正式会议安排',
+                    placeholder: '请输入正式会议时间、会议室、列席领导及议程材料清单...',
+                    hint: '确认后将锁定会议排期并通知相关列席人员。'
+                },
+                chairman: {
+                    title: '录入董事长批示',
+                    label: '批示内容',
+                    placeholder: '请输入董事长批示意见、决策要点及执行要求...',
+                    hint: '批示内容将纳入议案材料包并通知提报人。'
+                },
+                conclusion: {
+                    title: '录入审议结论',
+                    label: '结论内容',
+                    placeholder: '请输入最终审议结论、后续任务分工及反馈说明...',
+                    hint: '提交后议案将标记为已结论。'
+                }
+            }[actionType];
+
+            if (!config) return;
+
+            proposalLeaderModalContext = { proposalId, actionType };
+            const modal = document.getElementById('proposal-leader-modal');
+            document.getElementById('proposal-leader-modal-title').textContent = config.title;
+            document.getElementById('proposal-leader-modal-label').textContent = config.label;
+            document.getElementById('proposal-leader-modal-hint').textContent = config.hint;
+            const input = document.getElementById('proposal-leader-modal-input');
+            input.value = p.leaderActionDraft && p.leaderActionDraft[actionType] ? p.leaderActionDraft[actionType] : '';
+            input.placeholder = config.placeholder;
+            modal.style.display = 'flex';
+        }
+
+        function closeProposalLeaderModal() {
+            document.getElementById('proposal-leader-modal').style.display = 'none';
+            proposalLeaderModalContext = null;
+        }
+
+        function submitProposalLeaderAction() {
+            if (!proposalLeaderModalContext) return;
+            const { proposalId, actionType } = proposalLeaderModalContext;
+            const p = getProposalById(proposalId);
+            const text = document.getElementById('proposal-leader-modal-input').value.trim();
+            if (!text) {
+                alert('请填写内容后再提交');
+                return;
+            }
+
+            if (!p.leaderActionDraft) p.leaderActionDraft = {};
+            p.leaderActionDraft[actionType] = text;
+
+            if (actionType === 'opinion') {
+                p.leaderStats = '领导表态已记录 · ' + text.slice(0, 36) + (text.length > 36 ? '…' : '');
+            } else if (actionType === 'meeting') {
+                p.leaderStats = '圆桌会议已发起 · ' + text.slice(0, 36) + (text.length > 36 ? '…' : '');
+                if (p.stageIndex < 3) updateProposalStage(proposalId, 3);
+                else refreshProposalCard(proposalId);
+            } else if (actionType === 'formalMeeting') {
+                p.leaderStats = '正式会议已排期 · ' + text.slice(0, 36) + (text.length > 36 ? '…' : '');
+                refreshProposalCard(proposalId);
+            } else if (actionType === 'chairman') {
+                p.leaderStats = '董事长批示已录入 · ' + text.slice(0, 36) + (text.length > 36 ? '…' : '');
+                if (p.stageIndex < 5) updateProposalStage(proposalId, 4);
+                else refreshProposalCard(proposalId);
+            } else if (actionType === 'conclusion') {
+                p.leaderStats = '审议结论已下达 · ' + text.slice(0, 36) + (text.length > 36 ? '…' : '');
+                p.reporterStatus = '决策已定，正在分解任务';
+                updateProposalStage(proposalId, 5);
+            }
+
+            closeProposalLeaderModal();
+            alert('提交成功');
+        }
+
+        function buildRoundtableProposalCardHTML(p, role) {
+            const viewerRole = role || getRoundtableViewerRole();
+            const priorityClass = p.priority === 'high' ? 'priority-high' : p.priority === 'medium' ? 'priority-medium' : 'priority-low';
+            const stepsHtml = viewerRole === 'leader'
+                ? buildLeaderStepsHTML(p)
+                : ROUNDTABLE_STAGE_LABELS.map((label, i) => {
+                    let cls = 'proposal-step';
+                    if (i < p.stageIndex) cls += ' done';
+                    else if (i === p.stageIndex) cls += ' current';
+                    return `<span class="${cls}">${label}</span>`;
+                }).join('');
+
+            if (viewerRole === 'leader') {
+                const dwellClass = p.dwellWarn ? ' proposal-dwell-warn' : '';
+                const stageActionBtns = buildLeaderStageActionButtons(p);
+                const statsText = p.leaderStats || p.stats || '';
+
+                return `
+                <div class="proposal-card proposal-card-leader${p.concluded ? ' proposal-card-concluded' : ''}${p.isHost ? ' proposal-card-host' : ''}" data-proposal-id="${p.id}" data-viewer="leader" data-stage-index="${p.stageIndex}">
+                    <div class="proposal-card-header">
+                        <div class="proposal-card-tags">
+                            <span class="proposal-tag ${priorityClass}">${p.priorityLabel}</span>
+                            <span class="proposal-tag category">${p.category}</span>
+                            ${p.concluded ? '<span class="proposal-tag concluded">已结论</span>' : ''}
+                        </div>
+                        <div class="proposal-card-time">
+                            <span class="proposal-dwell${dwellClass}">已停留 ${p.dwellDays} 天</span>
+                            <span class="proposal-deadline">预计决策日：${p.decisionDate}</span>
+                        </div>
+                    </div>
+                    <div class="proposal-title">${p.title}</div>
+                    <div class="proposal-source">来自：${p.applicant}（${p.department}）</div>
+                    <div class="proposal-stage-block">
+                        <div class="proposal-stage-row">
+                            <span class="proposal-stage-label">当前阶段：${p.stageName}</span>
+                            <span class="proposal-progress-pct">${p.progress}%</span>
+                        </div>
+                        <div class="proposal-progress-track">
+                            <div class="proposal-progress-fill" style="width:${p.progress}%"></div>
+                        </div>
+                        <div class="proposal-stage-steps proposal-stage-steps-interactive" title="点击阶段标签可变更流程状态">${stepsHtml}</div>
+                    </div>
+                    <div class="proposal-stats">${statsText}</div>
+                    <div class="proposal-actions">
+                        ${stageActionBtns}
+                        <button type="button" class="proposal-btn-primary" onclick="openProposalMaterials('${p.id}')">查看材料包</button>
+                        <button type="button" class="proposal-btn-ack" onclick="acknowledgeProposal('${p.id}', this)">收悉，纳入决策池</button>
+                    </div>
+                </div>`;
+            }
+
+            const submitterTimeClass = p.dwellWarn ? ' proposal-dwell-warn' : '';
+            const statsText = p.submitterStats || p.reporterStatus || '';
+            const statusExtra = p.rejected
+                ? '<span class="proposal-tag rejected">需补充材料</span>'
+                : (p.concluded ? '<span class="proposal-tag concluded">已结论</span>' : '');
+            let actionBtns = `
+                <button type="button" class="proposal-btn-primary" onclick="openProposalProgress('${p.id}')">查看进度</button>`;
+            if (p.needsMaterials || p.rejected) {
+                actionBtns += `<button type="button" class="proposal-btn-secondary" onclick="alert('请上传补充材料')">补充材料</button>`;
+            }
+            if (p.concluded) {
+                actionBtns += `<button type="button" class="proposal-btn-text" onclick="openProposalConclusion('${p.id}')">查看结论</button>`;
+            }
+
+            return `
+                <div class="proposal-card proposal-card-submitter${p.concluded ? ' proposal-card-concluded' : ''}${p.rejected ? ' proposal-card-rejected' : ''}" data-proposal-id="${p.id}" data-viewer="submitter">
+                    <div class="proposal-card-header">
+                        <div class="proposal-card-tags">
+                            <span class="proposal-tag ${priorityClass}">${p.priorityLabel}</span>
+                            <span class="proposal-tag category">${p.category}</span>
+                            ${statusExtra}
+                        </div>
+                        <div class="proposal-card-time">
+                            <span class="proposal-dwell${submitterTimeClass}">已提交 ${p.dwellDays} 天</span>
+                            <span class="proposal-deadline">预计反馈：${p.decisionDate}</span>
+                        </div>
+                    </div>
+                    <div class="proposal-title">${p.title}</div>
+                    <div class="proposal-source">提报部门：${p.department}</div>
+                    <div class="proposal-reporter-status">${p.reporterStatus}</div>
+                    <div class="proposal-stage-block proposal-stage-block-submitter">
+                        <div class="proposal-stage-row">
+                            <span class="proposal-stage-label">审议进度</span>
+                            <span class="proposal-progress-pct">${p.progress}%</span>
+                        </div>
+                        <div class="proposal-progress-track">
+                            <div class="proposal-progress-fill" style="width:${p.progress}%"></div>
+                        </div>
+                        <div class="proposal-stage-steps">${stepsHtml}</div>
+                    </div>
+                    <div class="proposal-stats proposal-stats-submitter">${statsText}</div>
+                    <div class="proposal-actions">${actionBtns}</div>
+                </div>`;
+        }
+
+        function getRoundtableProposalListHTML(role) {
+            const viewerRole = role || getRoundtableViewerRole();
+            const cards = ROUNDTABLE_PROPOSALS.map(p => buildRoundtableProposalCardHTML(p, viewerRole)).join('');
+
+            if (viewerRole === 'leader') {
+                return `
+                <div class="proposal-pool-header proposal-pool-leader">
+                    <span class="proposal-pool-title">我的议案池</span>
+                    <div class="proposal-pool-tabs">
+                        <button type="button" class="proposal-pool-tab active">需我决策的</button>
+                        <button type="button" class="proposal-pool-tab" onclick="alert('筛选功能即将上线')">我参与的</button>
+                        <button type="button" class="proposal-pool-tab" onclick="alert('筛选功能即将上线')">我发起的</button>
+                    </div>
+                </div>
+                ${cards}`;
+            }
+
+            return `
+                <div class="proposal-pool-header proposal-pool-submitter">
+                    <span class="proposal-pool-title">我的议案追踪</span>
+                    <div class="proposal-pool-tabs">
+                        <button type="button" class="proposal-pool-tab active">进行中</button>
+                        <button type="button" class="proposal-pool-tab" onclick="alert('筛选功能即将上线')">已结论</button>
+                        <button type="button" class="proposal-pool-tab" onclick="alert('筛选功能即将上线')">需补充材料</button>
+                    </div>
+                </div>
+                ${cards}`;
+        }
+
+        function initRoundtableProposalLayout(root, forceRole) {
+            const scope = root || document;
+            const container = scope.querySelector('#roundtable-requests');
+            if (!container) return;
+            const role = forceRole || getRoundtableViewerRole();
+            container.className = 'proposal-list proposal-list-' + role;
+            container.dataset.viewerRole = role;
+            container.innerHTML = getRoundtableProposalListHTML(role);
+        }
+
+        function openProposalMaterials(id) {
+            alert('打开议案材料包：' + id + '\n（含提报材料、各部门预意见、相似历史案例）');
+        }
+
+        function openProposalProgress(id) {
+            alert('查看议案进度：' + id + '\n（对外透明进度，不含内部讨论细节）');
+        }
+
+        function openProposalConclusion(id) {
+            alert('查看审议结论：' + id + '\n（结论摘要与后续执行安排）');
+        }
+
+        /** 进入协同工作台时决策关注池默认展示的议案 */
+        const COLLABORATION_DECISION_POOL_DEFAULT_IDS = ['rt-1', 'rt-2', 'rt-5'];
+
+        let collaborationDecisionPoolIds = [];
+
+        function getRoundtableProposalById(id) {
+            return ROUNDTABLE_PROPOSALS.find(function(p) { return p.id === id; });
+        }
+
+        function initCollaborationDecisionPoolDefaults() {
+            collaborationDecisionPoolIds = COLLABORATION_DECISION_POOL_DEFAULT_IDS.slice();
+        }
+
+        function syncProposalAckButtonsFromDecisionPool(root) {
+            const scope = root || document;
+            scope.querySelectorAll('.proposal-card .proposal-btn-ack').forEach(function(btn) {
+                btn.textContent = '收悉，纳入决策池';
+                btn.disabled = false;
+                btn.classList.remove('acknowledged');
+            });
+            collaborationDecisionPoolIds.forEach(function(id) {
+                const card = scope.querySelector('.proposal-card[data-proposal-id="' + id + '"]');
+                if (!card) return;
+                const ackBtn = card.querySelector('.proposal-btn-ack');
+                if (ackBtn) {
+                    ackBtn.textContent = '已纳入决策池';
+                    ackBtn.disabled = true;
+                    ackBtn.classList.add('acknowledged');
+                }
+            });
+        }
+
+        function refreshCollaborationDecisionPoolUI(root) {
+            initCollaborationDecisionPoolDefaults();
+            renderDecisionPoolPanel(root);
+            syncProposalAckButtonsFromDecisionPool(root);
+        }
+
+        function getCollaborationHighPriorityPanelHTML() {
+            return `
+                    <div class="high-priority-panel high-priority-panel-decision-pool">
+                        <div class="hp-card decision-pool-card">
+                            <div class="hp-card-header">
+                                <span class="hp-card-icon decision-pool">📌</span>
+                                <span class="hp-card-title">决策关注池</span>
+                                <span class="decision-pool-badge" id="decision-pool-count">0</span>
+                            </div>
+                            <div class="hp-card-content decision-pool-content" id="decision-pool-list">
+                                <div class="decision-pool-empty" id="decision-pool-empty">
+                                    <p>在「我的议案池」中点击 <strong>收悉，纳入决策池</strong>，已关注议案将集中展示于此，便于您优先决策。</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`;
+        }
+
+        function buildDecisionPoolItemHTML(p) {
+            const priorityClass = p.priority === 'high' ? 'priority-high' : 'priority-medium';
+            const dwellClass = p.dwellWarn ? ' proposal-dwell-warn' : '';
+            return `
+                <div class="decision-pool-item" data-proposal-id="${p.id}">
+                    <div class="decision-pool-item-header">
+                        <span class="proposal-tag ${priorityClass}">${p.priorityLabel}</span>
+                        <span class="proposal-tag category">${p.category}</span>
+                    </div>
+                    <div class="decision-pool-title">${p.title}</div>
+                    <div class="decision-pool-source">来自：${p.applicant}（${p.department}）</div>
+                    <div class="decision-pool-stage-row">
+                        <span class="decision-pool-stage">当前阶段：${p.stageName}</span>
+                        <span class="decision-pool-pct">${p.progress}%</span>
+                    </div>
+                    <div class="proposal-progress-track decision-pool-progress">
+                        <div class="proposal-progress-fill" style="width:${p.progress}%"></div>
+                    </div>
+                    <div class="decision-pool-stats">${p.leaderStats || p.reporterStatus || ''}</div>
+                    <div class="decision-pool-meta-row">
+                        <span class="proposal-dwell${dwellClass}">已停留 ${p.dwellDays} 天</span>
+                        <span class="proposal-deadline">决策日：${p.decisionDate}</span>
+                    </div>
+                    <div class="decision-pool-actions">
+                        <button type="button" class="decision-pool-btn-primary" onclick="openProposalMaterials('${p.id}')">查看材料包</button>
+                        <button type="button" class="decision-pool-btn-remove" onclick="removeFromDecisionPool('${p.id}')">移出关注池</button>
+                    </div>
+                </div>`;
+        }
+
+        function renderDecisionPoolPanel(root) {
+            const scope = root || document;
+            const container = scope.querySelector('#decision-pool-list');
+            const countEl = scope.querySelector('#decision-pool-count');
+            if (!container) return;
+
+            const proposals = collaborationDecisionPoolIds
+                .map(getRoundtableProposalById)
+                .filter(Boolean);
+
+            if (proposals.length === 0) {
+                container.innerHTML = '<div class="decision-pool-empty" id="decision-pool-empty"><p>在「我的议案池」中点击 <strong>收悉，纳入决策池</strong>，已关注议案将集中展示于此，便于您优先决策。</p></div>';
+            } else {
+                container.innerHTML = proposals.map(buildDecisionPoolItemHTML).join('');
+            }
+            if (countEl) countEl.textContent = String(proposals.length);
+        }
+
+        function removeFromDecisionPool(id) {
+            collaborationDecisionPoolIds = collaborationDecisionPoolIds.filter(function(x) { return x !== id; });
+            const card = document.querySelector('.proposal-card[data-proposal-id="' + id + '"]');
+            if (card) {
+                const ackBtn = card.querySelector('.proposal-btn-ack');
+                if (ackBtn) {
+                    ackBtn.textContent = '收悉，纳入决策池';
+                    ackBtn.disabled = false;
+                    ackBtn.classList.remove('acknowledged');
+                }
+            }
+            renderDecisionPoolPanel();
+        }
+
+        function acknowledgeProposal(id, btn) {
+            if (currentWorkspace !== 'collaboration') {
+                alert('请在协同工作台使用「纳入决策池」功能');
+                return;
+            }
+            const proposal = getRoundtableProposalById(id);
+            if (!proposal) return;
+
+            if (collaborationDecisionPoolIds.indexOf(id) < 0) {
+                collaborationDecisionPoolIds.unshift(id);
+            }
+
+            const card = btn.closest('.proposal-card');
+            if (card) {
+                const ackBtn = card.querySelector('.proposal-btn-ack');
+                if (ackBtn) {
+                    ackBtn.textContent = '已纳入决策池';
+                    ackBtn.disabled = true;
+                    ackBtn.classList.add('acknowledged');
+                }
+            }
+            renderDecisionPoolPanel();
+        }
+
+        function prependRoundtableProposalCard(container, proposal) {
+            if (!container) return;
+            const role = getRoundtableViewerRole();
+            initRoundtableProposalLayout(null, role);
+            const wrap = document.createElement('div');
+            wrap.innerHTML = buildRoundtableProposalCardHTML(proposal, role);
+            const card = wrap.firstElementChild;
+            const header = container.querySelector('.proposal-pool-header');
+            if (header) {
+                container.insertBefore(card, header.nextElementSibling);
+            } else {
+                container.insertBefore(card, container.firstChild);
+            }
+        }
+
+        function buildNewRoundtableProposalFromRequest(options) {
+            const { applicant, type, priority, comment } = options;
+            const nameMatch = applicant.match(/^([^（]+)/);
+            const name = nameMatch ? nameMatch[1].trim() : applicant;
+            const deptMatch = applicant.match(/（([^）]+)）/);
+            const department = deptMatch ? deptMatch[1] : '未知部门';
+            const priorityText = priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low';
+            return {
+                id: 'rt-new-' + Date.now(),
+                priority: priorityText,
+                priorityLabel: priority === '高' ? '高优' : priority === '中' ? '中优' : '常规',
+                category: type,
+                title: type + '协同议案',
+                applicant: name,
+                department,
+                dwellDays: 0,
+                dwellWarn: false,
+                decisionDate: '待定',
+                stageIndex: 0,
+                stageName: '已提报',
+                reporterStatus: '已送达，正在了解背景',
+                progress: 15,
+                leaderStats: '新议案待分发 · 请相关领导收悉',
+                submitterStats: comment ? '提报说明：' + comment : '您的议案已提交，请留意进度更新',
+                isHost: false
+            };
+        }
+
+        const PROJECT_META = {
+            '开户拓展攻坚二期': {
+                startDate: '2026-03-01',
+                description: '本项目为零售与机构条线联合推进的开户拓展专项，重点覆盖线下网点、线上渠道及企业客户三条业务线。当前阶段聚焦流程再造与考核机制落地，需同步推进系统对接、营销物料供给及一线培训。项目按周例会跟踪转化漏斗，目标在二季度末实现新增有效户较基期提升 25%。',
+                anomalyDesc: '负责人连续3天未更新项目进度，沟通响应延迟超过24小时'
+            },
+            '基金季末冲刺项目': {
+                startDate: '2026-02-15',
+                description: '季末基金销售冲刺专项，由产品、渠道、营销及运营多部门协同推进。项目围绕重点公募与固收+产品制定分层销售策略，配套渠道激励与客户触达方案。当前处于募集关键期，需每日同步销售进度、库存额度及合规报备情况，确保季末规模与收入目标达成。',
+                anomalyDesc: '项目进度滞后12%，关键节点未能按时完成，需协调资源加速推进'
+            },
+            '客户满意度提升计划': {
+                startDate: '2026-01-10',
+                description: '以客户体验为中心的服务改进项目，涵盖 VIP 回访、网点服务暗访、投诉闭环及 NPS 监测四大模块。已建立问题分级响应机制，并与客服、零售、资管条线打通工单流转。项目目标是将重点客群满意度提升至行业优秀水平，并形成可复制的服务标准手册。'
+            },
+            '数字化转型项目': {
+                startDate: '2025-11-01',
+                description: '推进核心业务系统数字化改造，分阶段完成账户、交易、清算及报表子系统上云与接口统一。同步建设企业级数据湖与自助分析平台，支撑经营看板与监管报送。当前处于二期开发联调阶段，需关注跨系统数据一致性与灰度发布风险。'
+            },
+            '合规风控系统升级': {
+                startDate: '2026-01-05',
+                description: '对现有合规监测、反洗钱筛查及异常交易预警模块进行版本升级。新增规则引擎可视化配置、批量回溯试算及自动化报告生成功能，满足最新监管检查要点。项目分三期交付，本期重点完成规则库迁移与并行验证，确保上线后业务零中断。'
+            },
+            '财富管理平台建设': {
+                startDate: '2026-02-01',
+                description: '建设面向理财经理与客户的财富管理一体化平台，整合产品货架、持仓诊断、资产配置建议及适当性管理。支持从客户画像到方案输出的全流程留痕，并与 CRM、交易系统打通。当前进行 UAT 测试，计划分批向试点营业部开放试用并收集反馈迭代。'
+            },
+            '移动端APP优化': {
+                startDate: '2026-03-15',
+                description: '围绕交易下单、行情资讯、账户服务三大高频场景进行体验优化。包括首屏加载提速、适老化模式、指纹/面容登录加固及关键路径埋点分析。项目采用双周迭代发布，需与苹果、安卓应用商店审核周期对齐，并预留大版本营销活动的容量评估。'
+            },
+            '数据安全加固项目': {
+                startDate: '2025-12-01',
+                description: '落实数据分类分级、敏感字段脱敏、访问最小权限及操作审计等基线能力。完成核心库加密、备份异地容灾演练及第三方接口安全评估。项目对标等保与行业最佳实践，已形成整改清单并按优先级推进，确保年内通过内外部安全检查验收。'
+            },
+            '智能客服系统部署': {
+                startDate: '2026-04-01',
+                description: '部署基于大模型的智能客服与知识库问答系统，覆盖账户查询、产品说明、业务办理指引等高频咨询场景。与人工坐席协同，支持会话转接与质检抽检。当前处于知识库灌库与意图训练阶段，上线后目标将自助解决率提升至 60% 以上。'
+            },
+            '新员工培训计划': {
+                startDate: '2026-03-01',
+                description: '构建覆盖入职第一周至转正全流程的培训体系，包含公司文化、合规制度、业务产品、系统操作及模拟演练。采用线上线下混合模式，配套导师制与阶段考核。本批次面向春季校招及社招新人，需在入职一个月内完成必修模块并通过合规考试。'
+            },
+            '风险管理体系优化': {
+                startDate: '2026-02-10',
+                description: '优化市场风险、信用风险、操作风险三大板块的指标监测与限额管理体系。梳理关键风险点清单，完善预警阈值、报告路径及应急处置预案。项目与年度风险偏好陈述对齐，需经风险管理委员会审议后分部门宣贯执行。'
+            },
+            '客户关系管理系统升级': {
+                startDate: '2026-01-20',
+                description: '升级 CRM 客户标签、跟进记录、商机漏斗及协同任务能力，支持理财经理移动端录入。与呼叫中心、短信平台对接，实现营销触达闭环统计。本期重点完成历史数据清洗与权限重构，避免迁移后客户归属争议。'
+            },
+            '合规审计整改项目': {
+                startDate: '2026-04-15',
+                description: '针对近期内外部审计发现的问题建立整改台账，逐项明确责任部门、完成时限及验证标准。涵盖制度修订、系统控制加强、抽样复查三个层面。实行周报督办机制，对逾期项升级通报，确保在监管要求时限前全部闭环销号。'
+            },
+            '移动端APP功能扩展': {
+                startDate: '2026-03-20',
+                description: '在现有 APP 基础上扩展理财持仓分析、视频投顾、活动报名及消息中心聚合等功能。需完成交互设计评审、接口开发、安全渗透测试及应用市场合规审核。采用功能开关控制灰度范围，优先向高活跃客户群体开放并监测崩溃率与转化指标。'
+            }
+        };
+
+        function getProjectMeta(projectName, isAbnormal) {
+            const meta = PROJECT_META[projectName];
+            if (meta) return meta;
+            return {
+                startDate: '2026-01-01',
+                description: '本项目为部门年度重点项目，已纳入工作台统一跟踪。请按里程碑计划推进实施，定期更新进度与风险事项，确保资源投入与跨部门协同到位。关键节点变更需提前报备并同步相关干系人。',
+                anomalyDesc: isAbnormal ? 'AI监测到项目存在异常，请及时核查并处理。' : null
+            };
+        }
+
+        function getProjectProgressTone(progressEl, statusEl, isAbnormal) {
+            if (statusEl) {
+                const statusClass = statusEl.className;
+                if (statusClass.includes('completed')) return 'success';
+                if (statusClass.includes('progress-abnormal')) return 'warning';
+                if (statusClass.includes('behavior-abnormal')) return 'danger';
+            }
+            if (progressEl) {
+                const fill = progressEl.querySelector('.progress-fill');
+                if (fill && fill.classList.contains('completed')) return 'success';
+                if (fill && fill.classList.contains('delayed')) return 'warning';
+            }
+            if (isAbnormal) return 'warning';
+            return 'normal';
+        }
+
+        function transformProjectRowToCard(row) {
+            if (!row || row.dataset.cardified === '1') return;
+
+            const nameEl = row.querySelector('.proj-name');
+            const projectName = row.dataset.projectName || (nameEl ? nameEl.textContent.trim() : '');
+            const managerText = row.querySelector('.proj-manager') ? row.querySelector('.proj-manager').textContent.trim() : '';
+            const progressEl = row.querySelector('.proj-progress');
+            const deadlineText = row.querySelector('.proj-deadline') ? row.querySelector('.proj-deadline').textContent.trim() : '';
+            const statusEl = row.querySelector('.proj-status');
+            const actionsEl = row.querySelector('.proj-actions');
+            const isAbnormal = row.classList.contains('abnormal-project');
+            const meta = getProjectMeta(projectName, isAbnormal);
+
+            const progressText = progressEl && progressEl.querySelector('.progress-text')
+                ? progressEl.querySelector('.progress-text').textContent.trim()
+                : '';
+            const progressTone = getProjectProgressTone(progressEl, statusEl, isAbnormal);
+            const statusHTML = statusEl ? statusEl.outerHTML : '';
+            const actionsHTML = actionsEl ? actionsEl.innerHTML : '';
+            const escapedName = projectName.replace(/'/g, "\\'");
+
+            row.classList.remove('project-table-row');
+            row.classList.add('proj-card');
+            if (isAbnormal) row.classList.add('abnormal-project');
+            if (projectName) row.dataset.projectName = projectName;
+
+            row.innerHTML = `
+                <div class="proj-card-meta">
+                    <div class="proj-card-tags">${statusHTML}</div>
+                    <div class="proj-card-right-meta">
+                        <span class="proj-card-dates">开始 ${meta.startDate} · 截止 ${deadlineText}</span>
+                        ${progressText ? `<span class="proj-card-pct proj-card-pct-${progressTone}">${progressText}</span>` : ''}
+                    </div>
+                </div>
+                <div class="proj-name proj-card-title">${projectName}</div>
+                <div class="proj-card-fields">
+                    <span class="proj-card-field"><span class="proj-field-label">负责人</span><span class="proj-manager">${managerText}</span></span>
+                </div>
+                <div class="proj-desc">${meta.description}</div>
+                ${isAbnormal && meta.anomalyDesc ? `<div class="proj-anomaly-desc"><span class="proj-anomaly-label">AI异常监测</span>${meta.anomalyDesc}</div>` : ''}
+                <div class="proj-card-footer">
+                    <div class="proj-actions">${actionsHTML}</div>
+                </div>
+            `;
+
+            const processBtn = row.querySelector('.proj-btn-process');
+            if (processBtn) {
+                processBtn.setAttribute('onclick', `openProjectProcessModal(this, '${escapedName}')`);
+            }
+            const viewBtn = row.querySelector('.proj-btn-view');
+            if (viewBtn && !viewBtn.getAttribute('onclick')) {
+                viewBtn.setAttribute('onclick', "alert('查看详情功能即将上线')");
+            }
+
+            row.dataset.cardified = '1';
+        }
+
+        function initProjectCardLayout(root) {
+            const scope = root || document;
+            scope.querySelectorAll('#project-content .project-table-row').forEach(transformProjectRowToCard);
+        }
+
+        function getPriorityClass(priorityText) {
+            if (priorityText === '高') return 'priority-high';
+            if (priorityText === '中') return 'priority-medium';
+            return 'priority-low';
+        }
+
+        function getRequestCardData(card) {
+            if (!card) return null;
+            const priorityEl = card.querySelector('.wq-priority-text');
+            const applicantEl = card.querySelector('.wq-applicant, .wq-card-applicant-small');
+            const typeEl = card.querySelector('.wq-type-tag, .wq-type');
+            const deadlineEl = card.querySelector('.wq-deadline-time, .wq-deadline');
+            const descEl = card.querySelector('.wq-card-desc, .wq-detail');
+            let deadline = deadlineEl ? deadlineEl.textContent.trim() : '';
+            deadline = deadline.replace(/^截止时间：/, '').replace(/^截止：/, '').trim();
+            return {
+                priority: priorityEl ? priorityEl.textContent.trim() : '',
+                applicant: applicantEl ? applicantEl.textContent.trim() : '',
+                type: typeEl ? typeEl.textContent.trim() : '',
+                deadline: deadline,
+                detail: descEl ? descEl.textContent.trim() : '',
+                agent: card.dataset.agent || '',
+                submitTime: card.dataset.submitTime || ''
+            };
+        }
+
+        function buildRequestCardHTML(options) {
+            const {
+                priorityText,
+                applicant,
+                type,
+                deadline,
+                detail,
+                statusClass,
+                statusText,
+                actionHtml,
+                agent,
+                submitTime
+            } = options;
+            const priorityClass = getPriorityClass(priorityText);
+            const tags = `
+                <span class="wq-priority-text ${priorityClass}">${priorityText}</span>
+                <span class="wq-type wq-type-tag">${type}</span>
+                ${statusText ? `<span class="wq-status ${statusClass}">${statusText}</span>` : ''}
+            `;
+            const rightMeta = `
+                ${deadline ? `<span class="wq-deadline-time">截止时间：${deadline}</span>` : ''}
+                ${agent ? `<span class="wq-agent-tag">来自：${agent}</span>` : ''}
+            `;
+            const requestKey = applicant && type ? applicant + '|' + type : '';
+            const dataAttrs = [
+                requestKey ? 'data-request-key="' + requestKey + '"' : '',
+                submitTime ? 'data-submit-time="' + submitTime + '"' : '',
+                agent ? 'data-agent="' + agent + '"' : ''
+            ].filter(Boolean).join(' ');
+            return `
+                <div class="wq-request-card" data-cardified="1" ${dataAttrs}>
+                    <div class="wq-card-meta">
+                        <div class="wq-card-tags">${tags}</div>
+                        ${rightMeta ? `<div class="wq-card-right-meta">${rightMeta}</div>` : ''}
+                    </div>
+                    <div class="wq-detail wq-card-desc wq-card-desc-large">${detail}</div>
+                    <div class="wq-card-bottom-row">
+                        <div class="wq-card-left-info">
+                            <div class="wq-applicant wq-card-applicant-small">${applicant}</div>
+                            ${submitTime ? `<span class="wq-submit-time-small">提交时间：${submitTime}</span>` : ''}
+                        </div>
+                        <div class="wq-card-actions-wrap">
+                            <div class="wq-actions">${actionHtml}</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function prependRequestCard(container, cardHtml) {
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = cardHtml.trim();
+            const card = wrapper.firstElementChild;
+            container.insertBefore(card, container.firstChild);
+            return card;
         }
 
         // 当前选中的待处理申请行
@@ -1827,41 +3109,53 @@
         function openProcessModal(rowElement) {
             currentProcessRow = rowElement;
             currentUrgentItem = null;
+            currentProjectButton = null;
+            currentProjectName = null;
             const modal = document.getElementById('process-modal');
+            modal.classList.remove('process-modal--project');
             modal.style.display = 'flex';
-            
-            // 设置弹窗标题为"处理"
-            document.querySelector('.process-modal-header h3').textContent = '处理';
-            
-            // 重置表单
-            document.querySelector('input[name="process-type"][value="direct"]').checked = true;
-            document.getElementById('process-comment').value = '';
-            document.getElementById('process-comment').placeholder = '请输入处理意见...';
-            // 显示处理类型选择器
-            document.querySelector('.process-type-selector').style.display = 'flex';
+
+            document.querySelector('.process-modal-header h3').textContent = '处理申请';
+            fillProcessModalForRequest(rowElement);
+            resetProcessModalForm('full');
         }
 
         // 打开紧急响应处理弹窗
         function openUrgentProcessModal(buttonElement, type) {
             currentUrgentItem = buttonElement.closest('.urgent-request-item');
             currentProcessRow = null;
+            currentProjectButton = null;
             urgentProcessType = type;
             const modal = document.getElementById('process-modal');
+            modal.classList.remove('process-modal--project');
             modal.style.display = 'flex';
-            
-            // 设置弹窗标题
+
             const title = type === 'direct' ? '直接处理' : '圆桌协同';
             document.querySelector('.process-modal-header h3').textContent = title;
-            
-            // 重置表单
-            document.getElementById('process-comment').value = '';
-            // 隐藏处理类型选择器，因为已经通过按钮确定了类型
-            document.querySelector('.process-type-selector').style.display = 'none';
-            
-            if (type === 'direct') {
-                document.getElementById('process-comment').placeholder = '请输入处理意见...';
-            } else {
-                document.getElementById('process-comment').placeholder = '请输入圆桌协同申请意见...';
+
+            const item = currentUrgentItem;
+            if (item) {
+                const applicant = item.querySelector('.urgent-applicant');
+                const desc = item.querySelector('.urgent-desc');
+                const deadline = item.querySelector('.urgent-deadline');
+                const tag = item.querySelector('.urgent-tag');
+                const html =
+                    buildContextBlock('紧急事项摘要', '<p class="process-summary-text">' + (desc ? desc.textContent.trim() : '') + '</p>') +
+                    buildContextBlock('基本信息', buildInfoGrid([
+                        { label: '优先级', value: tag ? tag.textContent.trim() : '高', highlight: true },
+                        { label: '申请人', value: applicant ? applicant.textContent.replace('申请人：', '').trim() : '—' },
+                        { label: '截止时间', value: deadline ? deadline.textContent.replace('截止：', '').trim() : '—', highlight: true },
+                        { label: '事项类型', value: item.dataset.type || '—' }
+                    ])) +
+                    buildContextBlock('处理说明', '<p class="process-detail-text">本条来自右侧「紧急响应」通道，请优先处置。处理意见提交后将同步更新相关申请状态。</p>');
+                renderProcessContextPanel(html);
+            }
+
+            resetProcessModalForm('hidden');
+            const comment = document.getElementById('process-comment');
+            if (comment) {
+                comment.value = '';
+                comment.placeholder = type === 'direct' ? '请输入处理意见...' : '请输入圆桌协同申请意见...';
             }
         }
 
@@ -1869,6 +3163,8 @@
         function closeProcessModal() {
             const modal = document.getElementById('process-modal');
             modal.style.display = 'none';
+            modal.classList.remove('process-modal--project');
+            renderProcessContextPanel('');
             currentProcessRow = null;
             currentUrgentItem = null;
             urgentProcessType = null;
@@ -1918,7 +3214,7 @@
             const processType = document.querySelector('input[name="process-type"]:checked').value;
             
             // 获取项目行
-            const projectRow = currentProjectButton.closest('.project-table-row');
+            const projectRow = currentProjectButton.closest('.proj-card');
 
             // 更新状态为"进行中"
             const statusElement = projectRow.querySelector('.proj-status');
@@ -1927,15 +3223,18 @@
                 statusElement.textContent = '进行中';
             }
 
-            // 更新进度条颜色为正常蓝色
-            const progressFill = projectRow.querySelector('.progress-fill');
-            if (progressFill) {
-                progressFill.classList.remove('delayed');
+            const progressPct = projectRow.querySelector('.proj-card-pct');
+            if (progressPct) {
+                progressPct.className = 'proj-card-pct proj-card-pct-normal';
             }
 
             // 将按钮改为已处理按钮
             const actionDiv = currentProjectButton.parentElement;
             actionDiv.innerHTML = '<button class="proj-btn-processed" disabled>已处理</button>';
+
+            const anomalyDesc = projectRow.querySelector('.proj-anomaly-desc');
+            if (anomalyDesc) anomalyDesc.remove();
+            projectRow.classList.remove('abnormal-project');
 
             // 从项目异常提醒模块中移除对应项目
             removeFromAbnormalReminder(currentProjectName);
@@ -1959,7 +3258,7 @@
             const processType = abnormalProjectProcessType;
             
             // 在项目列表中查找对应项目
-            const projectRows = document.querySelectorAll('.project-table-row');
+            const projectRows = document.querySelectorAll('.proj-card');
             let targetProjectRow = null;
             
             projectRows.forEach(row => {
@@ -1977,17 +3276,20 @@
                     statusElement.textContent = '进行中';
                 }
 
-                // 更新进度条颜色为正常蓝色
-                const progressFill = targetProjectRow.querySelector('.progress-fill');
-                if (progressFill) {
-                    progressFill.classList.remove('delayed');
+                const progressPct = targetProjectRow.querySelector('.proj-card-pct');
+                if (progressPct) {
+                    progressPct.className = 'proj-card-pct proj-card-pct-normal';
                 }
 
                 // 将处理按钮改为查看按钮
                 const actionDiv = targetProjectRow.querySelector('.proj-actions');
                 if (actionDiv) {
-                    actionDiv.innerHTML = '<button class="proj-btn-view">查看</button>';
+                    actionDiv.innerHTML = '<button class="proj-btn-view" onclick="alert(\'查看详情功能即将上线\')">查看</button>';
                 }
+
+                const anomalyDesc = targetProjectRow.querySelector('.proj-anomaly-desc');
+                if (anomalyDesc) anomalyDesc.remove();
+                targetProjectRow.classList.remove('abnormal-project');
             }
 
             // 从项目异常提醒模块中移除
@@ -2015,49 +3317,24 @@
             const detail = currentUrgentItem.querySelector('.urgent-desc').textContent;
 
             if (processType === 'direct') {
-                // 直接处理：移动到已处理列表
                 const processedTable = document.getElementById('processed-requests');
-                const newRow = document.createElement('div');
-                newRow.className = 'wq-table-row';
-                newRow.innerHTML = `
-                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
-                    <span class="wq-applicant">${applicantName}（${getDepartmentByApplicant(applicantName)}）</span>
-                    <span class="wq-type">${type}</span>
-                    <span class="wq-deadline">${deadline}</span>
-                    <span class="wq-detail">${detail}</span>
-                    <div class="wq-actions">
-                        <button class="wq-btn-view">查看</button>
-                    </div>
-                `;
-                
-                const headerRow = processedTable.querySelector('.wq-table-header');
-                if (headerRow && headerRow.nextSibling) {
-                    processedTable.insertBefore(newRow, headerRow.nextSibling);
-                } else {
-                    processedTable.appendChild(newRow);
-                }
+                prependRequestCard(processedTable, buildRequestCardHTML({
+                    priorityText: priority,
+                    applicant: `${applicantName}（${getDepartmentByApplicant(applicantName)}）`,
+                    type,
+                    deadline,
+                    detail,
+                    actionHtml: '<button class="wq-btn-view">查看</button>'
+                }));
             } else {
-                // 圆桌协同：移动到圆桌协同列表
                 const roundtableTable = document.getElementById('roundtable-requests');
-                const newRow = document.createElement('div');
-                newRow.className = 'wq-table-row';
-                newRow.innerHTML = `
-                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
-                    <span class="wq-applicant">${applicantName}（${getDepartmentByApplicant(applicantName)}）</span>
-                    <span class="wq-type">${type}</span>
-                    <span class="wq-detail">${comment}</span>
-                    <span class="wq-status pending">待处理</span>
-                    <div class="wq-actions">
-                        <button class="wq-btn-view">查看</button>
-                    </div>
-                `;
-                
-                const headerRow = roundtableTable.querySelector('.wq-table-header');
-                if (headerRow && headerRow.nextSibling) {
-                    roundtableTable.insertBefore(newRow, headerRow.nextSibling);
-                } else {
-                    roundtableTable.appendChild(newRow);
-                }
+                initRoundtableProposalLayout();
+                prependRoundtableProposalCard(roundtableTable, buildNewRoundtableProposalFromRequest({
+                    applicant: `${applicantName}（${getDepartmentByApplicant(applicantName)}）`,
+                    type,
+                    priority,
+                    comment
+                }));
             }
 
             // 从待处理列表中查找并移除对应的申请
@@ -2082,58 +3359,30 @@
         // 处理待处理列表申请
         function handlePendingProcess(comment) {
             const processType = document.querySelector('input[name="process-type"]:checked').value;
-
-            // 获取申请信息
-            const priority = currentProcessRow.querySelector('.wq-priority-text').textContent;
-            const applicant = currentProcessRow.querySelector('.wq-applicant').textContent;
-            const type = currentProcessRow.querySelector('.wq-type').textContent;
-            const deadline = currentProcessRow.querySelector('.wq-deadline').textContent;
-            const detail = currentProcessRow.querySelector('.wq-detail').textContent;
+            const data = getRequestCardData(currentProcessRow);
+            if (!data) return;
 
             if (processType === 'direct') {
-                // 直接处理：移动到已处理列表
                 const processedTable = document.getElementById('processed-requests');
-                const newRow = document.createElement('div');
-                newRow.className = 'wq-table-row';
-                newRow.innerHTML = `
-                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
-                    <span class="wq-applicant">${applicant}</span>
-                    <span class="wq-type">${type}</span>
-                    <span class="wq-deadline">${deadline}</span>
-                    <span class="wq-detail">${detail}</span>
-                    <div class="wq-actions">
-                        <button class="wq-btn-view">查看</button>
-                    </div>
-                `;
-                
-                const headerRow = processedTable.querySelector('.wq-table-header');
-                if (headerRow && headerRow.nextSibling) {
-                    processedTable.insertBefore(newRow, headerRow.nextSibling);
-                } else {
-                    processedTable.appendChild(newRow);
-                }
+                prependRequestCard(processedTable, buildRequestCardHTML({
+                    priorityText: data.priority,
+                    applicant: data.applicant,
+                    type: data.type,
+                    deadline: data.deadline,
+                    detail: data.detail,
+                    agent: data.agent,
+                    submitTime: data.submitTime,
+                    actionHtml: '<button class="wq-btn-view" onclick="alert(\'查看详情功能即将上线\')">查看</button>'
+                }));
             } else {
-                // 圆桌协同：移动到圆桌协同列表
                 const roundtableTable = document.getElementById('roundtable-requests');
-                const newRow = document.createElement('div');
-                newRow.className = 'wq-table-row';
-                newRow.innerHTML = `
-                    <span class="wq-priority-text priority-${priority === '高' ? 'high' : priority === '中' ? 'medium' : 'low'}">${priority}</span>
-                    <span class="wq-applicant">${applicant}</span>
-                    <span class="wq-type">${type}</span>
-                    <span class="wq-detail">${comment}</span>
-                    <span class="wq-status pending">待处理</span>
-                    <div class="wq-actions">
-                        <button class="wq-btn-view">查看</button>
-                    </div>
-                `;
-                
-                const headerRow = roundtableTable.querySelector('.wq-table-header');
-                if (headerRow && headerRow.nextSibling) {
-                    roundtableTable.insertBefore(newRow, headerRow.nextSibling);
-                } else {
-                    roundtableTable.appendChild(newRow);
-                }
+                initRoundtableProposalLayout();
+                prependRoundtableProposalCard(roundtableTable, buildNewRoundtableProposalFromRequest({
+                    applicant: data.applicant,
+                    type: data.type,
+                    priority: data.priority,
+                    comment
+                }));
             }
 
             // 从待处理列表中移除
@@ -2168,20 +3417,13 @@
         // 从待处理列表中移除对应申请
         function removeFromPendingList(applicantName, type) {
             const pendingTable = document.getElementById('pending-requests');
-            const rows = pendingTable.querySelectorAll('.wq-table-row');
+            const rows = pendingTable.querySelectorAll('.wq-request-card');
             
             rows.forEach(row => {
-                const applicantCell = row.querySelector('.wq-applicant');
-                const typeCell = row.querySelector('.wq-type');
-                
-                if (applicantCell && typeCell) {
-                    const rowApplicant = applicantCell.textContent.trim();
-                    const rowType = typeCell.textContent.trim();
-                    
-                    // 匹配申请人姓名和业务类型
-                    if (rowApplicant.includes(applicantName) && rowType === type) {
-                        row.remove();
-                    }
+                const rowData = getRequestCardData(row);
+                if (!rowData) return;
+                if (rowData.applicant.includes(applicantName) && rowData.type === type) {
+                    row.remove();
                 }
             });
         }
@@ -2198,7 +3440,7 @@
         // 更新待处理数量
         function updatePendingCount() {
             const pendingTable = document.getElementById('pending-requests');
-            const rows = pendingTable.querySelectorAll('.wq-table-row');
+            const rows = pendingTable.querySelectorAll('.wq-request-card');
             const countElement = document.getElementById('pending-count');
             if (countElement) {
                 countElement.textContent = rows.length;
@@ -2227,22 +3469,19 @@
         function openProjectProcessModal(buttonElement, projectName) {
             currentProjectButton = buttonElement;
             currentProjectName = projectName;
+            currentProcessRow = null;
+            currentUrgentItem = null;
             currentAbnormalProjectItem = null;
             abnormalProjectProcessType = null;
-            
+
+            const card = buttonElement.closest('.proj-card');
             const modal = document.getElementById('process-modal');
+            modal.classList.add('process-modal--project');
             modal.style.display = 'flex';
-            
-            // 设置弹窗标题
+
             document.querySelector('.process-modal-header h3').textContent = '处理项目';
-            
-            // 重置表单，默认选择直接处理
-            document.querySelector('input[name="process-type"][value="direct"]').checked = true;
-            document.getElementById('process-comment').value = '';
-            document.getElementById('process-comment').placeholder = '请输入处理意见...';
-            
-            // 显示处理类型选择器
-            document.querySelector('.process-type-selector').style.display = 'flex';
+            fillProcessModalForProject(card, projectName);
+            resetProcessModalForm('full');
         }
 
         // 打开项目异常提醒处理弹窗
@@ -2251,23 +3490,33 @@
             currentProjectName = projectName;
             abnormalProjectProcessType = type;
             currentProjectButton = null;
-            
+            currentProcessRow = null;
+
             const modal = document.getElementById('process-modal');
+            modal.classList.add('process-modal--project');
             modal.style.display = 'flex';
-            
-            // 设置弹窗标题
-            const title = type === 'direct' ? '直接处理' : '圆桌协同';
+
+            const title = type === 'direct' ? '直接处理项目' : '圆桌协同';
             document.querySelector('.process-modal-header h3').textContent = title;
-            
-            // 重置表单
-            document.getElementById('process-comment').value = '';
-            // 隐藏处理类型选择器
-            document.querySelector('.process-type-selector').style.display = 'none';
-            
-            if (type === 'direct') {
-                document.getElementById('process-comment').placeholder = '请输入处理意见...';
-            } else {
-                document.getElementById('process-comment').placeholder = '请输入圆桌协同申请意见...';
+
+            const item = currentAbnormalProjectItem;
+            if (item) {
+                const html =
+                    buildContextBlock('异常提醒摘要', '<p class="process-summary-text">' + (item.querySelector('.abnormal-project-name') ? item.querySelector('.abnormal-project-name').textContent.trim() : projectName) + '</p><p class="process-detail-text">' + (item.querySelector('.abnormal-desc') ? item.querySelector('.abnormal-desc').textContent.trim() : '') + '</p>') +
+                    buildContextBlock('基本信息', buildInfoGrid([
+                        { label: '项目名称', value: projectName, highlight: true },
+                        { label: '负责人', value: item.querySelector('.abnormal-project-manager') ? item.querySelector('.abnormal-project-manager').textContent.replace('负责人：', '').trim() : '—' },
+                        { label: '当前进度', value: item.querySelector('.abnormal-progress') ? item.querySelector('.abnormal-progress').textContent.trim() : '—' },
+                        { label: '异常类型', value: item.querySelector('.abnormal-tag') ? item.querySelector('.abnormal-tag').textContent.trim() : '—', highlight: true }
+                    ]));
+                renderProcessContextPanel(html);
+            }
+
+            resetProcessModalForm('hidden');
+            const comment = document.getElementById('process-comment');
+            if (comment) {
+                comment.value = '';
+                comment.placeholder = type === 'direct' ? '请输入处理意见...' : '请输入圆桌协同申请意见...';
             }
         }
 
@@ -2279,7 +3528,7 @@
             }
 
             // 获取项目行
-            const projectRow = buttonElement.closest('.project-table-row');
+            const projectRow = buttonElement.closest('.proj-card');
 
             // 更新状态为"进行中"
             const statusElement = projectRow.querySelector('.proj-status');
@@ -2288,15 +3537,18 @@
                 statusElement.textContent = '进行中';
             }
 
-            // 更新进度条颜色为正常蓝色
-            const progressFill = projectRow.querySelector('.progress-fill');
-            if (progressFill) {
-                progressFill.classList.remove('delayed');
+            const progressPct = projectRow.querySelector('.proj-card-pct');
+            if (progressPct) {
+                progressPct.className = 'proj-card-pct proj-card-pct-normal';
             }
 
             // 将按钮改为已处理按钮
             const actionDiv = buttonElement.parentElement;
             actionDiv.innerHTML = '<button class="proj-btn-processed" disabled>已处理</button>';
+
+            const anomalyDesc = projectRow.querySelector('.proj-anomaly-desc');
+            if (anomalyDesc) anomalyDesc.remove();
+            projectRow.classList.remove('abnormal-project');
 
             // 从项目异常提醒模块中移除对应项目
             removeFromAbnormalReminder(projectName);
@@ -2343,6 +3595,17 @@
             btn.classList.toggle('active', !isVisible);
         }
         
+        // 切换新对话页面工作台下拉菜单
+        function toggleWorkspaceDropdownNewChat() {
+            const dropdown = document.getElementById('new-chat-workspace-dropdown');
+            const switcher = document.getElementById('new-chat-sidebar');
+            const btn = switcher.querySelector('.workspace-switcher-btn');
+            const isVisible = dropdown.style.display === 'block';
+            
+            dropdown.style.display = isVisible ? 'none' : 'block';
+            btn.classList.toggle('active', !isVisible);
+        }
+        
         // 切换工作台
         function switchWorkspace(workspaceType) {
             currentWorkspace = workspaceType;
@@ -2353,13 +3616,22 @@
                 'business': '业务支持工作台',
                 'collaboration': '协同工作台'
             };
-            document.getElementById('current-workspace-name').textContent = workspaceNames[workspaceType];
+            
+            // 更新主页面侧边栏
+            const mainWorkspaceName = document.getElementById('current-workspace-name');
+            if (mainWorkspaceName) mainWorkspaceName.textContent = workspaceNames[workspaceType];
+            
+            // 更新新对话页面侧边栏
+            const newChatWorkspaceName = document.getElementById('new-chat-workspace-name');
+            if (newChatWorkspaceName) newChatWorkspaceName.textContent = workspaceNames[workspaceType];
             
             // 更新下拉菜单选中状态
             document.querySelectorAll('.workspace-option').forEach(option => {
                 option.classList.remove('active');
             });
-            event.target.closest('.workspace-option').classList.add('active');
+            if (event && event.target) {
+                event.target.closest('.workspace-option').classList.add('active');
+            }
             
             // 关闭下拉菜单
             toggleWorkspaceDropdown();
@@ -2381,6 +3653,603 @@
             });
         }
         
+        let businessWorkQueueSectionHTML = '';
+        let businessHighPriorityPanelHTML = '';
+
+        function cacheBusinessWorkAreaTemplates() {
+            const mainWorkArea = document.querySelector('.main-work-area');
+            if (!mainWorkArea) return;
+            const workQueue = mainWorkArea.querySelector('.work-queue-section');
+            const hpPanel = mainWorkArea.querySelector('.high-priority-panel');
+            if (workQueue) businessWorkQueueSectionHTML = workQueue.outerHTML;
+            if (hpPanel) businessHighPriorityPanelHTML = hpPanel.outerHTML;
+        }
+
+        const TEAM_MEMBERS = [
+            {
+                key: 'zhangwei',
+                name: '张伟',
+                dept: '投资银行部',
+                title: '执行董事',
+                leadProject: '科创板IPO辅导',
+                participateProject: '债券发行项目',
+                rating: 'A',
+                projectCompletion: '92%',
+                revenue: '1,280万',
+                complianceStatus: '正常',
+                workload: '偏高',
+                employeeId: 'IB-20180612',
+                level: 'MD',
+                tenure: '8年',
+                reportTo: '投行条线负责人',
+                contact: 'zhangw@company.com · 138****1201',
+                projectCount: '负责 2 项 · 参与 3 项',
+                targetAchievement: '108%',
+                revenueYoY: '+18%',
+                violations: '无',
+                training: '2026年度合规培训已完成',
+                education: '硕士 · 金融学',
+                certifications: '保荐代表人、CPA',
+                skills: 'IPO尽调、并购重组、跨境融资',
+                recentActivity: '5-20 完成科创板项目内核会议；5-21 协调发行人补充财务资料。',
+                aiInsight: '项目推进稳健，建议作为投行青年骨干培养对象，可适度增加跨境业务 exposure。',
+                performanceTrend: '近四季度考核：A / A / A- / A'
+            },
+            {
+                key: 'lina',
+                name: '李娜',
+                dept: '资产管理部',
+                title: '投资经理',
+                leadProject: '量化对冲基金',
+                participateProject: 'FOF组合配置',
+                rating: 'A',
+                projectCompletion: '88%',
+                revenue: '960万',
+                complianceStatus: '正常',
+                workload: '中等',
+                employeeId: 'AM-20190305',
+                level: 'VP',
+                tenure: '6年',
+                reportTo: '资管投资总监',
+                contact: 'lina@company.com · 139****3302',
+                projectCount: '负责 1 项 · 参与 4 项',
+                targetAchievement: '102%',
+                revenueYoY: '+12%',
+                violations: '无',
+                training: '已完成',
+                education: '硕士 · 金融工程',
+                certifications: 'CFA二级、基金从业',
+                skills: '量化策略、风险控制、FOF配置',
+                recentActivity: '5-19 量化策略回测周报提交；5-20 参与FOF投委会。',
+                aiInsight: '策略回撤控制良好，可牵头跨部门量化赋能项目。',
+                performanceTrend: 'A / A / B+ / A'
+            },
+            {
+                key: 'wangqiang',
+                name: '王强',
+                dept: '研究所',
+                title: '首席分析师',
+                leadProject: '新能源行业研究',
+                participateProject: '半导体产业调研',
+                rating: 'A-',
+                projectCompletion: '95%',
+                revenue: '420万',
+                complianceStatus: '正常',
+                workload: '中等',
+                employeeId: 'RS-20150720',
+                level: 'SVP',
+                tenure: '11年',
+                reportTo: '研究所所长',
+                contact: 'wangq@company.com · 136****8803',
+                projectCount: '负责 3 项 · 参与 2 项',
+                targetAchievement: '96%',
+                revenueYoY: '+5%',
+                violations: '无',
+                training: '已完成',
+                education: '博士 · 电力电子',
+                certifications: '证券投资咨询(投资发布)',
+                skills: '行业深度、产业链调研、路演支持',
+                recentActivity: '5-18 发布新能源深度报告；5-20 陪同机构客户调研。',
+                aiInsight: '影响力覆盖机构客户广，建议绑定重点销售协同创收。',
+                performanceTrend: 'A- / A / A- / A-'
+            },
+            {
+                key: 'zhaomin',
+                name: '赵敏',
+                dept: '合规风控部',
+                title: '合规经理',
+                leadProject: '反洗钱系统升级',
+                participateProject: '内控流程优化',
+                rating: 'A',
+                projectCompletion: '90%',
+                revenue: '—',
+                complianceStatus: '正常',
+                workload: '偏高',
+                employeeId: 'CO-20181108',
+                level: 'VP',
+                tenure: '7年',
+                reportTo: '合规总监',
+                contact: 'zhaom@company.com · 137****6604',
+                projectCount: '负责 2 项 · 参与 5 项',
+                targetAchievement: '100%',
+                revenueYoY: '—',
+                violations: '无',
+                training: '已完成 · 牵头条线培训 2 场',
+                education: '硕士 · 法学',
+                certifications: '法律职业资格',
+                skills: '反洗钱、内控审计、监管沟通',
+                recentActivity: '5-17 完成反洗钱系统UAT；5-21 报送季度合规自查报告。',
+                aiInsight: '系统升级关键节点把控到位，可纳入合规数字化专项负责人梯队。',
+                performanceTrend: 'A / A / A / A'
+            },
+            {
+                key: 'qianbo',
+                name: '钱波',
+                dept: '经纪业务部',
+                title: '营业部总经理',
+                leadProject: '客户拓展攻坚',
+                participateProject: '两融业务推广',
+                rating: 'B+',
+                projectCompletion: '78%',
+                revenue: '2,150万',
+                complianceStatus: '关注',
+                workload: '高',
+                employeeId: 'BR-20160415',
+                level: 'SVP',
+                tenure: '10年',
+                reportTo: '经纪业务负责人',
+                contact: 'qianb@company.com · 135****9905',
+                projectCount: '负责 3 项 · 参与 2 项',
+                targetAchievement: '89%',
+                revenueYoY: '+8%',
+                violations: '1条轻微服务投诉（已结案）',
+                training: '待补签客户适当性专项培训',
+                education: '本科 · 经济学',
+                certifications: '证券从业、基金从业',
+                skills: '渠道拓展、高净值获客、团队管理',
+                recentActivity: '5-16 客户拓展周新增有效户 42；5-20 两融余额环比+2.1%。',
+                aiInsight: '创收能力强但合规需盯防，建议加强适当性培训并压降投诉复发风险。',
+                performanceTrend: 'B+ / A- / B+ / B+'
+            },
+            {
+                key: 'sunli',
+                name: '孙丽',
+                dept: '固定收益部',
+                title: '交易员',
+                leadProject: '国债期货交易',
+                participateProject: '企业债承销',
+                rating: 'A-',
+                projectCompletion: '85%',
+                revenue: '680万',
+                complianceStatus: '正常',
+                workload: '中等',
+                employeeId: 'FI-20200110',
+                level: 'VP',
+                tenure: '5年',
+                reportTo: '固收交易负责人',
+                contact: 'sunl@company.com · 133****2206',
+                projectCount: '负责 1 项 · 参与 3 项',
+                targetAchievement: '94%',
+                revenueYoY: '+15%',
+                violations: '无',
+                training: '已完成',
+                education: '硕士 · 应用数学',
+                certifications: '银行间本币交易员',
+                skills: '利率衍生品、做市报价、流动性管理',
+                recentActivity: '5-19 国债期货日内胜率 68%；5-20 参与企业债簿记。',
+                aiInsight: '交易执行稳定，可参与司库利率风险对冲专项。',
+                performanceTrend: 'A- / B+ / A- / A-'
+            },
+            {
+                key: 'zhoutao',
+                name: '周涛',
+                dept: '量化投资部',
+                title: '量化研究员',
+                leadProject: 'Alpha策略研发',
+                participateProject: '机器学习模型',
+                rating: 'A',
+                projectCompletion: '91%',
+                revenue: '520万',
+                complianceStatus: '正常',
+                workload: '偏高',
+                employeeId: 'QT-20210322',
+                level: 'Associate',
+                tenure: '4年',
+                reportTo: '量化投资总监',
+                contact: 'zhout@company.com · 132****7707',
+                projectCount: '负责 2 项 · 参与 2 项',
+                targetAchievement: '105%',
+                revenueYoY: '+22%',
+                violations: '无',
+                training: '已完成',
+                education: '博士 · 计算机科学',
+                certifications: 'CFA一级',
+                skills: '因子挖掘、ML建模、回测框架',
+                recentActivity: '5-18 Alpha组合超额 1.2%；5-21 提交模型版本 v3.2。',
+                aiInsight: '技术产出高，建议配置 mentor 加强业务沟通与合规意识。',
+                performanceTrend: 'A / A / A / B+'
+            },
+            {
+                key: 'wufang',
+                name: '吴芳',
+                dept: '财富管理',
+                title: '财富顾问',
+                leadProject: '高净值客户服务',
+                participateProject: '家族信托方案',
+                rating: 'A',
+                projectCompletion: '87%',
+                revenue: '1,860万',
+                complianceStatus: '正常',
+                workload: '中等',
+                employeeId: 'WM-20170901',
+                level: 'VP',
+                tenure: '8年',
+                reportTo: '财富管理中心总经理',
+                contact: 'wuf@company.com · 131****5508',
+                projectCount: '负责 2 项 · 参与 2 项',
+                targetAchievement: '112%',
+                revenueYoY: '+20%',
+                violations: '无',
+                training: '已完成',
+                education: '本科 · 工商管理',
+                certifications: 'CFP、基金从业',
+                skills: '资产配置、家族信托、客户关系',
+                recentActivity: '5-17 签约家族信托 1 单；5-20 高净值客户沙龙 12 人到场。',
+                aiInsight: 'AUM 增长突出，适合作为财富条线标杆案例内训分享。',
+                performanceTrend: 'A / A / A / A'
+            },
+            {
+                key: 'zhenghua',
+                name: '郑华',
+                dept: '机构销售部',
+                title: '机构销售总监',
+                leadProject: '保险资金对接',
+                participateProject: '养老金业务',
+                rating: 'A',
+                projectCompletion: '90%',
+                revenue: '3,200万',
+                complianceStatus: '正常',
+                workload: '高',
+                employeeId: 'IS-20140218',
+                level: 'MD',
+                tenure: '12年',
+                reportTo: '机构业务负责人',
+                contact: 'zhengh@company.com · 130****4409',
+                projectCount: '负责 2 项 · 参与 4 项',
+                targetAchievement: '115%',
+                revenueYoY: '+14%',
+                violations: '无',
+                training: '已完成',
+                education: '硕士 · 经济学',
+                certifications: '证券从业',
+                skills: '机构客户关系、路演组织、跨条线协同',
+                recentActivity: '5-16 保险资金委外投标中标；5-19 养老金业务方案路演。',
+                aiInsight: '机构创收核心骨干，需关注负荷过高对服务质量的潜在影响。',
+                performanceTrend: 'A / A / A / A'
+            },
+            {
+                key: 'wanglei',
+                name: '王磊',
+                dept: '衍生品部',
+                title: '衍生品交易员',
+                leadProject: '期权做市策略',
+                participateProject: '场外衍生品',
+                rating: 'B+',
+                projectCompletion: '82%',
+                revenue: '890万',
+                complianceStatus: '正常',
+                workload: '偏高',
+                employeeId: 'DR-20190825',
+                level: 'VP',
+                tenure: '6年',
+                reportTo: '衍生品部负责人',
+                contact: 'wangl@company.com · 188****3310',
+                projectCount: '负责 1 项 · 参与 3 项',
+                targetAchievement: '91%',
+                revenueYoY: '+6%',
+                violations: '无',
+                training: '已完成',
+                education: '硕士 · 数学',
+                certifications: '期货从业、证券从业',
+                skills: '期权定价、做市风控、场外结构',
+                recentActivity: '5-18 做市价差收窄 8bp；5-20 场外雪球结构报价 6 笔。',
+                aiInsight: '策略收益波动略大，建议加强极端行情压力测试复盘频率。',
+                performanceTrend: 'B+ / B+ / A- / B+'
+            },
+            {
+                key: 'lijun',
+                name: '李军',
+                dept: '融资融券部',
+                title: '风控专员',
+                leadProject: '风险预警系统',
+                participateProject: '担保品管理',
+                rating: 'A-',
+                projectCompletion: '88%',
+                revenue: '—',
+                complianceStatus: '正常',
+                workload: '中等',
+                employeeId: 'MT-20170630',
+                level: 'VP',
+                tenure: '9年',
+                reportTo: '融资融券部总经理',
+                contact: 'lij@company.com · 186****2211',
+                projectCount: '负责 2 项 · 参与 2 项',
+                targetAchievement: '98%',
+                revenueYoY: '—',
+                violations: '无',
+                training: '已完成',
+                education: '硕士 · 统计学',
+                certifications: 'FRM、证券从业',
+                skills: '两融风控、担保品估值、预警模型',
+                recentActivity: '5-17 预警系统规则迭代上线；5-19 担保品压力测试完成。',
+                aiInsight: '风控模型迭代及时，与业务沟通顺畅，可参与全司风控工具推广。',
+                performanceTrend: 'A- / A- / B+ / A-'
+            },
+            {
+                key: 'zhaoxue',
+                name: '赵雪',
+                dept: '新三板业务部',
+                title: '项目经理',
+                leadProject: '精选层挂牌',
+                participateProject: '定增项目',
+                rating: 'B+',
+                projectCompletion: '75%',
+                revenue: '540万',
+                complianceStatus: '关注',
+                workload: '高',
+                employeeId: 'NE-20220408',
+                level: 'Associate',
+                tenure: '3年',
+                reportTo: '新三板负责人',
+                contact: 'zhaox@company.com · 189****6612',
+                projectCount: '负责 2 项 · 参与 1 项',
+                targetAchievement: '82%',
+                revenueYoY: '-3%',
+                violations: '无',
+                training: '新三板持续督导培训进行中',
+                education: '硕士 · 会计学',
+                certifications: 'CPA、证券从业',
+                skills: '挂牌辅导、定增发行、信息披露',
+                recentActivity: '5-15 精选层问询函回复；5-20 定增发行材料补充。',
+                aiInsight: '项目进度略滞后，建议协调投行资源支援并明确里程碑责任人。',
+                performanceTrend: 'B / B+ / B+ / B+'
+            }
+        ];
+
+        function getTeamMemberByKey(key) {
+            return TEAM_MEMBERS.find(function(m) { return m.key === key; }) || null;
+        }
+
+        function getTeamRatingClass(rating) {
+            if (rating === 'A') return 'team-rating-a';
+            if (rating === 'A-') return 'team-rating-a-minus';
+            if (rating === 'B+') return 'team-rating-b-plus';
+            return 'team-rating-b';
+        }
+
+        function buildTeamMemberCardHTML(m) {
+            const ratingClass = getTeamRatingClass(m.rating);
+            const complianceClass = m.complianceStatus === '正常' ? 'team-metric-ok' : 'team-metric-warn';
+            const workloadClass = m.workload === '高' || m.workload === '偏高' ? 'team-metric-warn' : '';
+            return `
+                <div class="team-member-card" data-member-key="${m.key}" data-cardified="1">
+                    <div class="team-card-top">
+                        <div class="team-card-identity">
+                            <span class="team-card-avatar" aria-hidden="true">${m.name.charAt(0)}</span>
+                            <div class="team-card-name-block">
+                                <span class="team-card-name">${m.name}</span>
+                                <span class="team-card-dept">${m.dept} · ${m.title}</span>
+                            </div>
+                        </div>
+                        <span class="team-card-rating ${ratingClass}">${m.rating}</span>
+                    </div>
+                    <div class="team-card-projects">
+                        <div class="team-card-proj-line">
+                            <span class="team-proj-label">负责项目</span>
+                            <span class="team-proj-value team-lead">${m.leadProject}</span>
+                        </div>
+                        <div class="team-card-proj-line">
+                            <span class="team-proj-label">参与项目</span>
+                            <span class="team-proj-value team-participate">${m.participateProject}</span>
+                        </div>
+                    </div>
+                    <div class="team-card-metrics">
+                        <div class="team-metric">
+                            <span class="team-metric-val">${m.projectCompletion}</span>
+                            <span class="team-metric-lbl">项目完成率</span>
+                        </div>
+                        <div class="team-metric">
+                            <span class="team-metric-val">${m.revenue}</span>
+                            <span class="team-metric-lbl">创收贡献</span>
+                        </div>
+                        <div class="team-metric">
+                            <span class="team-metric-val ${complianceClass}">${m.complianceStatus}</span>
+                            <span class="team-metric-lbl">合规状态</span>
+                        </div>
+                        <div class="team-metric">
+                            <span class="team-metric-val ${workloadClass}">${m.workload}</span>
+                            <span class="team-metric-lbl">负荷指数</span>
+                        </div>
+                    </div>
+                    <div class="team-card-footer">
+                        <button type="button" class="team-btn-view" onclick="openTeamMemberModal('${m.key}')">查看</button>
+                    </div>
+                </div>`;
+        }
+
+        function buildTeamMemberListHTML() {
+            return TEAM_MEMBERS.map(buildTeamMemberCardHTML).join('');
+        }
+
+        function initTeamMemberLayout(root) {
+            const scope = root || document;
+            const container = scope.querySelector('#team-content');
+            if (!container) return;
+
+            const hasCards = container.querySelector('#team-member-list .team-member-card');
+            const legacyTable = container.querySelector('.team-table-row, .team-table-header');
+            if (legacyTable || !hasCards) {
+                container.innerHTML = '<div id="team-member-list" class="team-member-list">' + buildTeamMemberListHTML() + '</div>';
+            }
+
+            const countEl = scope.querySelector('#team-online-count') || document.getElementById('team-online-count');
+            const cards = container.querySelectorAll('.team-member-card');
+            if (countEl) countEl.textContent = String(cards.length || TEAM_MEMBERS.length);
+        }
+
+        function fillTeamMemberModal(member) {
+            const panel = document.getElementById('team-member-modal-context');
+            if (!panel || !member) return;
+
+            const ratingClass = getTeamRatingClass(member.rating);
+            const complianceHighlight = member.complianceStatus !== '正常';
+
+            const html =
+                buildContextBlock('人员摘要',
+                    '<div class="team-modal-head">' +
+                    '<span class="team-modal-avatar">' + member.name.charAt(0) + '</span>' +
+                    '<div><p class="process-summary-text">' + member.name + ' · ' + member.dept + '</p>' +
+                    '<p class="process-detail-text">' + member.title + ' · 考核 <span class="team-card-rating ' + ratingClass + '">' + member.rating + '</span></p></div></div>') +
+                buildContextBlock('项目负载', buildInfoGrid([
+                    { label: '负责项目', value: member.leadProject, highlight: true },
+                    { label: '参与项目', value: member.participateProject },
+                    { label: '在管项目', value: member.projectCount || '—' },
+                    { label: '项目完成率', value: member.projectCompletion }
+                ])) +
+                buildContextBlock('领导关注指标', buildInfoGrid([
+                    { label: '考核评级', value: member.rating, highlight: true },
+                    { label: '创收贡献', value: member.revenue },
+                    { label: '目标达成', value: member.targetAchievement || '—' },
+                    { label: '同比变化', value: member.revenueYoY || '—' },
+                    { label: '合规状态', value: member.complianceStatus, highlight: complianceHighlight },
+                    { label: '负荷指数', value: member.workload, highlight: member.workload === '高' || member.workload === '偏高' }
+                ])) +
+                buildContextBlock('基本信息', buildInfoGrid([
+                    { label: '工号', value: member.employeeId || '—' },
+                    { label: '职级', value: member.level || '—' },
+                    { label: '司龄', value: member.tenure || '—' },
+                    { label: '汇报关系', value: member.reportTo || '—' },
+                    { label: '联系方式', value: member.contact || '—' }
+                ])) +
+                buildContextBlock('业绩表现', '<p class="process-detail-text">' + (member.performanceTrend || '—') + '</p>' +
+                    buildInfoGrid([
+                        { label: '目标达成率', value: member.targetAchievement || '—' },
+                        { label: '创收贡献', value: member.revenue },
+                        { label: '创收同比', value: member.revenueYoY || '—' }
+                    ])) +
+                buildContextBlock('合规与培训', buildInfoGrid([
+                    { label: '合规状态', value: member.complianceStatus, highlight: complianceHighlight },
+                    { label: '违规记录', value: member.violations || '无' },
+                    { label: '培训情况', value: member.training || '—' }
+                ])) +
+                buildContextBlock('能力与资质', buildInfoGrid([
+                    { label: '学历', value: member.education || '—' },
+                    { label: '执业资格', value: member.certifications || '—' },
+                    { label: '核心技能', value: member.skills || '—' }
+                ])) +
+                buildContextBlock('近期动态', '<p class="process-detail-text">' + (member.recentActivity || '—') + '</p>') +
+                buildContextBlock('AI 观察与建议', '<div class="process-ai-box">' + (member.aiInsight || '暂无 AI 分析。') + '</div>');
+
+            panel.innerHTML = html;
+            panel.style.display = 'block';
+        }
+
+        function openTeamMemberModal(memberKey) {
+            const member = getTeamMemberByKey(memberKey);
+            if (!member) {
+                alert('暂无该人员详细信息');
+                return;
+            }
+            const modal = document.getElementById('team-member-modal');
+            if (!modal) return;
+            document.getElementById('team-member-modal-title').textContent = member.name + ' · 人员详情';
+            fillTeamMemberModal(member);
+            modal.style.display = 'flex';
+        }
+
+        function closeTeamMemberModal() {
+            const modal = document.getElementById('team-member-modal');
+            if (modal) modal.style.display = 'none';
+            const panel = document.getElementById('team-member-modal-context');
+            if (panel) {
+                panel.innerHTML = '';
+                panel.style.display = 'none';
+            }
+        }
+
+        function getCollaborationTeamTabHTML() {
+            return `
+                            <div class="wq-card-tab" onclick="switchWorkQueueTab(this, 'team')">
+                                <div class="wq-card-header">
+                                    <span class="wq-card-icon">👥</span>
+                                    <span class="wq-card-title">团队人员查看</span>
+                                </div>
+                                <div class="wq-card-content">
+                                    <span class="wq-card-number" id="team-online-count">12</span>
+                                    <span class="wq-card-unit">人</span>
+                                </div>
+                            </div>`;
+        }
+
+        function getCollaborationTeamContentHTML() {
+            return `
+                        <div id="team-content" class="content-area" style="display: none;">
+                            <div id="team-member-list" class="team-member-list">
+                                ${buildTeamMemberListHTML()}
+                            </div>
+                        </div>`;
+        }
+
+        function appendCollaborationTeamSection(section) {
+            if (!section || section.querySelector('#team-content')) return;
+
+            const tabs = section.querySelector('.work-queue-card-tabs');
+            if (tabs) {
+                tabs.insertAdjacentHTML('beforeend', getCollaborationTeamTabHTML());
+            }
+            section.insertAdjacentHTML('beforeend', getCollaborationTeamContentHTML());
+            initTeamMemberLayout(section);
+        }
+
+        function reorderCollaborationWorkQueueCards(section) {
+            const tabs = section.querySelector('.work-queue-card-tabs');
+            if (!tabs) return;
+
+            appendCollaborationTeamSection(section);
+
+            const roundtableTab = tabs.querySelector('.wq-card-tab[onclick*="roundtable"]');
+            const helpTab = tabs.querySelector('.wq-card-tab[onclick*="help"]');
+            const projectTab = tabs.querySelector('.wq-card-tab[onclick*="project"]');
+            const teamTab = tabs.querySelector('.wq-card-tab[onclick*="team"]');
+
+            if (roundtableTab) tabs.insertBefore(roundtableTab, tabs.firstChild);
+            if (helpTab && projectTab) {
+                tabs.insertBefore(helpTab, projectTab);
+            }
+            if (teamTab) tabs.appendChild(teamTab);
+
+            tabs.querySelectorAll('.wq-card-tab').forEach(tab => tab.classList.remove('active'));
+            if (roundtableTab) roundtableTab.classList.add('active');
+
+            const helpContent = section.querySelector('#help-content');
+            const projectContent = section.querySelector('#project-content');
+            const roundtableContent = section.querySelector('#roundtable-content');
+            const teamContent = section.querySelector('#team-content');
+            if (helpContent) helpContent.style.display = 'none';
+            if (projectContent) projectContent.style.display = 'none';
+            if (roundtableContent) roundtableContent.style.display = 'block';
+            if (teamContent) teamContent.style.display = 'none';
+        }
+
+        function getCollaborationMainWorkAreaHTML() {
+            if (!businessWorkQueueSectionHTML) cacheBusinessWorkAreaTemplates();
+            const wrap = document.createElement('div');
+            wrap.innerHTML = businessWorkQueueSectionHTML;
+            const section = wrap.firstElementChild;
+            if (section) reorderCollaborationWorkQueueCards(section);
+            return (section ? section.outerHTML : '') + getCollaborationHighPriorityPanelHTML();
+        }
+
         // 根据工作台类型更新中间内容
         function updateMainContentByWorkspace(workspaceType) {
             const mainWorkArea = document.querySelector('.main-work-area');
@@ -2490,7 +4359,7 @@
                         <div class="ai-team-header">
                             <span class="ai-icon">🤖</span>
                             <span class="ai-title">AI 团队</span>
-                            <span class="ai-subtitle">点击卡片切换</span>
+                            <span class="ai-subtitle" id="ai-switch-btn" style="cursor: pointer;">点击卡片切换</span>
                         </div>
                         <div class="ai-cards-fan">
                             <div class="ai-card-fan" data-index="0">
@@ -2537,136 +4406,14 @@
                 // 业务支持工作台：恢复原始内容
                 location.reload();
             } else if (workspaceType === 'collaboration') {
-                // 协同工作台：显示工作提示和AI团队
-                mainWorkArea.innerHTML = `
-                    <!-- 工作提示区域 -->
-                    <div class="employee-work-tips">
-                        <div class="work-tips-header">
-                            <div class="left">
-                                <span class="tips-icon">📋</span>
-                                <span class="tips-title">工作提示</span>
-                            </div>
-                            <a href="#" class="view-all-link">查看全部 ></a>
-                        </div>
-                        <div class="work-tips-list">
-                            <div class="work-tip-item">
-                                <div class="tip-icon warning">⚠️</div>
-                                <div class="tip-content">
-                                    <div class="tip-title">
-                                        <span class="tip-title-text">3笔大额资金审批待处理</span>
-                                        <span class="tip-tag urgent">紧急</span>
-                                    </div>
-                                    <div class="tip-desc">涉及金额共计¥2,850,000.00，其中1笔超过审批时限，请尽快处理。</div>
-                                </div>
-                                <div class="tip-time">10分钟前</div>
-                            </div>
-                            <div class="work-tip-item">
-                                <div class="tip-icon warning">⚠️</div>
-                                <div class="tip-content">
-                                    <div class="tip-title">
-                                        <span class="tip-title-text">合规风险预警：某分支机构客户投诉率上升12%</span>
-                                        <span class="tip-tag risk">风险</span>
-                                    </div>
-                                    <div class="tip-desc">近30日该机构投诉量较上月同期增长明显，建议关注并安排核查。</div>
-                                </div>
-                                <div class="tip-time">30分钟前</div>
-                            </div>
-                            <div class="work-tip-item">
-                                <div class="tip-icon progress">📈</div>
-                                <div class="tip-content">
-                                    <div class="tip-title">
-                                        <span class="tip-title-text">Q2重点项目「数字化转型」进度更新至68%</span>
-                                        <span class="tip-tag progress">进展</span>
-                                    </div>
-                                    <div class="tip-desc">已完成基础架构搭建和数据迁移，下阶段将启动业务模块开发。</div>
-                                </div>
-                                <div class="tip-time">1小时前</div>
-                            </div>
-                            <div class="work-tip-item">
-                                <div class="tip-icon todo">📝</div>
-                                <div class="tip-content">
-                                    <div class="tip-title">
-                                        <span class="tip-title-text">5项人事审批待签署</span>
-                                        <span class="tip-tag todo">待办</span>
-                                    </div>
-                                    <div class="tip-desc">包含2项晋升审批、1项调岗申请、2项离职交接确认。</div>
-                                </div>
-                                <div class="tip-time">2小时前</div>
-                            </div>
-                            <div class="work-tip-item">
-                                <div class="tip-icon schedule">📅</div>
-                                <div class="tip-content">
-                                    <div class="tip-title">
-                                        <span class="tip-title-text">今日14:00 季度经营分析会</span>
-                                        <span class="tip-tag schedule">日程</span>
-                                    </div>
-                                    <div class="tip-desc">参会人员已确认8人，会议材料已上传，请提前审阅财务报告。</div>
-                                </div>
-                                <div class="tip-time">今日</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- AI团队 -->
-                    <div class="ai-team-section collaboration-ai-team">
-                        <div class="ai-team-header">
-                            <span class="ai-icon">🤖</span>
-                            <span class="ai-title">AI 团队</span>
-                        </div>
-                        <div class="ai-team-cards collaboration-cards">
-                            <div class="ai-team-card collaboration-card">
-                                <div class="card-left">
-                                    <div class="card-avatar qingshi">📋</div>
-                                    <div class="card-info">
-                                        <div class="card-name">请示事项 <span class="card-badge">8项待处理</span></div>
-                                        <div class="card-desc">审批待办、请示流转、签署确认</div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">></div>
-                            </div>
-                            <div class="ai-team-card collaboration-card">
-                                <div class="card-left">
-                                    <div class="card-avatar jingying">📊</div>
-                                    <div class="card-info">
-                                        <div class="card-name">经营看板 <span class="card-badge green">营收+12.3%</span></div>
-                                        <div class="card-desc">经营指标、业绩趋势、目标达成</div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">></div>
-                            </div>
-                            <div class="ai-team-card collaboration-card">
-                                <div class="card-left">
-                                    <div class="card-avatar fengxian">⚠️</div>
-                                    <div class="card-info">
-                                        <div class="card-name">风险提示 <span class="card-badge red">3项高风险</span></div>
-                                        <div class="card-desc">合规风险、操作风险、市场风险预警</div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">></div>
-                            </div>
-                            <div class="ai-team-card collaboration-card">
-                                <div class="card-left">
-                                    <div class="card-avatar duiwu">👥</div>
-                                    <div class="card-info">
-                                        <div class="card-name">队伍状况 <span class="card-badge orange">5人变动</span></div>
-                                        <div class="card-desc">人员变动、绩效分布、核心骨干</div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">></div>
-                            </div>
-                            <div class="ai-team-card collaboration-card">
-                                <div class="card-left">
-                                    <div class="card-avatar yingji">🚨</div>
-                                    <div class="card-info">
-                                        <div class="card-name">应急组织 <span class="card-badge blue">运行正常</span></div>
-                                        <div class="card-desc">应急预案、突发事件、演练状态</div>
-                                    </div>
-                                </div>
-                                <div class="card-arrow">></div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                mainWorkArea.innerHTML = getCollaborationMainWorkAreaHTML();
+                setTimeout(function() {
+                    initRequestCardLayout();
+                    initProjectCardLayout();
+                    initRoundtableProposalLayout(null, 'leader');
+                    initTeamMemberLayout(mainWorkArea);
+                    refreshCollaborationDecisionPoolUI(mainWorkArea);
+                }, 0);
             }
         }
         
@@ -2676,13 +4423,17 @@
         function initAICardFan() {
             const cards = document.querySelectorAll('.ai-card-fan');
             const indicators = document.querySelectorAll('.indicator');
+            const switchBtn = document.getElementById('ai-switch-btn');
             
             if (cards.length === 0) return;
             
             // 点击卡片切换
             cards.forEach((card, index) => {
                 card.addEventListener('click', () => {
-                    setActiveCard(index);
+                    // 点击任何卡片都触发与对应小头像相同的效果
+                    if (typeof selectAIAssistant === 'function') {
+                        selectAIAssistant(index);
+                    }
                 });
             });
             
@@ -2693,49 +4444,70 @@
                 });
             });
             
-            // 初始激活第一个卡片 - 必须在事件监听之后
-            setActiveCard(0);
+            // 点击切换按钮，循环切换卡片
+            if (switchBtn) {
+                switchBtn.addEventListener('click', () => {
+                    const nextIndex = (currentActiveIndex + 1) % cards.length;
+                    setActiveCard(nextIndex);
+                });
+            }
+            
+            // 初始激活第二个卡片（索引1） - 必须在事件监听之后
+            setActiveCard(1);
         }
         
         function setActiveCard(activeIndex) {
             currentActiveIndex = activeIndex;
             const cards = document.querySelectorAll('.ai-card-fan');
             const indicators = document.querySelectorAll('.indicator');
+            const totalCards = cards.length;
             
-            // 移除所有卡片的激活状态
-            cards.forEach((card, index) => {
+            // 计算每个卡片相对于选中卡片的位置
+            cards.forEach((card, cardIndex) => {
+                // 计算相对位置，实现首尾循环
+                let relativePosition = cardIndex - activeIndex;
+                
+                // 处理循环情况
+                if (relativePosition > totalCards / 2) {
+                    relativePosition -= totalCards;
+                } else if (relativePosition < -totalCards / 2) {
+                    relativePosition += totalCards;
+                }
+                
+                // 目标显示位置：选中卡片在第二张位置（偏移+1）
+                const displayPosition = relativePosition + 1;
+                
                 card.classList.remove('active');
                 
-                // 计算相对位置
-                const diff = index - activeIndex;
-                
-                if (diff < 0) {
-                    // 左边的卡片
-                    const distance = Math.abs(diff);
-                    card.style.zIndex = 4 - distance;
-                    card.style.left = `calc(50% - ${distance * 65}px)`;
+                if (displayPosition === 1) {
+                    // 第二张位置：选中的卡片
+                    card.classList.add('active');
+                    card.style.zIndex = '10';
+                    card.style.left = '50%';
                     card.style.transform = 'translateX(-50%)';
-                    card.style.scale = (1 - distance * 0.05).toString();
-                    card.style.opacity = (1 - distance * 0.1).toString();
-                } else if (diff > 0) {
-                    // 右边的卡片
-                    card.style.zIndex = 4 - diff;
-                    card.style.left = `calc(50% + ${diff * 65}px)`;
-                    card.style.transform = 'translateX(-50%)';
-                    card.style.scale = (1 - diff * 0.05).toString();
-                    card.style.opacity = (1 - diff * 0.1).toString();
+                    card.style.scale = '1';
+                    card.style.opacity = '1';
+                } else {
+                    // 其他位置的卡片
+                    const distance = Math.abs(displayPosition - 1);
+                    
+                    if (displayPosition < 1) {
+                        // 左边的卡片
+                        card.style.zIndex = (4 - distance).toString();
+                        card.style.left = `calc(50% - ${distance * 65}px)`;
+                        card.style.transform = 'translateX(-50%)';
+                        card.style.scale = (1 - distance * 0.05).toString();
+                        card.style.opacity = (1 - distance * 0.1).toString();
+                    } else {
+                        // 右边的卡片
+                        card.style.zIndex = (4 - distance).toString();
+                        card.style.left = `calc(50% + ${distance * 65}px)`;
+                        card.style.transform = 'translateX(-50%)';
+                        card.style.scale = (1 - distance * 0.05).toString();
+                        card.style.opacity = (1 - distance * 0.1).toString();
+                    }
                 }
             });
-            
-            // 设置激活卡片
-            if (cards[activeIndex]) {
-                cards[activeIndex].classList.add('active');
-                cards[activeIndex].style.zIndex = '10';
-                cards[activeIndex].style.left = '50%';
-                cards[activeIndex].style.transform = 'translateX(-50%)';
-                cards[activeIndex].style.scale = '1';
-                cards[activeIndex].style.opacity = '1';
-            }
             
             // 更新指示器
             indicators.forEach((indicator, index) => {
@@ -2869,61 +4641,22 @@
                     </div>
                 `;
             } else if (workspaceType === 'collaboration') {
-                // 协同工作台：显示团队协作和消息通知
-                rightPanel.innerHTML = `
-                    <div class="hp-card">
-                        <div class="hp-card-header">
-                            <span class="hp-card-title">团队动态</span>
-                        </div>
-                        <div class="hp-card-content">
-                            <div class="team-activity-list">
-                                <div class="activity-item">
-                                    <span class="activity-user">张三</span>
-                                    <span class="activity-action">完成了</span>
-                                    <span class="activity-target">客户拜访报告</span>
-                                </div>
-                                <div class="activity-item">
-                                    <span class="activity-user">李四</span>
-                                    <span class="activity-action">提交了</span>
-                                    <span class="activity-target">项目方案</span>
-                                </div>
-                                <div class="activity-item">
-                                    <span class="activity-user">王五</span>
-                                    <span class="activity-action">评论了</span>
-                                    <span class="activity-target">季度计划</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="hp-card">
-                        <div class="hp-card-header">
-                            <span class="hp-card-title">消息通知</span>
-                        </div>
-                        <div class="hp-card-content">
-                            <div class="notification-list">
-                                <div class="notification-item unread">
-                                    <span class="notification-dot"></span>
-                                    <span class="notification-text">您有一条新的协同申请待处理</span>
-                                </div>
-                                <div class="notification-item">
-                                    <span class="notification-text">项目进度更新提醒</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
+                rightPanel.innerHTML = getCollaborationHighPriorityPanelHTML();
+                refreshCollaborationDecisionPoolUI(rightPanel);
             }
         }
         
         // 点击页面其他地方关闭下拉菜单
         document.addEventListener('click', function(e) {
-            const switcher = document.querySelector('.workspace-switcher-sidebar');
-            if (switcher && !switcher.contains(e.target)) {
-                const dropdown = document.getElementById('workspace-dropdown');
-                const btn = document.querySelector('.workspace-switcher-btn');
-                if (dropdown) dropdown.style.display = 'none';
-                if (btn) btn.classList.remove('active');
-            }
+            const switchers = document.querySelectorAll('.workspace-switcher-sidebar');
+            switchers.forEach(switcher => {
+                if (switcher && !switcher.contains(e.target)) {
+                    const dropdown = switcher.querySelector('.workspace-dropdown');
+                    const btn = switcher.querySelector('.workspace-switcher-btn');
+                    if (dropdown) dropdown.style.display = 'none';
+                    if (btn) btn.classList.remove('active');
+                }
+            });
         });
         
         // 切换侧边栏展开/收起
@@ -3249,13 +4982,7 @@
             };
             const avatarName = avatarNames[avatarType] || '业务助理';
             
-            // 如果是资管业务助理，打开资管业务支持中心对话页面（徽商银行）
-            if (avatarType === 'asset') {
-                openAssetSupportDetail('徽商银行');
-                return;
-            }
-            
-            alert(`正在连接${avatarName}...\n\n数字人对话功能即将上线！`);
+            alert('跳转各智能体相应员工工作台/业务支持工作台/协同工作台');
         }
         
         // 打开业绩看板详情（客户总资产/总收入）
@@ -6840,6 +8567,11 @@
         }
         
         document.addEventListener('DOMContentLoaded', function() {
+            initRequestCardLayout();
+            initProjectCardLayout();
+            initTeamMemberLayout();
+            cacheBusinessWorkAreaTemplates();
+
             // 初始化历史记录
             initHistory();
 
@@ -7068,13 +8800,30 @@
     <!-- 新对话页面 -->
     <div id="new-chat-page" class="new-chat-page" style="display: none;">
         <div class="new-chat-layout">
-            <!-- 左侧边栏（与主页相同） -->
+            <!-- 左侧边栏（与主页相同，包含工作台切换） -->
             <aside class="sidebar" id="new-chat-sidebar">
-                <!-- 侧边栏顶部：标题和展开按钮 -->
+                <!-- 侧边栏顶部：工作台切换和收起按钮 -->
                 <div class="sidebar-header">
-                    <div class="sidebar-title-group">
-                        <span class="sidebar-logo">📊</span>
-                        <span class="sidebar-title">员工工作台</span>
+                    <div class="workspace-switcher-sidebar">
+                        <button class="workspace-switcher-btn" onclick="toggleWorkspaceDropdownNewChat()">
+                            <span class="workspace-icon">📊</span>
+                            <span class="workspace-name" id="new-chat-workspace-name">业务支持工作台</span>
+                            <span class="workspace-arrow">▼</span>
+                        </button>
+                        <div class="workspace-dropdown" id="new-chat-workspace-dropdown" style="display: none;">
+                            <div class="workspace-option" onclick="switchWorkspace('employee')">
+                                <span class="workspace-option-icon">👤</span>
+                                <span class="workspace-option-name">员工工作台</span>
+                            </div>
+                            <div class="workspace-option active" onclick="switchWorkspace('business')">
+                                <span class="workspace-option-icon">📊</span>
+                                <span class="workspace-option-name">业务支持工作台</span>
+                            </div>
+                            <div class="workspace-option" onclick="switchWorkspace('collaboration')">
+                                <span class="workspace-option-icon">🤝</span>
+                                <span class="workspace-option-name">协同工作台</span>
+                            </div>
+                        </div>
                     </div>
                     <button class="sidebar-toggle-btn" onclick="toggleSidebar()" title="收起侧边栏">
                         <span class="toggle-icon">‹‹</span>
@@ -7276,34 +9025,77 @@
         </div>
     </div>
 
-    <!-- 处理申请弹窗 -->
-    <div id="process-modal" class="process-modal" style="display: none;">
+    <!-- 议案领导操作弹窗（协同工作台） -->
+    <div id="proposal-leader-modal" class="process-modal" style="display: none;">
         <div class="process-modal-content">
             <div class="process-modal-header">
-                <h3>处理</h3>
-                <button class="process-modal-close" onclick="closeProcessModal()">&times;</button>
+                <h3 id="proposal-leader-modal-title">领导操作</h3>
+                <button type="button" class="process-modal-close" onclick="closeProposalLeaderModal()">&times;</button>
             </div>
             <div class="process-modal-body">
-                <div class="process-type-selector">
-                    <label class="process-type-option">
-                        <input type="radio" name="process-type" value="direct" checked onchange="switchProcessType('direct')">
-                        <span class="process-type-label">直接处理</span>
-                    </label>
-                    <label class="process-type-option">
-                        <input type="radio" name="process-type" value="roundtable" onchange="switchProcessType('roundtable')">
-                        <span class="process-type-label">圆桌协同</span>
-                    </label>
-                </div>
+                <p id="proposal-leader-modal-hint" class="proposal-modal-hint"></p>
                 <div class="process-form">
                     <div class="process-form-group">
-                        <label>处理意见</label>
-                        <textarea id="process-comment" placeholder="请输入处理意见..."></textarea>
+                        <label id="proposal-leader-modal-label">内容</label>
+                        <textarea id="proposal-leader-modal-input" rows="5" placeholder="请输入..."></textarea>
                     </div>
                 </div>
             </div>
             <div class="process-modal-footer">
-                <button class="process-btn-secondary" onclick="closeProcessModal()">取消</button>
-                <button class="process-btn-primary" onclick="submitProcess()">提交</button>
+                <button type="button" class="process-btn-secondary" onclick="closeProposalLeaderModal()">取消</button>
+                <button type="button" class="process-btn-primary" onclick="submitProposalLeaderAction()">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 处理申请/项目弹窗 -->
+    <div id="process-modal" class="process-modal" style="display: none;">
+        <div class="process-modal-content process-modal-content-enhanced">
+            <div class="process-modal-header">
+                <h3>处理</h3>
+                <button type="button" class="process-modal-close" onclick="closeProcessModal()">&times;</button>
+            </div>
+            <div class="process-modal-body process-modal-body-split">
+                <div id="process-modal-context" class="process-modal-context"></div>
+                <div class="process-modal-action-panel">
+                    <p class="process-action-panel-title">处理操作</p>
+                    <div class="process-type-selector">
+                        <label class="process-type-option">
+                            <input type="radio" name="process-type" value="direct" checked onchange="switchProcessType('direct')">
+                            <span class="process-type-label">直接处理</span>
+                        </label>
+                        <label class="process-type-option">
+                            <input type="radio" name="process-type" value="roundtable" onchange="switchProcessType('roundtable')">
+                            <span class="process-type-label">圆桌协同</span>
+                        </label>
+                    </div>
+                    <div class="process-form">
+                        <div class="process-form-group">
+                            <label>处理意见</label>
+                            <textarea id="process-comment" placeholder="请输入处理意见..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="process-modal-footer">
+                <button type="button" class="process-btn-secondary" onclick="closeProcessModal()">取消</button>
+                <button type="button" class="process-btn-primary" onclick="submitProcess()">提交</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 团队人员详情弹窗（协同工作台） -->
+    <div id="team-member-modal" class="process-modal" style="display: none;">
+        <div class="process-modal-content process-modal-content-enhanced process-modal-content-view">
+            <div class="process-modal-header">
+                <h3 id="team-member-modal-title">人员详情</h3>
+                <button type="button" class="process-modal-close" onclick="closeTeamMemberModal()">&times;</button>
+            </div>
+            <div class="process-modal-body process-modal-body-view">
+                <div id="team-member-modal-context" class="process-modal-context process-modal-context-full"></div>
+            </div>
+            <div class="process-modal-footer">
+                <button type="button" class="process-btn-secondary" onclick="closeTeamMemberModal()">关闭</button>
             </div>
         </div>
     </div>
